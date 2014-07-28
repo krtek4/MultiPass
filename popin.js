@@ -8,11 +8,11 @@ function display_credentials(credentials) {
             var c = credentials[key];
             var elem = $(
                     '<tr class="current-credential">' +
-                    '<td>' + key + '</td>' +
-                    '<td>' + c.url + '</td>' +
-                    '<td>' + c.username + '</td>' +
-                    '<td>***</td>' +
-                    '<td><button class="remove" data-id="' + key + '">Remove</button></td>' +
+                    '<th class="index">' + key + '</th>' +
+                    '<td class="url">' + c.url + '</td>' +
+                    '<td class="username">' + c.username + '</td>' +
+                    '<td class="password">***</td>' +
+                    '<td class="action"><button class="remove" data-id="' + key + '">Remove</button></td>' +
                     '</tr>'
             );
 

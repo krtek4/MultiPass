@@ -4,8 +4,28 @@
         <title>Getting Started Extension's Popup</title>
         <style>
             body {
-                min-width: 357px;
+                min-width: 480px;
                 overflow-x: hidden;
+            }
+
+            tr:nth-child(odd) {
+                background-color: #eee;
+            }
+
+            tr:nth-child(even) {
+                background-color: #fff;
+            }
+
+            td, th {
+                padding: 0.5em 1em;
+                border: 1px solid #ccc;
+                text-align: center;
+                white-space: nowrap;
+            }
+
+            th {
+                background: lightblue;
+                border-color: white;
             }
         </style>
     </head>
@@ -14,17 +34,17 @@
         <table>
             <thead>
                 <tr>
-                    <td>Index</td>
-                    <td>Url</td>
-                    <td>Username</td>
-                    <td>Password</td>
-                    <td>Action</td>
+                    <th class="index">&nbsp;</th>
+                    <th class="url">Url (regexp)</th>
+                    <th class="username">Username</th>
+                    <th class="password">Password</th>
+                    <th class="action">Action</th>
                 </tr>
             </thead>
 
             <tbody class="credentials">
                 <tr>
-                    <td>New</td>
+                    <th>&nbsp;</th>
                     <td><input type="text" name="url" id="url"></td>
                     <td><input type="text" name="username" id="username"></td>
                     <td><input type="password" name="password" id="password"></td>
