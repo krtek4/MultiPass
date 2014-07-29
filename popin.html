@@ -3,22 +3,16 @@
     <head>
         <title>Getting Started Extension's Popup</title>
         <style>
-            body {
-                min-width: 480px;
-                overflow-x: hidden;
+            tbody tr:nth-child(odd) {
+                background-color: #ccc;
             }
 
-            tr:nth-child(odd) {
+            tbody tr:nth-child(even) {
                 background-color: #eee;
             }
 
-            tr:nth-child(even) {
-                background-color: #fff;
-            }
-
             td, th {
-                padding: 0.5em 1em;
-                border: 1px solid #ccc;
+                padding: 0.6em 0.5em;
                 text-align: center;
                 white-space: nowrap;
             }
@@ -26,6 +20,15 @@
             th {
                 background: lightblue;
                 border-color: white;
+            }
+
+            td.url {
+                min-width: 15em;
+            }
+
+            td.username,
+            td.password {
+                min-width: 8em;
             }
 
             .password {
@@ -36,27 +39,25 @@
                 display: none;
             }
 
-            .password > span:after {
-                display: none;
+            .password .show-password {
                 position: absolute;
                 right: 0;
+                bottom: 0;
                 background: powderblue;
+                border: 0;
+                font-size: 8px;
             }
 
-            .password > span:hover:after {
-                display: inline-block;
-            }
-
-            .password-stars:after {
-                content: "Click to show";
-            }
-
-            .password-real:after {
-                content: "Click to hide";
-            }
-
-            label {
+            tfoot label {
                 display: none;
+            }
+
+            tfoot input {
+                width: 100%;
+            }
+
+            tfoot button {
+                width: 100%;
             }
         </style>
     </head>
@@ -79,20 +80,20 @@
             <tfoot>
                 <form id="credential-form">
                     <tr>
-                        <th>&nbsp;</th>
-                        <td>
+                        <td class="index">&nbsp;</td>
+                        <td class="url">
                             <label for="url">Url</label>
                             <input type="text" name="url" id="url">
                         </td>
-                        <td>
+                        <td class="username">
                             <label for="username">Username</label>
                             <input type="text" name="username" id="username">
                         </td>
-                        <td>
+                        <td class="password">
                             <label for="password">Password</label>
                             <input type="password" name="password" id="password">
                         </td>
-                        <td>
+                        <td class="action">
                             <button type="submit">Add</button>
                         </td>
                     </tr>

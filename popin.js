@@ -20,6 +20,7 @@ var Popin = function() {
                         '<td class="password">' +
                             '<span class="' + password_stars_class + '">***</span>' +
                             '<span class="' + password_real_class + '">' + c.password + '</span>' +
+                            '<button class="show-password">Show / Hide</button>' +
                         '</td>' +
                         '<td class="action"><button class="remove" data-id="' + key + '">Remove</button></td>' +
                     '</tr>'
@@ -82,7 +83,7 @@ var Popin = function() {
 
         $('#credential-form').on('submit', add);
         $(document).on('click', '.remove', remove);
-        $(document).on('click', '.password > span', togglePassword);
+        $(document).on('click', '.show-password', togglePassword);
     }
 
     return {
