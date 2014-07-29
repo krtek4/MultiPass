@@ -54,6 +54,10 @@
             .password-real:after {
                 content: "Click to hide";
             }
+
+            label {
+                display: none;
+            }
         </style>
     </head>
 
@@ -70,14 +74,30 @@
             </thead>
 
             <tbody class="credentials">
-                <tr>
-                    <th>&nbsp;</th>
-                    <td><input type="text" name="url" id="url"></td>
-                    <td><input type="text" name="username" id="username"></td>
-                    <td><input type="password" name="password" id="password"></td>
-                    <td><button id="add">Add</button></td>
-                </tr>
             </tbody>
+
+            <tfoot>
+                <form id="credential-form">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <td>
+                            <label for="url">Url</label>
+                            <input type="text" name="url" id="url">
+                        </td>
+                        <td>
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="username">
+                        </td>
+                        <td>
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password">
+                        </td>
+                        <td>
+                            <button type="submit">Add</button>
+                        </td>
+                    </tr>
+                </form>
+            </tfoot>
         </table>
 
         <script type="text/javascript" src="jquery.min.js"></script>

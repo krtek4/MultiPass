@@ -2,19 +2,18 @@ var Popin = function() {
     'use strict';
 
     var container = $('.credentials');
-    var credential_class = 'credential';
     var password_stars_class = 'password-stars';
     var password_real_class = 'password-real';
 
 
     function display_credentials(credentials) {
-        container.find('.' + credential_class).remove();
+        container.children().remove();
 
         for (var key in credentials) {
             if (credentials.hasOwnProperty(key)) {
                 var c = credentials[key];
                 var elem = $(
-                    '<tr class="' + credential_class + '">' +
+                    '<tr>' +
                         '<th class="index">' + key + '</th>' +
                         '<td class="url">' + c.url + '</td>' +
                         '<td class="username">' + c.username + '</td>' +
@@ -37,7 +36,7 @@ var Popin = function() {
         password.find('.' + password_real_class).toggle();
     }
 
-    function add() {
+    function add(e) {
         var url = $('#url');
         var username = $('#username');
         var password = $('#password');
@@ -47,6 +46,8 @@ var Popin = function() {
         url.val('');
         username.val('');
         password.val('');
+
+        e.preventDefault();
     }
 
     function remove() {
@@ -59,7 +60,7 @@ var Popin = function() {
             display_credentials(credentials);
         });
 
-        $('#add').on('click', add);
+        $('#credential-form').on('submit', add);
         $(document).on('click', '.remove', remove);
         $(document).on('click', '.password > span', togglePassword);
     }
