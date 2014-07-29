@@ -41,11 +41,31 @@ var Popin = function() {
         var username = $('#username');
         var password = $('#password');
 
-        Storage.addCredential(url.val(), username.val(), password.val());
+        var values = {
+            url: url.val(),
+            username: username.val(),
+            password: password.val()
+        };
 
-        url.val('');
-        username.val('');
-        password.val('');
+        var valid = true;
+        for (var key in values) {
+            if (values.hasOwnProperty(key)) {
+                var v = values[key];
+
+                if(v === '') {
+                    console.log('Error - ' + key + ' : ' + v + ' is empty !');
+                    valid = false;
+                }
+            }
+        }
+
+        if(valid) {
+            Storage.addCredential(values);
+
+            url.val('');
+            username.val('');
+            password.val('');
+        }
 
         e.preventDefault();
     }

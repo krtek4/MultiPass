@@ -23,12 +23,7 @@ var Storage = function() {
         sync.set(data);
     }
 
-    function addCredential(url, username, password) {
-        var credential = {
-            url: url,
-            username: username,
-            password: password
-        };
+    function addCredential(credential) {
         credentials.push(credential);
         setCredentials();
 
