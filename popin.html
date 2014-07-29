@@ -27,6 +27,33 @@
                 background: lightblue;
                 border-color: white;
             }
+
+            .password {
+                position: relative;
+            }
+
+            .password span.password-real {
+                display: none;
+            }
+
+            .password > span:after {
+                display: none;
+                position: absolute;
+                right: 0;
+                background: powderblue;
+            }
+
+            .password > span:hover:after {
+                display: inline-block;
+            }
+
+            .password-stars:after {
+                content: "Click to show";
+            }
+
+            .password-real:after {
+                content: "Click to hide";
+            }
         </style>
     </head>
 
