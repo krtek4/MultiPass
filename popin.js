@@ -1,67 +1,63 @@
-var credentials = [];
+var Popin = function() {
+    'use strict';
 
-function display_credentials(credentials) {
-    $('.current-credential').remove();
+    var container = $('.credentials');
+    var credential_class = 'credential';
 
-    for (var key in credentials) {
-        if (credentials.hasOwnProperty(key)) {
-            var c = credentials[key];
-            var elem = $(
-                    '<tr class="current-credential">' +
-                    '<th class="index">' + key + '</th>' +
-                    '<td class="url">' + c.url + '</td>' +
-                    '<td class="username">' + c.username + '</td>' +
-                    '<td class="password">***</td>' +
-                    '<td class="action"><button class="remove" data-id="' + key + '">Remove</button></td>' +
-                    '</tr>'
-            );
 
-            $('.credentials').prepend(elem);
+    function display_credentials(credentials) {
+        container.find('.');
+        $('.' + credential_class).remove();
+
+        for (var key in credentials) {
+            if (credentials.hasOwnProperty(key)) {
+                var c = credentials[key];
+                var elem = $(
+                        '<tr class="' + credential_class + '">' +
+                        '<th class="index">' + key + '</th>' +
+                        '<td class="url">' + c.url + '</td>' +
+                        '<td class="username">' + c.username + '</td>' +
+                        '<td class="password">***</td>' +
+                        '<td class="action"><button class="remove" data-id="' + key + '">Remove</button></td>' +
+                        '</tr>'
+                );
+
+                container.prepend(elem);
+            }
         }
     }
-}
 
-chrome.storage.onChanged.addListener(function (changes, namespace) {
-    if (namespace === 'sync' && changes.hasOwnProperty('credentials')) {
-        credentials = changes.credentials.newValue;
-        display_credentials(credentials);
+    function add() {
+        var url = $('#url');
+        var username = $('#username');
+        var password = $('#password');
+
+        Storage.addCredential(url.val(), username.val(), password.val());
+
+        url.val('');
+        username.val('');
+        password.val('');
     }
-});
 
-function add_credential(url, username, password) {
-    var credential = {
-        url: url,
-        username: username,
-        password: password
-    };
-    credentials.push(credential);
-    chrome.storage.sync.set({credentials: credentials});
-}
+    function remove() {
+        var id = $(this).data('id');
+        Storage.removeCredential(id);
+    }
 
-function remove_credential(index) {
-    var credential = credentials.splice(index, 1);
-    chrome.storage.sync.set({credentials: credentials});
-}
+    function init() {
+        Storage.addListener(function(credentials) {
+            display_credentials(credentials);
+        });
+
+        $('#add').on('click', add);
+        $(document).on('click', '.remove', remove);
+    }
+
+    return {
+        'init': init
+    }
+}();
 
 $(function () {
-    $('#add').on('click', function () {
-        var url = $('#url').val();
-        var username = $('#username').val();
-        var password = $('#password').val();
-
-        add_credential(url, username, password);
-    });
-
-    $(document).on('click', '.remove', function () {
-        var id = $(this).data('id');
-        remove_credential(id);
-    });
-
-    chrome.storage.sync.get('credentials', function (result) {
-        if (result.hasOwnProperty('credentials')) {
-            credentials = result.credentials;
-        }
-
-        display_credentials(credentials);
-    });
+    Popin.init();
 });

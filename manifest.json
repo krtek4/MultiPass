@@ -11,7 +11,7 @@
     },
 
     "background": {
-        "scripts": ["extension.js"],
+        "scripts": ["storage.js", "extension.js"],
         "persistent": true
     },
 
