@@ -2,6 +2,7 @@ var Storage = function() {
     'use strict';
 
     var credentials = [];
+    var listener_callbacks = [];
     var storage = chrome.storage;
     var sync = storage.sync;
 
@@ -11,8 +12,12 @@ var Storage = function() {
         sync.get(variable_name, function (result) {
             if (result.hasOwnProperty(variable_name)) {
                 credentials = result.credentials;
-            } else {
-                setCredentials();
+
+                for (var key in listener_callbacks) {
+                    if (listener_callbacks.hasOwnProperty(key)) {
+                        listener_callbacks[key](credentials);
+                    }
+                }
             }
         });
     }
@@ -41,7 +46,8 @@ var Storage = function() {
         for (var key in credentials) {
             if (credentials.hasOwnProperty(key)) {
                 var re = new RegExp(credentials[key].url);
-                if (re.test(status.url)) {
+                if (re.test(url)) {
+                    console.log('found');
                     return credentials[key];
                 }
             }
@@ -51,6 +57,10 @@ var Storage = function() {
     }
 
     function addListener(callback) {
+        if (typeof(callback) !== 'undefined') {
+            listener_callbacks.push(callback);
+        }
+
         storage.onChanged.addListener(function (changes, namespace) {
             if (namespace === 'sync' && changes.hasOwnProperty(variable_name)) {
                 credentials = changes[variable_name].newValue;
@@ -61,6 +71,9 @@ var Storage = function() {
             }
         });
     }
+
+    // retrieve the credentials from sync
+    getCredentials();
 
     return {
         'addListener': addListener,

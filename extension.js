@@ -11,6 +11,7 @@ function retrieveCredentials (status) {
     }
 
     return {};
-};
+}
 
+Storage.addListener();
 chrome.webRequest.onAuthRequired.addListener(retrieveCredentials, {urls: ["<all_urls>"]}, ["blocking"]);
