@@ -1,17 +1,28 @@
 {
     "manifest_version": 2,
 
-    "name": "Chrome BasicAuth",
-    "short_name": "BasicAuth",
+    "name": "MultiPass for HTTP basic authentication",
+    "short_name": "MultiPass",
     "description": "Automatically login to Basic Authentication using data based on URL regexp.",
     "author": "Gilles Crettenand <krtek4@gmail.com>",
-    "homepage_url": "https://github.com/krtek4/ChromeBasicAuth",
+    "homepage_url": "https://github.com/krtek4/MultiPass",
     "version": "0.1",
+
+	"icons": {
+		"16": "icon-16.png",
+		"32": "icon-32.png",
+		"48": "icon-48.png",
+		"64": "icon-64.png",
+		"128": "icon-128.png"
+	},
 
     "offline_enabled": true,
 
     "browser_action": {
-        "default_icon": "icon.png",
+        "default_icon": {
+			"19": "icon-19.png",
+			"38": "icon-38.png"
+		},
         "default_popup": "popin.html"
     },
 
