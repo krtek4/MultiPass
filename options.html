@@ -30,6 +30,48 @@
                     <header>
                         <h1>Options</h1>
                     </header>
+
+                    <main class="content">
+                        <h2>Credentials</h2>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th class="index">&nbsp;</th>
+                                    <th class="url">Url (regexp)</th>
+                                    <th class="username">Username</th>
+                                    <th class="password">Password</th>
+                                    <th class="action">Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="credentials">
+                            </tbody>
+
+                            <tfoot>
+                                <form id="credential-form">
+                                    <tr>
+                                        <td class="index">&nbsp;</td>
+                                        <td class="url">
+                                            <label for="url">Url</label>
+                                            <input type="text" name="url" id="url">
+                                        </td>
+                                        <td class="username">
+                                            <label for="username">Username</label>
+                                            <input type="text" name="username" id="username">
+                                        </td>
+                                        <td class="password">
+                                            <label for="password">Password</label>
+                                            <input type="password" name="password" id="password">
+                                        </td>
+                                        <td class="action">
+                                            <button type="submit">Add</button>
+                                        </td>
+                                    </tr>
+                                </form>
+                            </tfoot>
+                        </table>
+                    </main>
                 </section>
             </main>
         </div>
@@ -37,7 +79,8 @@
         <script type="text/javascript" src="js/jquery.min.js"></script>
         <script type="text/javascript" src="js/storage.js"></script>
         <script type="text/javascript" src="js/analytics.js"></script>
-        <script type="text/javascript" src="js/popin.js"></script>
+        <script type="text/javascript" src="js/credentials.js"></script>
+        <script type="text/javascript" src="js/option.js"></script>
     </body>
 
 </html>

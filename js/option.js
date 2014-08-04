@@ -1,4 +1,4 @@
-var Popin = function() {
+var Option = function() {
     'use strict';
 
     function init() {
@@ -10,6 +10,6 @@ var Popin = function() {
 }();
 
 $(function () {
-    Analytics.event('Popin', 'opened');
-    Popin.init();
+    Analytics.event('Options', 'opened');
+    Option.init();
 });
