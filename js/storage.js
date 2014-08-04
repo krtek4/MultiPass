@@ -79,6 +79,7 @@ var Storage = function() {
         'addListener': addListener,
         'removeCredential': removeCredential,
         'addCredential': addCredential,
-        'getForUrl': getForUrl
+        'getForUrl': getForUrl,
+        'asJSON': function() { return JSON.stringify(credentials); }
     }
 }();

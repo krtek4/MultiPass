@@ -55,6 +55,11 @@ var Option = function() {
 
             event.preventDefault();
         });
+
+        $('a.export-credentials').on('click', function(event) {
+            var data = "text/json;charset=utf-8," + encodeURIComponent(Storage.asJSON());
+            $(this).attr('href', 'data:' + data);
+        })
     }
 
     return {
