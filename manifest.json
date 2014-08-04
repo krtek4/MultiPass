@@ -6,7 +6,7 @@
     "description": "Automatically login to Basic Authentication using data based on URL regexp.",
     "author": "Gilles Crettenand <krtek4@gmail.com>",
     "homepage_url": "https://github.com/krtek4/MultiPass",
-    "version": "0.1.2",
+    "version": "0.2.0",
 
     "icons": {
         "16": "images/icon-16.png",
