@@ -9,25 +9,25 @@
     "version": "0.1.2",
 
 	"icons": {
-		"16": "icon-16.png",
-		"32": "icon-32.png",
-		"48": "icon-48.png",
-		"64": "icon-64.png",
-		"128": "icon-128.png"
+		"16": "images/icon-16.png",
+		"32": "images/icon-32.png",
+		"48": "images/icon-48.png",
+		"64": "images/icon-64.png",
+		"128": "images/icon-128.png"
 	},
 
     "offline_enabled": true,
 
     "browser_action": {
         "default_icon": {
-			"19": "icon-19.png",
-			"38": "icon-38.png"
+			"19": "images/icon-19.png",
+			"38": "images/icon-38.png"
 		},
         "default_popup": "popin.html"
     },
 
     "background": {
-        "scripts": ["analytics.js", "storage.js", "extension.js"],
+        "scripts": ["js/analytics.js", "js/storage.js", "js/extension.js"],
         "persistent": true
     },
 
