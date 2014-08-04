@@ -26,6 +26,8 @@
         "default_popup": "popin.html"
     },
 
+    "options_page": "options.html",
+
     "background": {
         "scripts": ["js/analytics.js", "js/storage.js", "js/extension.js"],
         "persistent": true
