@@ -71,6 +71,25 @@
                                 </form>
                             </tfoot>
                         </table>
+
+                        <h2>Import</h2>
+
+                        <p>You can import credentials into the extension. The file format is the following :</p>
+                        <pre>
+[
+    {"url":"some.url.com", "username":"admin", "password":"1234"},
+    {"url":"example.com", "username":"john.doe", "password":"password"},
+]
+                        </pre>
+
+                        <form class="import-form">
+                            <label for="import">Files to import</label>
+                            <input type="file" id="import" name="import[]" multiple/>
+                            <output class="import-list" for="import"></output>
+
+                            <button type="submit" class="import-submit">Import</button>
+                        </form>
+
                     </main>
                 </section>
             </main>
