@@ -6,7 +6,7 @@
     "description": "Automatically login to Basic Authentication using data based on URL regexp.",
     "author": "Gilles Crettenand <krtek4@gmail.com>",
     "homepage_url": "https://github.com/krtek4/MultiPass",
-    "version": "0.1",
+    "version": "0.1.2",
 
 	"icons": {
 		"16": "icon-16.png",
@@ -27,7 +27,7 @@
     },
 
     "background": {
-        "scripts": ["storage.js", "extension.js"],
+        "scripts": ["analytics.js", "storage.js", "extension.js"],
         "persistent": true
     },
 
@@ -35,5 +35,7 @@
         "webRequest", "webRequestBlocking",
         "storage",
         "http://*/*", "https://*/*"
-    ]
+    ],
+
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
 }

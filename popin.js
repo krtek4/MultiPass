@@ -35,6 +35,8 @@ var Popin = function() {
         var password = $(this).parent();
         password.find('.' + password_stars_class).toggle();
         password.find('.' + password_real_class).toggle();
+
+        Analytics.event('ToggleCredentials', 'clicked');
     }
 
     function add(e) {
@@ -66,6 +68,11 @@ var Popin = function() {
             url.val('');
             username.val('');
             password.val('');
+
+            Analytics.event('AddCredentials', 'clicked');
+        } else {
+            Analytics.event('ErrorInCredentials', 'clicked');
+
         }
 
         e.preventDefault();
@@ -74,6 +81,8 @@ var Popin = function() {
     function remove() {
         var id = $(this).data('id');
         Storage.removeCredential(id);
+
+        Analytics.event('RemoveCredentials', 'clicked');
     }
 
     function init() {
@@ -92,5 +101,6 @@ var Popin = function() {
 }();
 
 $(function () {
+    Analytics.event('Popin', 'opened');
     Popin.init();
 });

@@ -13,5 +13,6 @@ function retrieveCredentials (status) {
     return {};
 }
 
+Analytics.event('BackgroundApp', 'loaded');
 Storage.addListener();
 chrome.webRequest.onAuthRequired.addListener(retrieveCredentials, {urls: ["<all_urls>"]}, ["blocking"]);
