@@ -42,6 +42,11 @@ var Storage = function() {
         return credential;
     }
 
+    function clearAll() {
+        credentials = [];
+        setCredentials();
+    }
+
     function getForUrl(url) {
         for (var key in credentials) {
             if (credentials.hasOwnProperty(key)) {
@@ -78,6 +83,7 @@ var Storage = function() {
     return {
         'addListener': addListener,
         'removeCredential': removeCredential,
+        'clearAll': clearAll,
         'addCredential': addCredential,
         'getForUrl': getForUrl,
         'asJSON': function() { return JSON.stringify(credentials); }

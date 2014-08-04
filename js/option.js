@@ -4,6 +4,38 @@ var Option = function() {
     var credentials = [];
     var import_output;
 
+    function modal(title, content, confirmation) {
+        var modal = $($('.overlay').clone());
+
+        modal.removeAttr('style');
+        modal.find('button, .close-button').on('click', function() {
+            modal.addClass('transparent');
+            setTimeout(function () {
+                modal.remove();
+            }, 1000);
+        });
+
+        modal.find('.modal-confirm').on('click', function() {
+            confirmation();
+        });
+
+        modal.find('.modal-title').html(title);
+        modal.find('.modal-content').html(content);
+
+        modal.on('click', function () {
+            modal.find('.page').addClass('pulse');
+            modal.find('.page').on('webkitAnimationEnd', function() {
+                $(this).removeClass('pulse');
+            });
+        });
+
+        modal.find('.page').on('click', function(e) {
+            e.stopPropagation();
+        });
+
+        $('body').append(modal);
+    }
+
     function init() {
         import_output = $('output.import-list');
 
@@ -59,7 +91,14 @@ var Option = function() {
         $('a.export-credentials').on('click', function(event) {
             var data = "text/json;charset=utf-8," + encodeURIComponent(Storage.asJSON());
             $(this).attr('href', 'data:' + data);
-        })
+        });
+
+        $('button.clear-all').on('click', function(event) {
+            modal('Clear all credentials', 'Are you sure you want to remove all credentials ?', function() {
+                Storage.clearAll();
+            });
+            event.preventDefault();
+        });
     }
 
     return {

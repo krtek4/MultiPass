@@ -94,9 +94,28 @@
 
                         <p><a href="#" download="multipass-credentials.json" class="export-credentials">Download credentials as JSON file.</a></p>
 
+                        <h2>Clear all credentials</h2>
+
+                        <button class="clear-all">Clear all credentials</button>
                     </main>
                 </section>
             </main>
+
+            <div class="overlay" style="display: none;">
+                <div class="page">
+                    <h1 class="modal-title"></h1>
+                    <div class="close-button"></div>
+                    <div class="content-area modal-content"></div>
+                    <div class="action-area">
+                        <div class="action-area-right">
+                            <div class="button-strip">
+                                <button class="modal-cancel">Cancel</button>
+                                <button class="modal-confirm">Yes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <script type="text/javascript" src="js/jquery.min.js"></script>
