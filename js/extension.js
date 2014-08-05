@@ -1,18 +1,31 @@
-function retrieveCredentials (status) {
-    var credential = Storage.getForUrl(status.url);
+var Extension = function () {
+    'use strict';
 
-    if(credential.hasOwnProperty('username') && credential.hasOwnProperty('password')) {
-        return {
-            authCredentials: {
-                username: credential.username,
-                password: credential.password
-            }
-        };
+    function retrieveCredentials(status) {
+        var credential = Storage.getForUrl(status.url);
+
+        if (credential.hasOwnProperty('username') && credential.hasOwnProperty('password')) {
+            return {
+                authCredentials: {
+                    username: credential.username,
+                    password: credential.password
+                }
+            };
+        }
+
+        return {};
     }
 
-    return {};
-}
+    function init() {
+        Storage.addListener();
+        chrome.webRequest.onAuthRequired.addListener(retrieveCredentials, {urls: ["<all_urls>"]}, ["blocking"]);
+    }
+
+    return {
+        'init': init
+    };
+}();
+
 
 Analytics.event('BackgroundApp', 'loaded');
-Storage.addListener();
-chrome.webRequest.onAuthRequired.addListener(retrieveCredentials, {urls: ["<all_urls>"]}, ["blocking"]);
+Extension.init();

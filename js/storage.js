@@ -52,7 +52,6 @@ var Storage = function() {
             if (credentials.hasOwnProperty(key)) {
                 var re = new RegExp(credentials[key].url);
                 if (re.test(url)) {
-                    console.log('found');
                     return credentials[key];
                 }
             }
