@@ -487,6 +487,9 @@
   min-width: 4em;
 }
 .chrome-bootstrap input[type='text'],
+.chrome-bootstrap input[type='password'],
+.chrome-bootstrap input[type='email'],
+.chrome-bootstrap input[type='phone'],
 .chrome-bootstrap input[type='number'],
 .chrome-bootstrap input[type='search'] {
   border: 1px solid #BFBFBF;
@@ -509,6 +512,9 @@
 .chrome-bootstrap input[type='radio']:focus,
 .chrome-bootstrap input[type='search']:focus,
 .chrome-bootstrap input[type='text']:focus,
+.chrome-bootstrap input[type='password']:focus,
+.chrome-bootstrap input[type='email']:focus,
+.chrome-bootstrap input[type='phone']:focus,
 .chrome-bootstrap input[type='number']:focus,
 .chrome-bootstrap button:focus {
   /* OVERRIDE */
@@ -535,6 +541,9 @@
   opacity: .75;
 }
 .chrome-bootstrap input[type='search']:disabled,
+.chrome-bootstrap input[type='number']:disabled,
+.chrome-bootstrap input[type='email']:disabled,
+.chrome-bootstrap input[type='phone']:disabled,
 .chrome-bootstrap input[type='number']:disabled,
 .chrome-bootstrap input[type='text']:disabled {
   color: #999;
