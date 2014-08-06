@@ -32,7 +32,18 @@ var Extension = function () {
     }
 
     function retrieveCredentials(status) {
-        var credential = Storage.getForUrl(status.url);
+        var credentials = Storage.getForUrl(status.url);
+        var credential = {};
+        var success_color = "#00FF00";
+
+        if(credentials.length > 0) {
+            credential = credentials[0];
+        }
+
+        // display a yellow badge if there is multiple match for the url
+        if (credentials.length > 1) {
+            success_color = "#FFFF00";
+        }
 
         if (credential.hasOwnProperty('username') && credential.hasOwnProperty('password')) {
             if (status.requestId == last_request_id && status.tabId == last_tab_id) {
@@ -48,7 +59,7 @@ var Extension = function () {
                 if(typeof(success_timeout) === 'undefined' || success_timeout === '') {
                     success_timeout = setTimeout(function () {
                         success_timeout = '';
-                        showBadge(" ", "#00FF00", status.tabId);
+                        showBadge(" ", success_color, status.tabId);
                     }, 1000);
                 }
 

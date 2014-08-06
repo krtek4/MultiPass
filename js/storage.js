@@ -48,16 +48,17 @@ var Storage = function() {
     }
 
     function getForUrl(url) {
+        var found = [];
         for (var key in credentials) {
             if (credentials.hasOwnProperty(key)) {
                 var re = new RegExp(credentials[key].url);
                 if (re.test(url)) {
-                    return credentials[key];
+                    found.push(credentials[key]);
                 }
             }
         }
 
-        return {};
+        return found;
     }
 
     function addListener(callback) {
