@@ -1,0 +1,10 @@
+{
+    "extName": {
+        "message": "MultiPass for HTTP basic authentication",
+        "description": "Name of the extension"
+    },
+    "extDescription": {
+        "message": "Automatically login to Basic Authentication using data based on URL regexp.",
+        "description": "Description of the extension"
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "extName": {
+        "message": "MultiPass pour authentification HTTP basique"
+    },
+    "extDescription": {
+        "message": "Connexion automatique à une authentification HTTP basique en utilisant des données basées sur une expression régulière pour l'URL."
+    }
+}

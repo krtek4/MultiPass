@@ -1,12 +1,14 @@
 {
     "manifest_version": 2,
 
-    "name": "MultiPass for HTTP basic authentication",
+    "name": "__MSG_extName__",
     "short_name": "MultiPass",
-    "description": "Automatically login to Basic Authentication using data based on URL regexp.",
+    "description": "__MSG_extDescription__",
     "author": "Gilles Crettenand <krtek4@gmail.com>",
     "homepage_url": "https://github.com/krtek4/MultiPass",
     "version": "0.2.0",
+
+    "default_locale": "en",
 
     "icons": {
         "16": "images/icon-16.png",
