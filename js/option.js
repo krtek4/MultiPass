@@ -68,8 +68,7 @@ var Option = function() {
                 }
             }
         } catch (err) {
-            console.log('JSON is malformed.');
-            console.log(text);
+            console.error('JSON is malformed : ||' + text + '||');
         }
 
         return result;
@@ -85,8 +84,7 @@ var Option = function() {
                     file_credentials = file_credentials.concat(parse_json(event.target.result));
                     update_output_credentials();
                 } else {
-                    console.log('Error reading the file.');
-                    console.log(event);
+                    console.error('Error reading the file.');
                 }
             };
             reader.readAsText(file);

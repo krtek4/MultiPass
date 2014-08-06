@@ -56,7 +56,7 @@ var Credentials = function() {
                 var v = values[key];
 
                 if(v === '') {
-                    console.log('Error - ' + key + ' : ' + v + ' is empty !');
+                    console.error('Error - ' + key + ' : ' + v + ' is empty !');
                     valid = false;
                 }
             }
