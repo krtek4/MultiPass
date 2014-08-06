@@ -23,19 +23,6 @@ var Extension = function () {
         }
     }
 
-    function showNotification(title, message, timeout) {
-        timeout = (typeof timeout !== 'undefined') ? timeout : 0;
-
-        console.log(title + ' : ' + message);
-
-        // Hide notification
-        if (timeout > 0) {
-            setTimeout(function() {
-                console.log('notification timeout reached')
-            }, timeout);
-        }
-    }
-
     function retrieveCredentials(status) {
         var credentials = Storage.getForUrl(status.url);
         var credential = {};
