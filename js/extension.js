@@ -7,6 +7,17 @@ var Extension = function () {
     var try_count = 0;
     var success_timeout;
 
+    function showBadge(text, color, tab_id) {
+        chrome.browserAction.setBadgeText({
+            text: text,
+            tabId: tab_id
+        });
+        chrome.browserAction.setBadgeBackgroundColor({
+            color: color,
+            tabId: tab_id
+        });
+    }
+
     function showNotification(title, message, timeout) {
         timeout = (typeof timeout !== 'undefined') ? timeout : 0;
 
@@ -37,7 +48,7 @@ var Extension = function () {
                 if(typeof(success_timeout) === 'undefined' || success_timeout === '') {
                     success_timeout = setTimeout(function () {
                         success_timeout = '';
-                        showNotification("Success", "MultiPass logged you in with success.", 200);
+                        showBadge(" ", "#00FF00", status.tabId);
                     }, 1000);
                 }
 
@@ -50,7 +61,7 @@ var Extension = function () {
             } else {
                 clearTimeout(success_timeout);
                 success_timeout = '';
-                showNotification("Error", "The credentials provided were not accepted", 500);
+                showBadge(" ", "#FF0000", status.tabId);
             }
         }
 
