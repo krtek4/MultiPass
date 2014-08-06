@@ -10,7 +10,7 @@ No more cumbersome login popin, everything is done in the background.
 Chrome web store
 ----------------
 
-The extension will be available on the Chrome web store shortly.
+The extension is available on the Chrome web store : https://chrome.google.com/webstore/detail/multipass-for-http-basic/enhldmjbphoeibbpdhmjkchohnidgnah
 
 Report an issue
 ---------------
