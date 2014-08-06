@@ -44,6 +44,10 @@ var Extension = function () {
                 try_count = 0;
             }
 
+            if(try_count == 1) {
+                Analytics.event('BackgroundApp', 'authentication sent');
+            }
+
             if(try_count < 5) {
                 last_request_id = status.requestId;
                 last_tab_id = status.tabId;
@@ -56,6 +60,8 @@ var Extension = function () {
                     }
                 };
             } else {
+                Analytics.event('BackgroundApp', 'failed authentication');
+
                 createBadge(" ", "#FF0000", status.tabId);
             }
         }

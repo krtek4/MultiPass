@@ -36,7 +36,7 @@ var Credentials = function() {
         password.find('.' + password_stars_class).toggle();
         password.find('.' + password_real_class).toggle();
 
-        Analytics.event('ToggleCredentials', 'clicked');
+        Analytics.event('Credentials', 'password visibility toggled');
     }
 
     function add(e) {
@@ -69,9 +69,9 @@ var Credentials = function() {
             username.val('');
             password.val('');
 
-            Analytics.event('AddCredentials', 'clicked');
+            Analytics.event('Credentials', 'added');
         } else {
-            Analytics.event('ErrorInCredentials', 'clicked');
+            Analytics.event('Credentials', 'error in form');
 
         }
 
@@ -82,7 +82,7 @@ var Credentials = function() {
         var id = $(this).data('id');
         Storage.removeCredential(id);
 
-        Analytics.event('RemoveCredentials', 'clicked');
+        Analytics.event('Credentials', 'removed');
     }
 
     function init() {

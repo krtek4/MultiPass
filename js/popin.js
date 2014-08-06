@@ -3,6 +3,7 @@ var Popin = function() {
 
     function init() {
         $('.option-link').on('click', function() {
+            Analytics.event('Popin', 'option link');
             chrome.tabs.create({'url': chrome.extension.getURL("options.html") })
         })
     }

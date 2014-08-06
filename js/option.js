@@ -68,6 +68,7 @@ var Option = function() {
                 }
             }
         } catch (err) {
+            Analytics.event('Importer', 'malformed JSON');
             console.error('JSON is malformed : ||' + text + '||');
         }
 
@@ -75,6 +76,8 @@ var Option = function() {
     }
 
     function import_file(e) {
+        Analytics.event('Importer', 'file added');
+
         var files = e.target.files;
 
         for (var i = 0, file; file = files[i]; ++i) {
@@ -85,6 +88,8 @@ var Option = function() {
                     update_output_credentials();
                 } else {
                     console.error('Error reading the file.');
+                    Analytics.event('Importer', 'file error');
+
                 }
             };
             reader.readAsText(file);
@@ -92,11 +97,15 @@ var Option = function() {
     }
 
     function import_json(e) {
+        Analytics.event('Importer', 'JSON added');
+
         credentials = parse_json(import_json_field.val());
         update_output_credentials();
     }
 
     function import_credentials(e) {
+        Analytics.event('Importer', 'imported');
+
         var import_credentials = credentials.concat(file_credentials);
 
         for (var key in import_credentials) {
@@ -115,11 +124,15 @@ var Option = function() {
     }
 
     function export_credentials(e) {
+        Analytics.event('Exporter', 'exported');
+
         var data = "text/json;charset=utf-8," + encodeURIComponent(Storage.asJSON());
         $(this).attr('href', 'data:' + data);
     }
 
     function clear_credentials(e) {
+        Analytics.event('Credentials', 'cleared');
+
         modal(chrome.i18n.getMessage("clear_credentials_modal_title"), chrome.i18n.getMessage("clear_credentials_modal_text"), function () {
             Storage.clearAll();
         });
@@ -147,6 +160,6 @@ var Option = function() {
 }();
 
 $(function () {
-    Analytics.event('Options', 'opened');
+    Analytics.event('OptionPanel', 'opened');
     Option.init();
 });
