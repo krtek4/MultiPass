@@ -35,6 +35,7 @@ var Extension = function () {
         // display a yellow badge if there is multiple match for the url
         if (credentials.length > 1) {
             success_color = "#FFFF00";
+            Analytics.event('BackgroundApp', 'multiple credentials');
         }
 
         if (credential.hasOwnProperty('username') && credential.hasOwnProperty('password')) {
@@ -44,7 +45,7 @@ var Extension = function () {
                 try_count = 0;
             }
 
-            if(try_count == 1) {
+            if(try_count == 0) {
                 Analytics.event('BackgroundApp', 'authentication sent');
             }
 
