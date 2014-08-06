@@ -1,21 +1,26 @@
 var Extension = function () {
     'use strict';
 
-
     var last_request_id = '';
     var last_tab_id = '';
     var try_count = 0;
-    var success_timeout;
 
-    function showBadge(text, color, tab_id) {
-        chrome.browserAction.setBadgeText({
+    var tab_badges = {};
+
+    function createBadge(text, color, tab_id) {
+        tab_badges[tab_id] = {
             text: text,
-            tabId: tab_id
-        });
-        chrome.browserAction.setBadgeBackgroundColor({
-            color: color,
-            tabId: tab_id
-        });
+            color: color
+        };
+    }
+
+    function showBadge(tab_id) {
+        if (tab_badges.hasOwnProperty(tab_id)) {
+            chrome.browserAction.setBadgeText({ text: tab_badges[tab_id].text });
+            chrome.browserAction.setBadgeBackgroundColor({ color: tab_badges[tab_id].color });
+        } else {
+            chrome.browserAction.setBadgeText({text: ''});
+        }
     }
 
     function showNotification(title, message, timeout) {
@@ -56,13 +61,7 @@ var Extension = function () {
                 last_request_id = status.requestId;
                 last_tab_id = status.tabId;
 
-                if(typeof(success_timeout) === 'undefined' || success_timeout === '') {
-                    success_timeout = setTimeout(function () {
-                        success_timeout = '';
-                        showBadge(" ", success_color, status.tabId);
-                    }, 1000);
-                }
-
+                createBadge(" ", success_color, status.tabId);
                 return {
                     authCredentials: {
                         username: credential.username,
@@ -70,9 +69,7 @@ var Extension = function () {
                     }
                 };
             } else {
-                clearTimeout(success_timeout);
-                success_timeout = '';
-                showBadge(" ", "#FF0000", status.tabId);
+                createBadge(" ", "#FF0000", status.tabId);
             }
         }
 
@@ -82,6 +79,11 @@ var Extension = function () {
     function init() {
         Storage.addListener();
         chrome.webRequest.onAuthRequired.addListener(retrieveCredentials, {urls: ["<all_urls>"]}, ["blocking"]);
+
+        chrome.tabs.onUpdated.addListener(showBadge);
+        chrome.tabs.onActivated.addListener(function(status) {
+            showBadge(status.tabId);
+        });
     }
 
     return {
