@@ -122,7 +122,7 @@ var Option = function() {
     }
 
     function clear_credentials(e) {
-        modal('Clear all credentials', 'Are you sure you want to remove all credentials ?', function () {
+        modal(chrome.i18n.getMessage("clear_credentials_modal_title"), chrome.i18n.getMessage("clear_credentials_modal_text"), function () {
             Storage.clearAll();
         });
         e.preventDefault();

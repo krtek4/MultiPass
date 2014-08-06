@@ -6,5 +6,23 @@
     "extDescription": {
         "message": "Automatically login to Basic Authentication using data based on URL regexp.",
         "description": "Description of the extension"
+    },
+
+    "show_hide_password": {
+        "message": "Show / Hide",
+        "description": "Button to toggle password visibility"
+    },
+    "remove_credential": {
+        "message": "Remove",
+        "description": "Button to remove a credential"
+    },
+
+    "clear_credentials_modal_title": {
+        "message": "Clear all credentials",
+        "description": "Modal message title when clearing credentials"
+    },
+    "clear_credentials_modal_text": {
+        "message": "Are you sure you want to remove all credentials ?",
+        "description": "Modal message text when clearing credentials"
     }
 }

@@ -20,9 +20,9 @@ var Credentials = function() {
                         '<td class="password">' +
                             '<span class="' + password_stars_class + '">***</span>' +
                             '<span class="' + password_real_class + '">' + c.password + '</span>' +
-                            '<button class="show-password">Show / Hide</button>' +
+                            '<button class="show-password">' + chrome.i18n.getMessage("show_hide_password") + '</button>' +
                         '</td>' +
-                        '<td class="action"><button class="remove" data-id="' + key + '">Remove</button></td>' +
+                        '<td class="action"><button class="remove" data-id="' + key + '">' + chrome.i18n.getMessage("remove_credential") + '</button></td>' +
                     '</tr>'
                 );
 
