@@ -2,7 +2,11 @@ var Option = function() {
     'use strict';
 
     var credentials = [];
+    var file_credentials = [];
+
     var import_output;
+    var import_file_field;
+    var import_json_field;
 
     function modal(title, content, confirmation) {
         var modal = $($('.overlay').clone());
@@ -36,69 +40,107 @@ var Option = function() {
         $('body').append(modal);
     }
 
-    function init() {
-        import_output = $('output.import-list');
+    function update_output_credentials() {
+        var ul = $('<ul>');
+        import_output.empty().append(ul);
 
-        $('#import').on('change', function(e) {
-            var files = e.target.files;
+        var display_credentials = credentials.concat(file_credentials);
 
-            var ul = $('<ul>');
-            import_output.empty().append(ul);
-
-            credentials = [];
-            for (var i = 0, file; file = files[i]; ++i) {
-                var reader = new FileReader();
-                reader.onloadend = function (event) {
-                    if (event.target.readyState == FileReader.DONE) {
-                        try {
-                            var json = JSON.parse(event.target.result);
-
-                            for (var key in json) {
-                                if (json.hasOwnProperty(key)) {
-                                    var c = json[key];
-                                    credentials.push(c);
-
-                                    var li = $('<li>' + c.url + ' : ' + c.username + ' - ' + c.password + '</li>');
-                                    ul.append(li);
-                                }
-                            }
-                        } catch(err) {
-                            console.log('JSON file is malformed.');
-                            console.log(event);
-                        }
-                    } else {
-                        console.log('Error reading the file.');
-                        console.log(event);
-                    }
-                };
-                reader.readAsText(file);
+        for (var key in display_credentials) {
+            if (display_credentials.hasOwnProperty(key)) {
+                var c = display_credentials[key];
+                var li = $('<li>' + c.url + ' : ' + c.username + ' - ' + c.password + '</li>');
+                ul.append(li);
             }
-        });
+        }
+    }
 
-        $('button.import-submit').on('click', function(event) {
-            for (var key in credentials) {
-                if (credentials.hasOwnProperty(key)) {
-                    Storage.addCredential(credentials[key]);
+    function parse_json(text) {
+        var result = [];
+
+        try {
+            var json = JSON.parse(text);
+
+            for (var key in json) {
+                if (json.hasOwnProperty(key)) {
+                    var c = json[key];
+                    result.push(c);
                 }
             }
+        } catch (err) {
+            console.log('JSON is malformed.');
+            console.log(text);
+        }
 
-            credentials = [];
-            import_output.empty();
+        return result;
+    }
 
-            event.preventDefault();
+    function import_file(e) {
+        var files = e.target.files;
+
+        for (var i = 0, file; file = files[i]; ++i) {
+            var reader = new FileReader();
+            reader.onloadend = function (event) {
+                if (event.target.readyState == FileReader.DONE) {
+                    file_credentials = file_credentials.concat(parse_json(event.target.result));
+                    update_output_credentials();
+                } else {
+                    console.log('Error reading the file.');
+                    console.log(event);
+                }
+            };
+            reader.readAsText(file);
+        }
+    }
+
+    function import_json(e) {
+        credentials = parse_json(import_json_field.val());
+        update_output_credentials();
+    }
+
+    function import_credentials(e) {
+        var import_credentials = credentials.concat(file_credentials);
+
+        for (var key in import_credentials) {
+            if (import_credentials.hasOwnProperty(key)) {
+                Storage.addCredential(import_credentials[key]);
+            }
+        }
+
+        credentials = [];
+        file_credentials = [];
+        import_output.empty();
+        import_file_field.val('');
+        import_json_field.val('');
+
+        e.preventDefault();
+    }
+
+    function export_credentials(e) {
+        var data = "text/json;charset=utf-8," + encodeURIComponent(Storage.asJSON());
+        $(this).attr('href', 'data:' + data);
+    }
+
+    function clear_credentials(e) {
+        modal('Clear all credentials', 'Are you sure you want to remove all credentials ?', function () {
+            Storage.clearAll();
         });
+        e.preventDefault();
+    }
 
-        $('a.export-credentials').on('click', function(event) {
-            var data = "text/json;charset=utf-8," + encodeURIComponent(Storage.asJSON());
-            $(this).attr('href', 'data:' + data);
-        });
+    function init() {
+        import_output = $('output.import-list');
+        import_file_field = $('#import-file');
+        import_json_field = $('#import-json');
 
-        $('button.clear-all').on('click', function(event) {
-            modal('Clear all credentials', 'Are you sure you want to remove all credentials ?', function() {
-                Storage.clearAll();
-            });
-            event.preventDefault();
-        });
+
+        import_file_field.on('change', import_file);
+        import_json_field.on('change', import_json);
+        $('button.import-submit').on('click', import_credentials);
+
+        $('a.export-credentials').on('click', export_credentials);
+
+        $('button.clear-all').on('click', clear_credentials);
     }
 
     return {

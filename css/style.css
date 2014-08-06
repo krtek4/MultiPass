@@ -3,31 +3,31 @@
     margin-left: 24px;
 }
 
-tbody tr:nth-child(odd) {
+table.credential-table tbody tr:nth-child(odd) {
     background-color: #ccc;
 }
 
-tbody tr:nth-child(even) {
+table.credential-table tbody tr:nth-child(even) {
     background-color: #eee;
 }
 
-td, th {
+table.credential-table td, th {
     padding: 0.6em 0.5em;
     text-align: center;
     white-space: nowrap;
 }
 
-th {
+table.credential-table th {
     background: lightblue;
     border-color: white;
 }
 
-td.url {
+table.credential-table td.url {
     min-width: 15em;
 }
 
-td.username,
-td.password {
+table.credential-table td.username,
+table.credential-table td.password {
     min-width: 8em;
 }
 
@@ -48,14 +48,14 @@ td.password {
     font-size: 8px;
 }
 
-tfoot label {
+table.credential-table tfoot label {
     display: none;
 }
 
-tfoot input {
+table.credential-table tfoot input {
     width: 100%;
 }
 
-tfoot button {
+table.credential-table tfoot button {
     width: 100%;
 }

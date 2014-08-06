@@ -78,16 +78,42 @@
                         <pre>
 [
     {"url":"some.url.com", "username":"admin", "password":"1234"},
-    {"url":"example.com", "username":"john.doe", "password":"password"},
+    {"url":"example.com", "username":"john.doe", "password":"password"}
 ]
                         </pre>
 
                         <form class="import-form">
-                            <label for="import">Files to import</label>
-                            <input type="file" id="import" name="import[]" multiple/>
-                            <output class="import-list" for="import"></output>
-
-                            <button type="submit" class="import-submit">Import</button>
+                            <table class="form-table">
+                                <tr>
+                                    <td>
+                                        <label for="import-file">Files to import</label>
+                                    </td>
+                                    <td>
+                                        <input type="file" id="import-file" name="import_file[]" multiple/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label for="import-json">JSON to import</label>
+                                    </td>
+                                    <td>
+                                        <textarea id="import-json" name="import_json"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        What will be imported ?
+                                    </td>
+                                    <td>
+                                        <output class="import-list" for="import">-nothing-</output>
+                                    </td>
+                                </tr>
+                                <tr class="actions">
+                                    <td colspan="2">
+                                        <button type="submit" class="import-submit">Import</button>
+                                    </td>
+                                </tr>
+                            </table>
                         </form>
 
                         <h2>Export</h2>
