@@ -7,15 +7,22 @@ var Extension = function () {
 
     var tab_badges = {};
 
-    function createBadge(text, color, tab_id) {
+    function createBadge(text, color, credential, tab_id) {
         tab_badges[tab_id] = {
             text: text,
-            color: color
+            color: color,
+            regexp: Storage.getRegexp(credential)
         };
     }
 
-    function showBadge(tab_id) {
-        if (tab_badges.hasOwnProperty(tab_id)) {
+    function showBadgeForTabId(tab_id) {
+        chrome.tabs.get(tab_id, function (tab) {
+            showBadge(tab.id, tab.url);
+        });
+    }
+
+    function showBadge(tab_id, url) {
+        if (tab_badges.hasOwnProperty(tab_id) && tab_badges[tab_id].regexp.test(url)) {
             chrome.browserAction.setBadgeText({ text: tab_badges[tab_id].text });
             chrome.browserAction.setBadgeBackgroundColor({ color: tab_badges[tab_id].color });
         } else {
@@ -53,7 +60,7 @@ var Extension = function () {
                 last_request_id = status.requestId;
                 last_tab_id = status.tabId;
 
-                createBadge(" ", success_color, status.tabId);
+                createBadge(" ", success_color, credential, status.tabId);
                 return {
                     authCredentials: {
                         username: credential.username,
@@ -63,7 +70,7 @@ var Extension = function () {
             } else {
                 Analytics.event('BackgroundApp', 'failed authentication');
 
-                createBadge(" ", "#FF0000", status.tabId);
+                createBadge(" ", "#FF0000", credential, status.tabId);
             }
         }
 
@@ -74,9 +81,9 @@ var Extension = function () {
         Storage.addListener();
         chrome.webRequest.onAuthRequired.addListener(retrieveCredentials, {urls: ["<all_urls>"]}, ["blocking"]);
 
-        chrome.tabs.onUpdated.addListener(showBadge);
+        chrome.tabs.onUpdated.addListener(showBadgeForTabId);
         chrome.tabs.onActivated.addListener(function(status) {
-            showBadge(status.tabId);
+            showBadgeForTabId(status.tabId);
         });
     }
 

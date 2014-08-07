@@ -8,6 +8,7 @@ VERSION 0 FIRST BLOOD
 
     0.3.1	06/08/2014		Fix an issue with badges (#14)
     0.3.2	06/08/2014		Fix an analytics
+    0.3.3	07/08/2014		Fix issue with badges and url change (#15)
 
 ### Version 0.2.0 - 04/08/2014 - New option panel
 

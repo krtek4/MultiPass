@@ -47,11 +47,15 @@ var Storage = function() {
         setCredentials();
     }
 
+    function getRegexp(credential) {
+        return new RegExp(credential.url);
+    }
+
     function getForUrl(url) {
         var found = [];
         for (var key in credentials) {
             if (credentials.hasOwnProperty(key)) {
-                var re = new RegExp(credentials[key].url);
+                var re = getRegexp(credentials[key]);
                 if (re.test(url)) {
                     found.push(credentials[key]);
                 }
@@ -86,6 +90,7 @@ var Storage = function() {
         'clearAll': clearAll,
         'addCredential': addCredential,
         'getForUrl': getForUrl,
+        'getRegexp': getRegexp,
         'asJSON': function() { return JSON.stringify(credentials); }
     }
 }();
