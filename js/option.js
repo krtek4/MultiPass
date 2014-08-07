@@ -75,6 +75,16 @@ var Option = function() {
         return result;
     }
 
+    function readerOnLoadEnd(event) {
+        if (event.target.readyState == FileReader.DONE) {
+            file_credentials = file_credentials.concat(parse_json(event.target.result));
+            update_output_credentials();
+        } else {
+            console.error('Error reading the file.');
+            Analytics.event('Importer', 'file error');
+        }
+    }
+
     function import_file(e) {
         Analytics.event('Importer', 'file added');
 
@@ -82,21 +92,12 @@ var Option = function() {
 
         for (var i = 0, file; file = files[i]; ++i) {
             var reader = new FileReader();
-            reader.onloadend = function (event) {
-                if (event.target.readyState == FileReader.DONE) {
-                    file_credentials = file_credentials.concat(parse_json(event.target.result));
-                    update_output_credentials();
-                } else {
-                    console.error('Error reading the file.');
-                    Analytics.event('Importer', 'file error');
-
-                }
-            };
+            reader.onloadend = readerOnLoadEnd;
             reader.readAsText(file);
         }
     }
 
-    function import_json(e) {
+    function import_json() {
         Analytics.event('Importer', 'JSON added');
 
         credentials = parse_json(import_json_field.val());
@@ -123,7 +124,7 @@ var Option = function() {
         e.preventDefault();
     }
 
-    function export_credentials(e) {
+    function export_credentials() {
         Analytics.event('Exporter', 'exported');
 
         var data = "text/json;charset=utf-8," + encodeURIComponent(Storage.asJSON());
@@ -133,9 +134,7 @@ var Option = function() {
     function clear_credentials(e) {
         Analytics.event('Credentials', 'cleared');
 
-        modal(chrome.i18n.getMessage("clear_credentials_modal_title"), chrome.i18n.getMessage("clear_credentials_modal_text"), function () {
-            Storage.clearAll();
-        });
+        modal(chrome.i18n.getMessage("clear_credentials_modal_title"), chrome.i18n.getMessage("clear_credentials_modal_text"), Storage.clearAll);
         e.preventDefault();
     }
 

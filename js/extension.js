@@ -15,10 +15,16 @@ var Extension = function () {
         };
     }
 
+    function showBadeForTab(tab) {
+        showBadge(tab.id, tab.url);
+    }
+
     function showBadgeForTabId(tab_id) {
-        chrome.tabs.get(tab_id, function (tab) {
-            showBadge(tab.id, tab.url);
-        });
+        chrome.tabs.get(tab_id, showBadeForTab);
+    }
+
+    function showBadgeForStatus(status) {
+        showBadgeForTabId(status.tabId);
     }
 
     function showBadge(tab_id, url) {
@@ -82,9 +88,7 @@ var Extension = function () {
         chrome.webRequest.onAuthRequired.addListener(retrieveCredentials, {urls: ["<all_urls>"]}, ["blocking"]);
 
         chrome.tabs.onUpdated.addListener(showBadgeForTabId);
-        chrome.tabs.onActivated.addListener(function(status) {
-            showBadgeForTabId(status.tabId);
-        });
+        chrome.tabs.onActivated.addListener(showBadgeForStatus);
     }
 
     return {

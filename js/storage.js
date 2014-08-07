@@ -8,18 +8,20 @@ var Storage = function() {
 
     var variable_name = 'credentials';
 
-    function getCredentials() {
-        sync.get(variable_name, function (result) {
-            if (result.hasOwnProperty(variable_name)) {
-                credentials = result.credentials;
+    function getCredentialsReturn(result) {
+        if (result.hasOwnProperty(variable_name)) {
+            credentials = result.credentials;
 
-                for (var key in listener_callbacks) {
-                    if (listener_callbacks.hasOwnProperty(key)) {
-                        listener_callbacks[key](credentials);
-                    }
+            for (var key in listener_callbacks) {
+                if (listener_callbacks.hasOwnProperty(key)) {
+                    listener_callbacks[key](credentials);
                 }
             }
-        });
+        }
+    }
+
+    function getCredentials() {
+        sync.get(variable_name, getCredentialsReturn);
     }
 
     function setCredentials() {
