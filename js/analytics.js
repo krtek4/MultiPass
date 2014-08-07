@@ -3,22 +3,31 @@ var _gaq = _gaq || [];
 var Analytics = function() {
     'use strict';
 
+    var push = function (type, event, action) {
+        _gaq.push([type, event, action]);
+    };
+
     function init() {
         var ga = document.createElement('script');
         ga.type = 'text/javascript';
         ga.async = true;
         ga.src = 'https://ssl.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ga, s);
+        try {
+            s.parentNode.insertBefore(ga, s);
+        } catch(err) {
+            // in case of error, redefine push to do nothing
+            push = function () {};
+        }
 
-        _gaq.push(['_setAccount', 'UA-1168006-9']);
-        _gaq.push(['_trackPageview']);
+        push('_setAccount', 'UA-1168006-9');
+        push('_trackPageview');
     }
 
     return {
         'init': init,
         'event': function(event, action) {
-            _gaq.push(['_trackEvent', event, action]);
+            push('_trackEvent', event, action);
         }
     }
 }();
