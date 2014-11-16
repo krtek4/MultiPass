@@ -14,7 +14,6 @@ var Credentials = function() {
                 var c = credentials[key];
                 var elem = $(
                     '<tr>' +
-                        '<th class="index">' + key + '</th>' +
                         '<td class="url">' + c.url + '</td>' +
                         '<td class="username">' + c.username + '</td>' +
                         '<td class="password">' +

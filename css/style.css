@@ -3,23 +3,31 @@
     margin-left: 24px;
 }
 
-table.credential-table tbody tr:nth-child(odd) {
-    background-color: #ccc;
+table.credential-table {
+    border-collapse: collapse;
 }
 
-table.credential-table tbody tr:nth-child(even) {
+table.credential-table tbody tr:nth-child(odd) {
     background-color: #eee;
 }
 
+table.credential-table tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+
+table.credential-table tbody tr:hover {
+    background-color: #bbb;
+}
+
 table.credential-table td, th {
-    padding: 0.6em 0.5em;
-    text-align: center;
+    padding: 0.6em 0.7em;
+    text-align: left;
     white-space: nowrap;
 }
 
 table.credential-table th {
-    background: lightblue;
-    border-color: white;
+    background-color: #444;
+    color: white;
 }
 
 table.credential-table td.url {
@@ -40,12 +48,18 @@ table.credential-table td.password {
 }
 
 .password .show-password {
+    display: none;
+
     position: absolute;
     right: 0;
-    bottom: 0;
+    top: 10px;
     background: powderblue;
     border: 0;
     font-size: 8px;
+}
+
+table.credential-table tbody tr:hover .show-password {
+    display: inherit;
 }
 
 table.credential-table tfoot label {
