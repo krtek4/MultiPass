@@ -502,6 +502,16 @@
   padding: 3px;
   padding-bottom: 4px;
 }
+
+.chrome-bootstrap input[type='text']:valid,
+.chrome-bootstrap input[type='password']:valid,
+.chrome-bootstrap input[type='email']:valid,
+.chrome-bootstrap input[type='phone']:valid,
+.chrome-bootstrap input[type='number']:valid,
+.chrome-bootstrap input[type='search']:valid {
+    border-color: darkgreen;
+}
+
 .chrome-bootstrap .radio,
 .chrome-bootstrap .checkbox {
   margin: 0.65em 0;
