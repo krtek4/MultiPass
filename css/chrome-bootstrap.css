@@ -121,6 +121,7 @@
   background-image: -webkit-linear-gradient(#ffffff, #ffffff 40%, rgba(255, 255, 255, 0.92));
   width: 738px;
   z-index: 2;
+  top: 0;
 }
 .chrome-bootstrap header h1 {
   padding: 21px 0 13px;

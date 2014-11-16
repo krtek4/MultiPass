@@ -73,3 +73,26 @@ table.credential-table tfoot input {
 table.credential-table tfoot button {
     width: 100%;
 }
+
+table.form-table {
+    width: 100%;
+}
+
+table.form-table td:first-child {
+    width: 20%;
+    vertical-align: top;
+}
+
+table.form-table td {
+    width: 80%;
+}
+
+table.form-table td textarea {
+    width: 98%;
+    height: 10.2em;
+}
+
+table.form-table td output ul {
+    margin: 0;
+}
+
