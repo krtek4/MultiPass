@@ -15,6 +15,20 @@ table.credential-table tbody tr:nth-child(even) {
     background-color: #fff;
 }
 
+table.credential-table tbody tr.only-match {
+    background-color: #C0D860;
+}
+table.credential-table tbody tr.only-match:hover {
+    background-color: #789048;
+}
+
+table.credential-table tbody tr.multiple-match {
+    background-color: #ECF081;
+}
+table.credential-table tbody tr.multiple-match:hover {
+    background-color: #FFBE40;
+}
+
 table.credential-table tbody tr:hover {
     background-color: #bbb;
 }
