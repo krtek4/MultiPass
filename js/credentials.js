@@ -62,7 +62,7 @@ var Credentials = function() {
         }
 
         if(valid) {
-            Storage.addCredential(values);
+            CredentialStorage.addCredential(values);
 
             url.val('');
             username.val('');
@@ -79,15 +79,13 @@ var Credentials = function() {
 
     function remove() {
         var id = $(this).data('id');
-        Storage.removeCredential(id);
+        CredentialStorage.removeCredential(id);
 
         Analytics.event('Credentials', 'removed');
     }
 
     function init() {
-        Storage.addListener(function(credentials) {
-            display_credentials(credentials);
-        });
+        CredentialStorage.register(display_credentials);
 
         $('#credential-form').on('submit', add);
         $(document).on('click', '.remove', remove);

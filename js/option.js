@@ -111,7 +111,7 @@ var Option = function() {
 
         for (var key in import_credentials) {
             if (import_credentials.hasOwnProperty(key)) {
-                Storage.addCredential(import_credentials[key]);
+                CredentialStorage.addCredential(import_credentials[key]);
             }
         }
 
@@ -127,14 +127,14 @@ var Option = function() {
     function export_credentials() {
         Analytics.event('Exporter', 'exported');
 
-        var data = "text/json;charset=utf-8," + encodeURIComponent(Storage.asJSON());
+        var data = "text/json;charset=utf-8," + encodeURIComponent(CredentialStorage.asJSON());
         $(this).attr('href', 'data:' + data);
     }
 
     function clear_credentials(e) {
         Analytics.event('Credentials', 'cleared');
 
-        modal(Translator.translate("clear_credentials_modal_title"), Translator.translate("clear_credentials_modal_text"), Storage.clearAll);
+        modal(Translator.translate("clear_credentials_modal_title"), Translator.translate("clear_credentials_modal_text"), CredentialStorage.clearAll);
         e.preventDefault();
     }
 

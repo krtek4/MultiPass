@@ -31,7 +31,7 @@
     "options_page": "options.html",
 
     "background": {
-        "scripts": ["js/analytics.js", "js/storage.js", "js/extension.js"],
+        "scripts": ["js/analytics.js", "js/storage.js", "js/credential_storage.js", "js/extension.js"],
         "persistent": true
     },
 
