@@ -134,7 +134,7 @@ var Option = function() {
     function clear_credentials(e) {
         Analytics.event('Credentials', 'cleared');
 
-        modal(chrome.i18n.getMessage("clear_credentials_modal_title"), chrome.i18n.getMessage("clear_credentials_modal_text"), Storage.clearAll);
+        modal(Translator.translate("clear_credentials_modal_title"), Translator.translate("clear_credentials_modal_text"), Storage.clearAll);
         e.preventDefault();
     }
 
