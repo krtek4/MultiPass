@@ -1,0 +1,14 @@
+{
+  "name": "MultiPass",
+  "description": "Automatically login to Basic Authentication using data based on URL regexp.",
+  "author": "Gilles Crettenand <gilles@crettenand.info>",
+  "license": "WTFPL",
+
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-zip": "*",
+    "gulp-clean": "*",
+    "run-sequence": "*",
+    "event-stream": "*"
+  }
+}

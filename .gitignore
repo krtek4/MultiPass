@@ -1,1 +1,3 @@
-MultiPass.zip
+build/
+dist/
+node_modules/
