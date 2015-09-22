@@ -16,6 +16,14 @@
         "message": "Remove",
         "description": "Button to remove a credential"
     },
+    "edit_credential": {
+        "message": "Edit",
+        "description": "Button to edit a credential"
+    },
+    "add_credential": {
+        "message": "Add",
+        "description": "Button to add a credential"
+    },
 
     "clear_credentials_modal_title": {
         "message": "Clear all credentials",

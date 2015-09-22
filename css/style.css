@@ -15,6 +15,10 @@ table.credential-table tbody tr:nth-child(even) {
     background-color: #fff;
 }
 
+table.credential-table tbody tr.editing {
+    background-color: #87CEFA;
+}
+
 table.credential-table tbody tr.only-match {
     background-color: #C0D860;
 }
