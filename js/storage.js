@@ -1,16 +1,18 @@
 var Storage = function() {
     'use strict';
 
-    var listener_callbacks = [];
+    var listener_callbacks = {};
     var storage = chrome.storage;
     var sync = storage.sync;
 
     function get(key, callback) {
         sync.get(key, function(result) {
             if (result.hasOwnProperty(key)) {
-                for (var i in listener_callbacks) {
-                    if (listener_callbacks.hasOwnProperty(i)) {
-                        listener_callbacks[i](result[key]);
+                if(typeof(listener_callbacks[key]) != 'undefined') {
+                    for (var i in listener_callbacks[key]) {
+                        if (listener_callbacks[key].hasOwnProperty(i)) {
+                            listener_callbacks[key][i](result[key]);
+                        }
                     }
                 }
 
@@ -29,7 +31,10 @@ var Storage = function() {
 
     function register(key, callback) {
         if (typeof(callback) !== 'undefined') {
-            listener_callbacks.push(callback);
+            if(typeof(listener_callbacks[key]) == 'undefined') {
+                listener_callbacks[key] = [];
+            }
+            listener_callbacks[key].push(callback);
         }
 
         storage.onChanged.addListener(function (changes, namespace) {
