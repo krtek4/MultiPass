@@ -29,7 +29,7 @@ var Analytics = function() {
         'event': function(event, action) {
             push('_trackEvent', event, action);
         }
-    }
+    };
 }();
 
 Analytics.init();

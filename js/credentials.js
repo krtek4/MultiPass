@@ -33,8 +33,8 @@ var Credentials = function() {
         }
     }
 
-    function togglePassword() {
-        var password = $(this).parent();
+    function togglePassword(e) {
+        var password = $(e.currentTarget).parent();
         password.find('.' + password_stars_class).toggle();
         password.find('.' + password_real_class).toggle();
 
@@ -88,24 +88,24 @@ var Credentials = function() {
         }
     }
 
-    function remove() {
-        var url = $(this).data('url');
+    function remove(e) {
+        var url = $(e.currentTarget).data('url');
         CredentialStorage.removeCredential(url);
 
         Analytics.event('Credentials', 'removed');
     }
 
-    function edit() {
+    function edit(e) {
         var url = $('#url');
         var username = $('#username');
         var password = $('#password');
 
-        var tr = $(this).parents('tr');
+        var tr = $(e.currentTarget).parents('tr');
 
         tr.addClass('editing');
 
         url.val(tr.find('.url').text());
-        url.data('old-url', $(this).data('url'));
+        url.data('old-url', $(e.currentTarget).data('url'));
         username.val(tr.find('.username').text());
         password.val(tr.find('.' + password_real_class).text());
 
@@ -123,7 +123,7 @@ var Credentials = function() {
 
     return {
         'init': init
-    }
+    };
 }();
 
 $(function () {

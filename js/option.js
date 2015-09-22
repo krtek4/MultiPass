@@ -1,4 +1,4 @@
-var Option = function() {
+var OptionPanel = function() {
     'use strict';
 
     var credentials = [];
@@ -9,35 +9,35 @@ var Option = function() {
     var import_json_field;
 
     function modal(title, content, confirmation) {
-        var modal = $($('.overlay').clone());
+        var overlay = $($('.overlay').clone());
 
-        modal.removeAttr('style');
-        modal.find('button, .close-button').on('click', function() {
-            modal.addClass('transparent');
+        overlay.removeAttr('style');
+        overlay.find('button, .close-button').on('click', function() {
+            overlay.addClass('transparent');
             setTimeout(function () {
-                modal.remove();
+                overlay.remove();
             }, 1000);
         });
 
-        modal.find('.modal-confirm').on('click', function() {
+        overlay.find('.overlay-confirm').on('click', function() {
             confirmation();
         });
 
-        modal.find('.modal-title').html(title);
-        modal.find('.modal-content').html(content);
+        overlay.find('.overlay-title').html(title);
+        overlay.find('.overlay-content').html(content);
 
-        modal.on('click', function () {
-            modal.find('.page').addClass('pulse');
-            modal.find('.page').on('webkitAnimationEnd', function() {
+        overlay.on('click', function () {
+            overlay.find('.page').addClass('pulse');
+            overlay.find('.page').on('webkitAnimationEnd', function() {
                 $(this).removeClass('pulse');
             });
         });
 
-        modal.find('.page').on('click', function(e) {
+        overlay.find('.page').on('click', function(e) {
             e.stopPropagation();
         });
 
-        $('body').append(modal);
+        $('body').append(overlay);
     }
 
     function update_output_credentials() {
@@ -89,11 +89,12 @@ var Option = function() {
         Analytics.event('Importer', 'file added');
 
         var files = e.target.files;
+        var len = files.length;
 
-        for (var i = 0, file; file = files[i]; ++i) {
+        for (var i = 0; i < len; ++i) {
             var reader = new FileReader();
             reader.onloadend = readerOnLoadEnd;
-            reader.readAsText(file);
+            reader.readAsText(files[i]);
         }
     }
 
@@ -107,11 +108,11 @@ var Option = function() {
     function import_credentials(e) {
         Analytics.event('Importer', 'imported');
 
-        var import_credentials = credentials.concat(file_credentials);
+        var new_credentials = credentials.concat(file_credentials);
 
-        for (var key in import_credentials) {
-            if (import_credentials.hasOwnProperty(key)) {
-                CredentialStorage.addCredential(import_credentials[key]);
+        for (var key in new_credentials) {
+            if (new_credentials.hasOwnProperty(key)) {
+                CredentialStorage.addCredential(new_credentials[key]);
             }
         }
 
@@ -124,11 +125,11 @@ var Option = function() {
         e.preventDefault();
     }
 
-    function export_credentials() {
+    function export_credentials(e) {
         Analytics.event('Exporter', 'exported');
 
         var data = "text/json;charset=utf-8," + encodeURIComponent(CredentialStorage.asJSON());
-        $(this).attr('href', 'data:' + data);
+        $(e.currentTarget).attr('href', 'data:' + data);
     }
 
     function clear_credentials(e) {
@@ -155,10 +156,10 @@ var Option = function() {
 
     return {
         'init': init
-    }
+    };
 }();
 
 $(function () {
     Analytics.event('OptionPanel', 'opened');
-    Option.init();
+    OptionPanel.init();
 });

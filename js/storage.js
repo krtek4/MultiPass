@@ -47,5 +47,5 @@ var Storage = function() {
         'get': get,
         'set': set,
         'register': register
-    }
+    };
 }();

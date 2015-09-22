@@ -7,5 +7,5 @@ var Translator = function() {
 
     return {
         'translate': translate
-    }
+    };
 }();

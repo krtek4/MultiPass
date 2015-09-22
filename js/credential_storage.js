@@ -13,7 +13,7 @@ var CredentialStorage = function() {
         var hash = 0;
         var len = key.length;
 
-        if (len == 0) {
+        if (len === 0) {
             return hash;
         }
 
@@ -82,7 +82,7 @@ var CredentialStorage = function() {
                 try_count = 0;
             }
 
-            if(try_count == 0) {
+            if(try_count === 0) {
                 Analytics.event('BackgroundApp', 'authentication sent');
             }
 
@@ -140,5 +140,5 @@ var CredentialStorage = function() {
         'asJSON': function() { return JSON.stringify(credentials); },
 
         'getRegexp': getRegexp
-    }
+    };
 }();
