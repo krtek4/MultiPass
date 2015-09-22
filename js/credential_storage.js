@@ -9,22 +9,40 @@ var CredentialStorage = function() {
     var last_tab_id = '';
     var try_count = 0;
 
+    function _key(key) {
+        var hash = 0;
+        var len = key.length;
+
+        if (len == 0) {
+            return hash;
+        }
+
+        for (var i = 0; i < len; i++) {
+            var chr = key.charCodeAt(i);
+            hash = ((hash << 5) - hash) + chr;
+            hash |= 0; // Convert to 32bit integer
+        }
+        return hash;
+    }
+
     function addCredential(credential) {
-        credentials.push(credential);
+        credentials[_key(credential.url)] = credential;
         Storage.set(variable_name, credentials);
 
         return credential;
     }
 
-    function removeCredential(index) {
-        var credential = credentials.splice(index, 1);
+    function removeCredential(url) {
+        var key = _key(url);
+        var credential = credentials[key];
+        delete credentials[key];
         Storage.set(variable_name, credentials);
 
         return credential;
     }
 
     function clearAll() {
-        credentials = [];
+        credentials = {};
         Storage.set(variable_name, credentials);
     }
 
@@ -95,7 +113,20 @@ var CredentialStorage = function() {
 
     // retrieve the credentials from storage
     Storage.get(variable_name, function(result) {
-        credentials = result;
+        // convert from the old storage format
+        if(Array.isArray(result)) {
+            credentials = {};
+
+            for (var key in result) {
+                if (result.hasOwnProperty(key)) {
+                    credentials[_key(result[key].url)] = result[key];
+                }
+            }
+
+            Storage.set(variable_name, credentials);
+        } else {
+            credentials = result;
+        }
     });
 
     return {

@@ -21,7 +21,7 @@ var Credentials = function() {
                             '<span class="' + password_real_class + '">' + c.password + '</span>' +
                             '<button class="show-password">' + Translator.translate("show_hide_password") + '</button>' +
                         '</td>' +
-                        '<td class="action"><button class="remove" data-id="' + key + '">' + Translator.translate("remove_credential") + '</button></td>' +
+                        '<td class="action"><button class="remove" data-url="' + c.url + '">' + Translator.translate("remove_credential") + '</button></td>' +
                     '</tr>'
                 );
 
@@ -78,8 +78,8 @@ var Credentials = function() {
     }
 
     function remove() {
-        var id = $(this).data('id');
-        CredentialStorage.removeCredential(id);
+        var url = $(this).data('url');
+        CredentialStorage.removeCredential(url);
 
         Analytics.event('Credentials', 'removed');
     }
