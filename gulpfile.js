@@ -34,6 +34,7 @@ gulp.task('chrome', function() {
     pipe('./images/**/*', './build/chrome/images'),
     pipe('./js/**/*', './build/chrome/js'),
     pipe('./css/**/*', './build/chrome/css'),
+    pipe('./node_modules/chrome-bootstrap/chrome-bootstrap.css', './build/chrome/css'),
     pipe('./_locales/**/*', './build/chrome/_locales'),
     pipe('./vendor/chrome/extension.js', './build/chrome/js'),
     pipe('./vendor/chrome/popin.js', './build/chrome/js'),
