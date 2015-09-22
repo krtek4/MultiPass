@@ -6,6 +6,8 @@ VERSION 0 FIRST BLOOD
 
 ### Version 0.4.0 - 17/11/2014 - Highlight matching regex in popin, styling
 
+    0.4.1	22/09/2015		Allow entry edition (#22), internal refactoring, tooling
+
 ### Version 0.3.0 - 04/08/2014 - Avoid error loop, display badges, JSON credential import
 
     0.3.1	06/08/2014		Fix an issue with badges (#14)
