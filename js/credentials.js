@@ -5,6 +5,7 @@ var Credentials = function() {
     var password_stars_class = 'password-stars';
     var password_real_class = 'password-real';
 
+    var storage_key = 'temporary-credentials';
 
     function display_credentials(credentials) {
         container.children().remove();
@@ -119,6 +120,27 @@ var Credentials = function() {
         $(document).on('click', '.remove', remove);
         $(document).on('click', '.edit', edit);
         $(document).on('click', '.show-password', togglePassword);
+
+        Storage.get(storage_key, function(result) {
+            $('#url').val(result.url || '');
+            $('#username').val(result.username || '');
+            $('#password').val(result.password || '');
+
+            Storage.set(storage_key, {});
+        });
+
+        addEventListener("unload", function () {
+            var url = $('#url').val();
+            var username = $('#username').val();
+            var password = $('#password').val();
+
+            var values = {
+                url: url,
+                username: username,
+                password: password
+            };
+            chrome.extension.getBackgroundPage()['Storage']['set'].apply(this, [storage_key, values]);
+        });
     }
 
     return {
