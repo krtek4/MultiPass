@@ -68,12 +68,9 @@ var Credentials = function() {
         }
 
         if(valid) {
-            var old = url.data('old-url');
-            if(typeof(old) != 'undefined' && old.length > 0) {
-                CredentialStorage.removeCredential(old);
-                url.data('old-url', '');
-                url.parents('tr').removeClass('editing');
-                $('.credential-form-submit').text(Translator.translate("add_credential"));
+            var old = $('tr.editing .url');
+            if(old.length > 0 && old.text().length > 0) {
+                CredentialStorage.removeCredential(old.text());
             }
 
             CredentialStorage.addCredential(values);
@@ -81,6 +78,8 @@ var Credentials = function() {
             url.val('');
             username.val('');
             password.val('');
+
+            reset_form();
 
             Analytics.event('Credentials', 'added');
         } else {
@@ -106,17 +105,22 @@ var Credentials = function() {
         tr.addClass('editing');
 
         url.val(tr.find('.url').text());
-        url.data('old-url', $(e.currentTarget).data('url'));
         username.val(tr.find('.username').text());
         password.val(tr.find('.' + password_real_class).text());
 
         $('.credential-form-submit').text(Translator.translate("edit_credential"));
     }
 
+    function reset_form() {
+        $('tr.editing').removeClass('editing');
+        $('.credential-form-submit').text(Translator.translate("add_credential"));
+    }
+
     function init() {
         CredentialStorage.register(display_credentials);
 
         $('#credential-form').on('submit', submit);
+        $(document).on('click', '.credential-form-reset', reset_form);
         $(document).on('click', '.remove', remove);
         $(document).on('click', '.edit', edit);
         $(document).on('click', '.show-password', togglePassword);
