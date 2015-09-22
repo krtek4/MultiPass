@@ -143,7 +143,7 @@ var Credentials = function() {
                 username: username,
                 password: password
             };
-            chrome.extension.getBackgroundPage()['Storage']['set'].apply(this, [storage_key, values]);
+            chrome.extension.getBackgroundPage().Storage.set.apply(this, [storage_key, values]);
         });
     }
 
