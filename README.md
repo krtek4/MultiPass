@@ -33,4 +33,4 @@ $ node_modules/gulp/bin/gulp.js
 ```
 2. Open the Extension panel in Chrome : Tools / Extensions
 3. Make sure the "Developer mode" checkbox is checked
-4. Click on "Load unpacked extension..." and select the `build/chrome` folder where you cloned it
+4. Click on "Load unpacked extension..." and select the `build/chrome` folder
