@@ -7,41 +7,22 @@ var CredentialStorage = require('./credential_storage');
 var Storage = require('./storage');
 var Translator = require('./translator');
 
+var React = require('react');
+var Table = require('./components/table');
+
 module.exports = function() {
-    var container = $('.credentials');
     var password_stars_class = 'password-stars';
     var password_real_class = 'password-real';
 
     var storage_key = 'temporary-credentials';
 
     function display_credentials(credentials) {
-        container.children().remove();
-
-        for (var key in credentials) {
-            if (credentials.hasOwnProperty(key)) {
-                var c = credentials[key];
-                var elem = $(
-                    '<tr>' +
-                        '<td class="url">' + c.url + '</td>' +
-                        '<td class="username">' + c.username + '</td>' +
-                        '<td class="password">' +
-                            '<span class="' + password_stars_class + '">***</span>' +
-                            '<span class="' + password_real_class + '">' + c.password + '</span>' +
-                            '<button class="show-password">' + Translator.translate("show_hide_password") + '</button>' +
-                        '</td>' +
-                        '<td class="action">' +
-                            '<button class="remove" data-url="' + c.url + '">' + Translator.translate("remove_credential") + '</button>' + '' +
-                            '<button class="edit" data-url="' + c.url + '">' + Translator.translate("edit_credential") + '</button>' + '' +
-                        '</td>' +
-                    '</tr>'
-                );
-
-                container.prepend(elem);
-            }
-        }
+        React.render(<Table credentials={credentials} />, $('.credential-table-container')[0]);
     }
 
     function togglePassword(e) {
+        e.preventDefault();
+
         var password = $(e.currentTarget).parent();
         password.find('.' + password_stars_class).toggle();
         password.find('.' + password_real_class).toggle();
@@ -96,6 +77,8 @@ module.exports = function() {
     }
 
     function remove(e) {
+        e.preventDefault();
+
         var url = $(e.currentTarget).data('url');
         CredentialStorage.removeCredential(url);
 
@@ -103,6 +86,8 @@ module.exports = function() {
     }
 
     function edit(e) {
+        e.preventDefault();
+
         var url = $('#url');
         var username = $('#username');
         var password = $('#password');
