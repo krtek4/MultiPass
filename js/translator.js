@@ -1,4 +1,3 @@
-/*global chrome:True*/
 'use strict';
 
 module.exports = function() {

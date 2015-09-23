@@ -18,16 +18,16 @@
     "watch:popin": "watchify --debug vendor/chrome/popin.js -d -v -o  build/chrome/js/popin.js",
     "watch:option": "watchify --debug js/option.js -d -v -o  build/chrome/js/option.js",
     "watch": "npm-run-all --parallel watch:extension watch:popin watch:option",
-    "lint": "jshint js/**.js vendor/chrome/**.js",
+    "lint": "eslint js/**.js vendor/chrome/**.js",
     "prepublish": "npm-run-all lint build",
     "publish": "gulp chrome-dist"
   },
   "devDependencies": {
     "browserify": "^13.1.1",
     "chrome-bootstrap": "^1.5.0",
+    "eslint": "latest",
     "gulp": "*",
     "gulp-zip": "*",
-    "jshint": "latest",
     "npm-run-all": "^3.1.1",
     "run-sequence": "*",
     "watchify": "~3.7.0"

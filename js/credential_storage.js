@@ -1,4 +1,3 @@
-/*global chrome:True*/
 'use strict';
 
 var Analytics = require('./analytics');
@@ -67,7 +66,7 @@ module.exports = function() {
         }
 
         var credential = {};
-        var success_color = "#00FF00";
+        var success_color = '#00FF00';
 
         if(found.length > 0) {
             credential = found[0];
@@ -75,7 +74,7 @@ module.exports = function() {
 
         // display a yellow badge if there is multiple match for the url
         if (found.length > 1) {
-            success_color = "#FFFF00";
+            success_color = '#FFFF00';
             Analytics.event('BackgroundApp', 'multiple credentials');
         }
 
@@ -94,7 +93,7 @@ module.exports = function() {
                 last_request_id = status.requestId;
                 last_tab_id = status.tabId;
 
-                cb(" ", success_color, credential, status.tabId);
+                cb(' ', success_color, credential, status.tabId);
                 return {
                     authCredentials: {
                         username: credential.username,
@@ -104,7 +103,7 @@ module.exports = function() {
             } else {
                 Analytics.event('BackgroundApp', 'failed authentication');
 
-                cb(" ", "#FF0000", credential, status.tabId);
+                cb(' ', '#FF0000', credential, status.tabId);
             }
         }
 

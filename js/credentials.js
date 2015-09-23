@@ -1,4 +1,3 @@
-/*global chrome:True*/
 'use strict';
 
 var $ = require('jquery');
@@ -28,11 +27,11 @@ module.exports = function() {
                         '<td class="password">' +
                             '<span class="' + password_stars_class + '">***</span>' +
                             '<span class="' + password_real_class + '">' + c.password + '</span>' +
-                            '<button class="show-password">' + Translator.translate("show_hide_password") + '</button>' +
+                            '<button class="show-password">' + Translator.translate('show_hide_password') + '</button>' +
                         '</td>' +
                         '<td class="action">' +
-                            '<button class="remove" data-url="' + c.url + '">' + Translator.translate("remove_credential") + '</button>' + '' +
-                            '<button class="edit" data-url="' + c.url + '">' + Translator.translate("edit_credential") + '</button>' + '' +
+                            '<button class="remove" data-url="' + c.url + '">' + Translator.translate('remove_credential') + '</button>' + '' +
+                            '<button class="edit" data-url="' + c.url + '">' + Translator.translate('edit_credential') + '</button>' + '' +
                         '</td>' +
                     '</tr>'
                 );
@@ -116,18 +115,18 @@ module.exports = function() {
         username.val(tr.find('.username').text());
         password.val(tr.find('.' + password_real_class).text());
 
-        $('.credential-form-submit').text(Translator.translate("edit_credential"));
+        $('.credential-form-submit').text(Translator.translate('edit_credential'));
     }
 
     function reset_form() {
         $('tr.editing').removeClass('editing');
-        $('.credential-form-submit').text(Translator.translate("add_credential"));
+        $('.credential-form-submit').text(Translator.translate('add_credential'));
     }
 
     function init() {
         CredentialStorage.register(display_credentials);
 
-        $('#credential-form').on('submit', submit);
+        $(document).on('submit', '#credential-form', submit);
         $(document).on('click', '.credential-form-reset', reset_form);
         $(document).on('click', '.remove', remove);
         $(document).on('click', '.edit', edit);
@@ -141,9 +140,7 @@ module.exports = function() {
             Storage.set(storage_key, {});
         });
 
-        addEventListener("unload", function () {
-            chrome.extension.getBackgroundPage().console.log('okio');
-
+        addEventListener('unload', function () {
             var url = $('#url').val();
             var username = $('#username').val();
             var password = $('#password').val();

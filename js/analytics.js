@@ -1,4 +1,3 @@
-/*global chrome:True*/
 'use strict';
 
 var _gaq = _gaq || [];
