@@ -1,4 +1,3 @@
-/*global chrome:True*/
 'use strict';
 
 var $ = require('jquery');
@@ -6,7 +5,6 @@ var $ = require('jquery');
 var Analytics = require('./analytics');
 var Credentials = require('./credentials');
 var CredentialStorage = require('./credential_storage');
-var Storage = require('./storage');
 var Translator = require('./translator');
 
 var OptionPanel = function() {
@@ -137,14 +135,14 @@ var OptionPanel = function() {
     function export_credentials(e) {
         Analytics.event('Exporter', 'exported');
 
-        var data = "text/json;charset=utf-8," + encodeURIComponent(CredentialStorage.asJSON());
+        var data = 'text/json;charset=utf-8,' + encodeURIComponent(CredentialStorage.asJSON());
         $(e.currentTarget).attr('href', 'data:' + data);
     }
 
     function clear_credentials(e) {
         Analytics.event('Credentials', 'cleared');
 
-        modal(Translator.translate("clear_credentials_modal_title"), Translator.translate("clear_credentials_modal_text"), CredentialStorage.clearAll);
+        modal(Translator.translate('clear_credentials_modal_title'), Translator.translate('clear_credentials_modal_text'), CredentialStorage.clearAll);
         e.preventDefault();
     }
 
