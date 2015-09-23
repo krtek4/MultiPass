@@ -4,5 +4,28 @@
     },
     "extDescription": {
         "message": "Connexion automatique à une authentification HTTP basique en utilisant des données basées sur une expression régulière pour l'URL."
+    },
+
+    "show_hide_password": {
+        "message": "Afficher / Cacher"
+    },
+    "remove_credential": {
+        "message": "Enlever"
+    },
+    "edit_credential": {
+        "message": "Éditer"
+    },
+    "add_credential": {
+        "message": "Ajouter"
+    },
+    "reset_credential": {
+        "message": "Reset"
+    },
+
+    "clear_credentials_modal_title": {
+        "message": "Supprimer toutes les entrées"
+    },
+    "clear_credentials_modal_text": {
+        "message": "Êtes-vous sur de vouloir supprimer toutes les entrées ?"
     }
 }
