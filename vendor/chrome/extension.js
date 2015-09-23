@@ -45,7 +45,7 @@ var Extension = function () {
 
     function init() {
         CredentialStorage.register();
-        chrome.webRequest.onAuthRequired.addListener(retrieveCredentials, {urls: ["<all_urls>"]}, ["blocking"]);
+        chrome.webRequest.onAuthRequired.addListener(retrieveCredentials, {urls: ['<all_urls>']}, ['blocking']);
 
         chrome.tabs.onUpdated.addListener(showBadgeForTabId);
         chrome.tabs.onActivated.addListener(showBadgeForStatus);
