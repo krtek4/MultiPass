@@ -1,6 +1,7 @@
-var Storage = function() {
-    'use strict';
+/*global chrome:True*/
+'use strict';
 
+module.exports = function() {
     var listener_callbacks = {};
     var storage = chrome.storage;
     var sync = storage.sync;

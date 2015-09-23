@@ -1,6 +1,14 @@
-var Credentials = function() {
-    'use strict';
+/*global chrome:True*/
+'use strict';
 
+var $ = require('jquery');
+
+var Analytics = require('./analytics');
+var CredentialStorage = require('./credential_storage');
+var Storage = require('./storage');
+var Translator = require('./translator');
+
+module.exports = function() {
     var container = $('.credentials');
     var password_stars_class = 'password-stars';
     var password_real_class = 'password-real';
@@ -134,6 +142,8 @@ var Credentials = function() {
         });
 
         addEventListener("unload", function () {
+            chrome.extension.getBackgroundPage().console.log('okio');
+
             var url = $('#url').val();
             var username = $('#username').val();
             var password = $('#password').val();
@@ -151,7 +161,3 @@ var Credentials = function() {
         'init': init
     };
 }();
-
-$(function () {
-    Credentials.init();
-});

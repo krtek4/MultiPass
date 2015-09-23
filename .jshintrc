@@ -1,4 +1,4 @@
 {
-    "jquery": true,
+    "node": true,
     "browser": true
 }
