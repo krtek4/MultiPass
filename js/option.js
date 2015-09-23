@@ -1,6 +1,15 @@
-var OptionPanel = function() {
-    'use strict';
+/*global chrome:True*/
+'use strict';
 
+var $ = require('jquery');
+
+var Analytics = require('./analytics');
+var Credentials = require('./credentials');
+var CredentialStorage = require('./credential_storage');
+var Storage = require('./storage');
+var Translator = require('./translator');
+
+var OptionPanel = function() {
     var credentials = [];
     var file_credentials = [];
 
@@ -162,4 +171,5 @@ var OptionPanel = function() {
 $(function () {
     Analytics.event('OptionPanel', 'opened');
     OptionPanel.init();
+    Credentials.init();
 });
