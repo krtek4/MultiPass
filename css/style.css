@@ -61,10 +61,6 @@ table.credential-table td.password {
     position: relative;
 }
 
-.password span.password-real {
-    display: none;
-}
-
 .password .show-password {
     display: none;
 

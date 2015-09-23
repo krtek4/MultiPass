@@ -11,23 +11,10 @@ var React = require('react');
 var Table = require('./components/table');
 
 module.exports = function() {
-    var password_stars_class = 'password-stars';
-    var password_real_class = 'password-real';
-
     var storage_key = 'temporary-credentials';
 
     function display_credentials(credentials) {
         React.render(<Table credentials={credentials} />, $('.credential-table-container')[0]);
-    }
-
-    function togglePassword(e) {
-        e.preventDefault();
-
-        var password = $(e.currentTarget).parent();
-        password.find('.' + password_stars_class).toggle();
-        password.find('.' + password_real_class).toggle();
-
-        Analytics.event('Credentials', 'password visibility toggled');
     }
 
     function submit(e) {
@@ -115,7 +102,6 @@ module.exports = function() {
         $(document).on('click', '.credential-form-reset', reset_form);
         $(document).on('click', '.remove', remove);
         $(document).on('click', '.edit', edit);
-        $(document).on('click', '.show-password', togglePassword);
 
         Storage.get(storage_key, function(result) {
             $('#url').val(result.url || '');

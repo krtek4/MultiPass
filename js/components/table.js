@@ -5,17 +5,33 @@ var ui = require('material-ui');
 
 var Translator = require('../translator');
 
+var PasswordCell = React.createClass({
+    getInitialState: function() {
+        return { 'shown': false };
+    },
+
+    handleClick: function() {
+        this.setState({'shown' : ! this.state.shown });
+    },
+
+    render: function() {
+        var content = this.state.shown ? this.props.password : '***';
+        return (
+            <td className="password">
+                {content}
+                <button onClick={this.handleClick} type="button" className="show-password">{Translator.translate("show_hide_password")}</button>
+            </td>
+        )
+    }
+});
+
 var CredentialRow = React.createClass({
     render: function() {
         return (
             <tr>
                 <td className="url">{this.props.url}</td>
                 <td className="username">{this.props.username}</td>
-                <td className="password">
-                    <span className="password-stars">***</span>
-                    <span className="password-real">{this.props.password}</span>
-                    <button type="button" className="show-password">{Translator.translate("show_hide_password")}</button>
-                </td>
+                <PasswordCell password={this.props.password} />
                 <td>
                     <button type="button" className="remove" data-url={this.props.url}>{Translator.translate("remove_credential")}</button>
                     <button type="button" className="edit" data-url={this.props.url}>{Translator.translate("edit_credential")}</button>
