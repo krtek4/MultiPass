@@ -1,6 +1,10 @@
-var CredentialStorage = function() {
-    'use strict';
+/*global chrome:True*/
+'use strict';
 
+var Analytics = require('./analytics');
+var Storage = require('./storage');
+
+module.exports = function() {
     var credentials = [];
 
     var variable_name = 'credentials';

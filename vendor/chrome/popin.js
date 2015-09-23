@@ -1,12 +1,18 @@
-var Popin = function() {
-    'use strict';
+/*global chrome:True*/
+'use strict';
 
+var $ = require('jquery');
+
+var Analytics = require('../../js/analytics');
+var Credentials = require('../../js/credentials');
+
+var Popin = function() {
     var only_match = 'only-match';
     var multiple_match = 'multiple-match';
 
     function optionLink() {
         Analytics.event('Popin', 'option link');
-        chrome.tabs.create({'url': chrome.extension.getURL("options.html") })
+        chrome.tabs.create({'url': chrome.extension.getURL("options.html") });
     }
 
     function highlightUrlForTab(tab) {
@@ -43,10 +49,11 @@ var Popin = function() {
 
     return {
         'init': init
-    }
+    };
 }();
 
 $(function () {
     Analytics.event('Popin', 'opened');
     Popin.init();
+    Credentials.init();
 });
