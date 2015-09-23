@@ -24,7 +24,13 @@ Use the development version
 
 If you want to use the development version, follow those steps :
 
-1. Clone the github repository
+1. Clone and build
+```
+$ git clone git@github.com:krtek4/MultiPass.git
+$ cd MultiPass
+$ npm install
+$ node_modules/gulp/bin/gulp.js
+```
 2. Open the Extension panel in Chrome : Tools / Extensions
 3. Make sure the "Developer mode" checkbox is checked
-4. Click on "Load unpacked extension..." and select the folder where you cloned it
+4. Click on "Load unpacked extension..." and select the `build/chrome` folder
