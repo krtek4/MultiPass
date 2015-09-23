@@ -24,6 +24,10 @@
         "message": "Add",
         "description": "Button to add a credential"
     },
+    "reset_credential": {
+        "message": "Reset",
+        "description": "Button to reset a credential"
+    },
 
     "clear_credentials_modal_title": {
         "message": "Clear all credentials",

@@ -7,6 +7,9 @@ var Credentials = require('./credentials');
 var CredentialStorage = require('./credential_storage');
 var Translator = require('./translator');
 
+var injectTapEventPlugin = require('react-tap-event-plugin');
+injectTapEventPlugin();
+
 var OptionPanel = function() {
     var credentials = [];
     var file_credentials = [];

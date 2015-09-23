@@ -6,6 +6,9 @@ var $ = require('jquery');
 var Analytics = require('../../js/analytics');
 var Credentials = require('../../js/credentials');
 
+var injectTapEventPlugin = require('react-tap-event-plugin');
+injectTapEventPlugin();
+
 var Popin = function() {
     var only_match = 'only-match';
     var multiple_match = 'multiple-match';
