@@ -1,6 +1,16 @@
-var OptionPanel = function() {
-    'use strict';
+'use strict';
 
+var $ = require('jquery');
+
+var Analytics = require('./analytics');
+var Credentials = require('./credentials');
+var CredentialStorage = require('./credential_storage');
+var Translator = require('./translator');
+
+var injectTapEventPlugin = require('react-tap-event-plugin');
+injectTapEventPlugin();
+
+var OptionPanel = function() {
     var credentials = [];
     var file_credentials = [];
 
@@ -128,14 +138,14 @@ var OptionPanel = function() {
     function export_credentials(e) {
         Analytics.event('Exporter', 'exported');
 
-        var data = "text/json;charset=utf-8," + encodeURIComponent(CredentialStorage.asJSON());
+        var data = 'text/json;charset=utf-8,' + encodeURIComponent(CredentialStorage.asJSON());
         $(e.currentTarget).attr('href', 'data:' + data);
     }
 
     function clear_credentials(e) {
         Analytics.event('Credentials', 'cleared');
 
-        modal(Translator.translate("clear_credentials_modal_title"), Translator.translate("clear_credentials_modal_text"), CredentialStorage.clearAll);
+        modal(Translator.translate('clear_credentials_modal_title'), Translator.translate('clear_credentials_modal_text'), CredentialStorage.clearAll);
         e.preventDefault();
     }
 
@@ -162,4 +172,5 @@ var OptionPanel = function() {
 $(function () {
     Analytics.event('OptionPanel', 'opened');
     OptionPanel.init();
+    Credentials.init();
 });

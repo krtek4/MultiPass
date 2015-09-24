@@ -4,54 +4,8 @@
         <title>MultiPass for HTTP basic authentication</title>
         <link rel="stylesheet" type="text/css" href="css/chrome-bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script type="text/javascript" src="js/popin.js"></script>
     </head>
 
-    <body class="chrome-bootstrap">
-        <table class="credential-table">
-            <thead>
-                <tr>
-                    <th class="url">Url (regexp)</th>
-                    <th class="username">Username</th>
-                    <th class="password">Password</th>
-                    <th class="action">&nbsp;</th>
-                </tr>
-            </thead>
-
-            <tbody class="credentials">
-            </tbody>
-
-            <tfoot>
-                <form id="credential-form">
-                    <tr>
-                        <td class="url">
-                            <label for="url">Url</label>
-                            <input type="text" name="url" id="url" required="true">
-                        </td>
-                        <td class="username">
-                            <label for="username">Username</label>
-                            <input type="text" name="username" id="username" required="true">
-                        </td>
-                        <td class="password">
-                            <label for="password">Password</label>
-                            <input type="password" name="password" id="password" required="true">
-                        </td>
-                        <td class="action">
-                            <button type="submit" class="credential-form-submit">Add</button>
-                            <button type="reset" class="credential-form-reset">Clear</button>
-                        </td>
-                    </tr>
-                </form>
-            </tfoot>
-        </table>
-
-        <p>For more features, go to <a href="#" class="option-link">the option page</a>.</p>
-
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/storage.js"></script>
-        <script type="text/javascript" src="js/credential_storage.js"></script>
-        <script type="text/javascript" src="js/analytics.js"></script>
-        <script type="text/javascript" src="js/translator.js"></script>
-        <script type="text/javascript" src="js/credentials.js"></script>
-        <script type="text/javascript" src="js/popin.js"></script>
-    </body>
+    <body class="chrome-bootstrap" id="react-container"></body>
 </html>

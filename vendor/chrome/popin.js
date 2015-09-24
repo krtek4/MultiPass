@@ -1,15 +1,18 @@
-var Popin = function() {
-    'use strict';
+/*global chrome:True*/
+'use strict';
 
+var $ = require('jquery');
+var React = require('react');
+
+var Analytics = require('../../js/analytics');
+var PopinComponent = require('../../js/components/popin');
+
+var Popin = function() {
     var only_match = 'only-match';
     var multiple_match = 'multiple-match';
 
-    function optionLink() {
-        Analytics.event('Popin', 'option link');
-        chrome.tabs.create({'url': chrome.extension.getURL("options.html") })
-    }
-
     function highlightUrlForTab(tab) {
+        // TODO: move this to the Table component somehow
         var container = $('.credentials');
         container.find('tr').removeClass(only_match + ' ' + multiple_match);
 
@@ -34,19 +37,18 @@ var Popin = function() {
     }
 
     function init() {
-        $('.option-link').on('click', optionLink);
-
         chrome.tabs.getSelected(null, highlightUrlForTab);
         chrome.tabs.onUpdated.addListener(highlightUrlForTabId);
         chrome.tabs.onActivated.addListener(highlightUrlForStatus);
+
+        React.render(<PopinComponent />, document.getElementById('react-container'));
     }
 
     return {
         'init': init
-    }
+    };
 }();
 
-$(function () {
-    Analytics.event('Popin', 'opened');
+$(function() {
     Popin.init();
 });

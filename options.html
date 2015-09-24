@@ -34,42 +34,7 @@
                     <main class="content">
                         <h2>Credentials</h2>
 
-                        <table class="credential-table">
-                            <thead>
-                                <tr>
-                                    <th class="url">Url (regexp)</th>
-                                    <th class="username">Username</th>
-                                    <th class="password">Password</th>
-                                    <th class="action">&nbsp;</th>
-                                </tr>
-                            </thead>
-
-                            <tbody class="credentials">
-                            </tbody>
-
-                            <tfoot>
-                                <form id="credential-form">
-                                    <tr>
-                                        <td class="url">
-                                            <label for="url">Url</label>
-                                            <input type="text" name="url" id="url" required="true">
-                                        </td>
-                                        <td class="username">
-                                            <label for="username">Username</label>
-                                            <input type="text" name="username" id="username" required="true">
-                                        </td>
-                                        <td class="password">
-                                            <label for="password">Password</label>
-                                            <input type="password" name="password" id="password" required="true">
-                                        </td>
-                                        <td class="action">
-                                            <button type="submit" class="credential-form-submit">Add</button>
-                                            <button type="reset" class="credential-form-reset">Clear</button>
-                                        </td>
-                                    </tr>
-                                </form>
-                            </tfoot>
-                        </table>
+                        <div id="credential-table-container"></div>
 
                         <h2>Import</h2>
 
@@ -143,12 +108,6 @@
             </div>
         </div>
 
-        <script type="text/javascript" src="js/jquery.min.js"></script>
-        <script type="text/javascript" src="js/storage.js"></script>
-        <script type="text/javascript" src="js/analytics.js"></script>
-        <script type="text/javascript" src="js/translator.js"></script>
-        <script type="text/javascript" src="js/credential_storage.js"></script>
-        <script type="text/javascript" src="js/credentials.js"></script>
         <script type="text/javascript" src="js/option.js"></script>
     </body>
 

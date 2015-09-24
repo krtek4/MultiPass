@@ -1,6 +1,9 @@
-var CredentialStorage = function() {
-    'use strict';
+'use strict';
 
+var Analytics = require('./analytics');
+var Storage = require('./storage');
+
+module.exports = function() {
     var credentials = {};
 
     var variable_name = 'credentials';
@@ -63,7 +66,7 @@ var CredentialStorage = function() {
         }
 
         var credential = {};
-        var success_color = "#00FF00";
+        var success_color = '#00FF00';
 
         if(found.length > 0) {
             credential = found[0];
@@ -71,7 +74,7 @@ var CredentialStorage = function() {
 
         // display a yellow badge if there is multiple match for the url
         if (found.length > 1) {
-            success_color = "#FFFF00";
+            success_color = '#FFFF00';
             Analytics.event('BackgroundApp', 'multiple credentials');
         }
 
@@ -90,7 +93,7 @@ var CredentialStorage = function() {
                 last_request_id = status.requestId;
                 last_tab_id = status.tabId;
 
-                cb(" ", success_color, credential, status.tabId);
+                cb(' ', success_color, credential, status.tabId);
                 return {
                     authCredentials: {
                         username: credential.username,
@@ -100,7 +103,7 @@ var CredentialStorage = function() {
             } else {
                 Analytics.event('BackgroundApp', 'failed authentication');
 
-                cb(" ", "#FF0000", credential, status.tabId);
+                cb(' ', '#FF0000', credential, status.tabId);
             }
         }
 
@@ -111,8 +114,7 @@ var CredentialStorage = function() {
         Storage.register(variable_name, callback);
     }
 
-    // retrieve the credentials from storage
-    Storage.get(variable_name, function(result) {
+    function updateCredentials(result) {
         // convert from the old storage format
         if(Array.isArray(result)) {
             credentials = {};
@@ -127,7 +129,11 @@ var CredentialStorage = function() {
         } else {
             credentials = result;
         }
-    });
+    }
+
+    // retrieve the credentials from storage
+    Storage.get(variable_name, updateCredentials);
+    Storage.register(variable_name, updateCredentials);
 
     return {
         'register': register,

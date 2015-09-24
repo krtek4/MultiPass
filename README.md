@@ -24,7 +24,10 @@ Use the development version
 
 If you want to use the development version, follow those steps :
 
-1. Clone the github repository
-2. Open the Extension panel in Chrome : Tools / Extensions
-3. Make sure the "Developer mode" checkbox is checked
-4. Click on "Load unpacked extension..." and select the folder where you cloned it
+1. Clone the github repository : `git clone git@github.com:krtek4/MultiPass.git`.
+2. Enter the directory : `cd MultiPass`.
+3. Install dependencies : `npm install`.
+4. Build the extension : `npm run build`.
+5. Open the Extension panel in Chrome : Tools / Extensions.
+6. Make sure the "Developer mode" checkbox is checked.
+7. Click on "Load unpacked extension...", first browse to the directory where you cloned the extension and then select the `build/chrome` folder.

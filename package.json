@@ -8,19 +8,36 @@
   },
   "license": "WTFPL",
   "scripts": {
-    "lint": "jshint js/**.js",
-    "build": "gulp",
-    "watch": "gulp watch",
-    "prepublish": "npm run lint",
+    "assets": "mkdir -p build/chrome/js; cp -f *.html build/chrome; cp -rf images build/chrome; cp -rf css build/chrome; cp node_modules/chrome-bootstrap/chrome-bootstrap.css build/chrome/css; cp -rf _locales build/chrome; cp -f vendor/chrome/manifest.json build/chrome",
+    "prebuild": "npm run assets",
+    "build:extension": "browserify vendor/chrome/extension.js > build/chrome/js/extension.js",
+    "build:popin": "browserify -t reactify vendor/chrome/popin.js > build/chrome/js/popin.js",
+    "build:option": "browserify -t reactify js/option.js > build/chrome/js/option.js",
+    "build": "npm-run-all build:extension build:popin build:option",
+    "watch:extension": "watchify --debug vendor/chrome/extension.js -d -v -o  build/chrome/js/extension.js",
+    "watch:popin": "watchify --debug -t reactify vendor/chrome/popin.js -d -v -o  build/chrome/js/popin.js",
+    "watch:option": "watchify --debug -t reactify js/option.js -d -v -o  build/chrome/js/option.js",
+    "watch": "npm-run-all --parallel watch:extension watch:popin watch:option",
+    "lint": "eslint js/**.js vendor/chrome/**.js",
+    "prepublish": "npm-run-all lint build",
     "publish": "gulp chrome-dist"
   },
   "devDependencies": {
+    "browserify": "^11.1.0",
     "chrome-bootstrap": "^1.5.0",
+    "eslint": "latest",
+    "eslint-plugin-react": "^3.4.2",
     "gulp": "*",
     "gulp-zip": "*",
-    "gulp-clean": "*",
-    "jshint": "latest",
+    "material-ui": "^0.11.0",
+    "npm-run-all": "^1.2.11",
+    "react": "^0.13.3",
+    "react-tap-event-plugin": "^0.1.7",
+    "reactify": "^1.1.1",
     "run-sequence": "*",
-    "event-stream": "*"
+    "watchify": "^3.4.0"
+  },
+  "dependencies": {
+    "jquery": "^2.1.4"
   }
 }
