@@ -5,6 +5,7 @@ var ui = require('material-ui');
 
 var Analytics = require('../analytics');
 var CredentialStorage = require('../credential_storage');
+var Storage = require('../storage');
 var Translator = require('../translator');
 
 var PasswordCell = React.createClass({
@@ -53,6 +54,8 @@ var ThemeManager = new ui.Styles.ThemeManager();
 var Colors = ui.Styles.Colors;
 
 var CredentialTable = React.createClass({
+    storage_key: 'temporary-credentials',
+
     childContextTypes: {
         muiTheme: React.PropTypes.object,
     },
@@ -65,18 +68,36 @@ var CredentialTable = React.createClass({
         ThemeManager.setPalette({
             accent1Color: Colors.deepOrange500
         });
+
+        var component = this;
+        CredentialStorage.register(function(c) {
+            component.setState({credentials: c});
+        });
+
+        Storage.get(this.storage_key, function(result) {
+            component.setState(result);
+            Storage.set(component.storage_key, {});
+        });
+
+        addEventListener('unload', function () {
+            var values = {
+                url: this.state.url,
+                username: this.state.username,
+                password: this.state.password,
+                old_url: this.state.old_url
+            };
+            chrome.extension.getBackgroundPage().Storage.set.apply(component, [component.storage_key, values]);
+        });
     },
 
     getInitialState: function() {
         return {
+            credentials: {},
             url: '',
             username: '',
             password: '',
             old_url: false
         };
-    },
-    getState: function() {
-        return this.state;
     },
 
     editCredential: function(url, username, password) {
@@ -135,9 +156,10 @@ var CredentialTable = React.createClass({
 
     render: function() {
         var rows = [];
-        for (var i in this.props.credentials) {
-            if (this.props.credentials.hasOwnProperty(i)) {
-                var c = this.props.credentials[i];
+        var credentials = this.state.credentials;
+        for (var i in credentials) {
+            if (credentials.hasOwnProperty(i)) {
+                var c = credentials[i];
                 rows.push(<CredentialRow key={c.url}
                                          url={c.url} username={c.username} password={c.password}
                                          editing={c.url == this.state.old_url}
