@@ -179,7 +179,7 @@ var CredentialTable = React.createClass({
                            <th>Actions</th>
                        </tr>
                    </thead>
-                   <tbody>
+                   <tbody className="credentials">
                        {rows}
                    </tbody>
                    <tfoot>
