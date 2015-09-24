@@ -6,6 +6,7 @@ VERSION 0 FIRST BLOOD
 
 ### Version 0.4.0 - 17/11/2014 - Highlight matching regex in popin, styling
 
+    0.4.3	24/09/2015		Fix an issue where credential adding does not work
     0.4.2	22/09/2015		Reset button
     0.4.1	22/09/2015		Allow entry edition (#22), internal refactoring, tooling
 

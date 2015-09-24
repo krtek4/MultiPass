@@ -1,7 +1,7 @@
 var CredentialStorage = function() {
     'use strict';
 
-    var credentials = [];
+    var credentials = {};
 
     var variable_name = 'credentials';
 

@@ -6,7 +6,7 @@
     "description": "__MSG_extDescription__",
     "author": "Gilles Crettenand <gilles@crettenand.info>",
     "homepage_url": "https://github.com/krtek4/MultiPass",
-    "version": "0.4.2",
+    "version": "0.4.3",
 
     "default_locale": "en",
 
