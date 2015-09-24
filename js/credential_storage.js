@@ -114,8 +114,7 @@ module.exports = function() {
         Storage.register(variable_name, callback);
     }
 
-    // retrieve the credentials from storage
-    Storage.get(variable_name, function(result) {
+    function updateCredentials(result) {
         // convert from the old storage format
         if(Array.isArray(result)) {
             credentials = {};
@@ -130,7 +129,11 @@ module.exports = function() {
         } else {
             credentials = result;
         }
-    });
+    }
+
+    // retrieve the credentials from storage
+    Storage.get(variable_name, updateCredentials);
+    Storage.register(variable_name, updateCredentials);
 
     return {
         'register': register,
