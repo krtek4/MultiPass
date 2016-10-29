@@ -1,21 +1,21 @@
 <!doctype html>
 <html>
     <head>
-        <title>MultiPass for HTTP basic authentication</title>
+        <title data-i18n="extName">MultiPass for HTTP basic authentication</title>
         <link rel="stylesheet" type="text/css" href="css/chrome-bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
 
     <body class="chrome-bootstrap">
         <main class="mainview view">
-            <h2>Credentials</h2>
+            <h2 data-i18n="credentials_section">Credentials</h2>
 
             <table class="credential-table">
                 <thead>
                     <tr>
-                        <th class="url">Url (regexp)</th>
-                        <th class="username">Username</th>
-                        <th class="password">Password</th>
+                        <th class="url" data-i18n="url_regexp">Url (regexp)</th>
+                        <th class="username" data-i18n="username">Username</th>
+                        <th class="password" data-i18n="password">Password</th>
                         <th class="action">&nbsp;</th>
                     </tr>
                 </thead>
@@ -27,33 +27,33 @@
                     <form id="credential-form">
                         <tr>
                             <td class="url">
-                                <label for="url">Url</label>
+                                <label for="url" data-i18n="url">Url</label>
                                 <input type="text" name="url" id="url" required="true">
                             </td>
                             <td class="username">
-                                <label for="username">Username</label>
+                                <label for="username" data-i18n="username">Username</label>
                                 <input type="text" name="username" id="username" required="true">
                             </td>
                             <td class="password">
-                                <label for="password">Password</label>
+                                <label for="password" data-i18n="password">Password</label>
                                 <input type="password" name="password" id="password" required="true">
                             </td>
                             <td class="action">
-                                <button type="submit" class="credential-form-submit">Add</button>
-                                <button type="reset" class="credential-form-reset">Clear</button>
+                                <button type="submit" class="credential-form-submit" data-i18n="add_credential">Add</button>
+                                <button type="reset" class="credential-form-reset" data-i18n="clear_credential">Clear</button>
                             </td>
                         </tr>
                     </form>
                 </tfoot>
             </table>
 
-            <h2>Import</h2>
+            <h2 data-i18n="import_section">Import</h2>
 
-            <p>You can import credentials into the extension. The file format is the following :</p>
+            <p data-i18n="import_description">You can import credentials into the extension. The file format is the following:</p>
             <pre>
 [
-{"url":"some.url.com", "username":"admin", "password":"1234"},
-{"url":"example.com", "username":"john.doe", "password":"password"}
+    {"url":"some.url.com", "username":"admin", "password":"1234"},
+    {"url":"example.com", "username":"john.doe", "password":"password"}
 ]
             </pre>
 
@@ -61,7 +61,7 @@
                 <table class="form-table">
                     <tr>
                         <td>
-                            <label for="import-file">Files to import</label>
+                            <label for="import-file" data-i18n="import_file">Files to import</label>
                         </td>
                         <td>
                             <input type="file" id="import-file" name="import_file[]" multiple/>
@@ -69,42 +69,44 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="import-json">JSON to import</label>
+                            <label for="import-json" data-i18n="import_json">JSON to import</label>
                         </td>
                         <td>
                             <textarea id="import-json" name="import_json"></textarea>
                         </td>
                     </tr>
                     <tr>
-                        <td>
-                            What will be imported ?
+                        <td data-i18n="import_what">
+                            What will be imported?
                         </td>
                         <td>
-                            <output class="import-list" for="import">-nothing-</output>
+                            <output class="import-list" for="import" data-i18n="import_nothing">-nothing-</output>
                         </td>
                     </tr>
                     <tr class="actions">
                         <td colspan="2">
-                            <button type="submit" class="import-submit">Import</button>
+                            <button type="submit" class="import-submit" data-i18n="import_submit">Import</button>
                         </td>
                     </tr>
                 </table>
             </form>
 
-            <h2>Export</h2>
+            <h2 data-i18n="export_section">Export</h2>
 
-            <p><a href="#" download="multipass-credentials.json" class="export-credentials">Download credentials as JSON file.</a></p>
+            <p><a href="#" download="multipass-credentials.json" class="export-credentials" data-i18n="export_button">Download credentials as JSON file.</a></p>
 
-            <h2>Clear all credentials</h2>
+            <h2 data-i18n="clear_section">Clear all credentials</h2>
 
-            <button class="clear-all">Clear all credentials</button>
+            <button class="clear-all" data-i18n="clear_button">Clear all credentials</button>
 
-            <p>&copy; <a href="mailto:gilles@crettenand.info">Gilles Crettenand</a></p>
-            <p>
-                <a href="http://www.wtfpl.net/">
-                    <img src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png" width="80" height="15" alt="WTFPL"/>
-                </a>
-            </p>
+            <div class="footer">
+                <p>&copy; <a href="mailto:gilles@crettenand.info">Gilles Crettenand</a></p>
+                <p>
+                    <a href="http://www.wtfpl.net/">
+                        <img src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png" width="80" height="15" alt="WTFPL"/>
+                    </a>
+                </p>
+            </div>
         </main>
 
         <div class="overlay" style="display: none;">
@@ -115,8 +117,8 @@
                 <div class="action-area">
                     <div class="action-area-right">
                         <div class="button-strip">
-                            <button class="modal-cancel">Cancel</button>
-                            <button class="modal-confirm">Yes</button>
+                            <button class="modal-cancel" data-i18n="modal_cancel">Cancel</button>
+                            <button class="modal-confirm" data-i18n="modal_yes">Yes</button>
                         </div>
                     </div>
                 </div>

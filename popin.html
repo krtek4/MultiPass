@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>MultiPass for HTTP basic authentication</title>
+        <title data-i18n="extName">MultiPass for HTTP basic authentication</title>
         <link rel="stylesheet" type="text/css" href="css/chrome-bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="css/style.css"/>
     </head>
@@ -10,9 +10,9 @@
         <table class="credential-table">
             <thead>
                 <tr>
-                    <th class="url">Url (regexp)</th>
-                    <th class="username">Username</th>
-                    <th class="password">Password</th>
+                    <th class="url" data-i18n="url_regexp">Url (regexp)</th>
+                    <th class="username" data-i18n="username">Username</th>
+                    <th class="password" data-i18n="password">Password</th>
                     <th class="action">&nbsp;</th>
                 </tr>
             </thead>
@@ -24,27 +24,27 @@
                 <form id="credential-form">
                     <tr>
                         <td class="url">
-                            <label for="url">Url</label>
+                            <label for="url" data-i18n="url">Url</label>
                             <input type="text" name="url" id="url" required="true">
                         </td>
                         <td class="username">
-                            <label for="username">Username</label>
+                            <label for="username" data-i18n="username">Username</label>
                             <input type="text" name="username" id="username" required="true">
                         </td>
                         <td class="password">
-                            <label for="password">Password</label>
+                            <label for="password" data-i18n="password">Password</label>
                             <input type="password" name="password" id="password" required="true">
                         </td>
                         <td class="action">
-                            <button type="submit" class="credential-form-submit">Add</button>
-                            <button type="reset" class="credential-form-reset">Clear</button>
+                            <button type="submit" class="credential-form-submit" data-i18n="add_credential">Add</button>
+                            <button type="reset" class="credential-form-reset" data-i18n="clear_credential">Clear</button>
                         </td>
                     </tr>
                 </form>
             </tfoot>
         </table>
 
-        <p>For more features, go to <a href="#" class="option-link">the option page</a>.</p>
+        <p><a href="#" class="option-link" data-i18n="open_option_page">Open the option page.</a></p>
 
         <script type="text/javascript" src="js/popin.js"></script>
     </body>

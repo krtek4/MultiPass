@@ -8,6 +8,23 @@
         "description": "Description of the extension"
     },
 
+    "credentials_section": {
+        "message": "Credentials",
+        "description": "Credential section title in option pane"
+    },
+
+    "url_regexp": {
+        "message": "Url (regexp)",
+        "description": "Url table header"
+    },
+    "username": {
+        "message": "Username",
+        "description": "Username table header"
+    },
+    "password": {
+        "message": "Password",
+        "description": "Password table header"
+    },
     "show_hide_password": {
         "message": "Show / Hide",
         "description": "Button to toggle password visibility"
@@ -24,6 +41,10 @@
         "message": "Add",
         "description": "Button to add a credential"
     },
+    "clear_credential": {
+        "message": "Clear",
+        "description": "Button to clear current credential"
+    },
 
     "clear_credentials_modal_title": {
         "message": "Clear all credentials",
@@ -32,5 +53,67 @@
     "clear_credentials_modal_text": {
         "message": "Are you sure you want to remove all credentials ?",
         "description": "Modal message text when clearing credentials"
+    },
+
+    "modal_cancel": {
+        "message": "Cancel",
+        "description": "Cancel button in the modal"
+    },
+    "modal_yes": {
+        "message": "Yes",
+        "description": "Yes button in the modal"
+    },
+
+
+    "import_section": {
+        "message": "Import",
+        "description": "Import section title"
+    },
+    "import_description": {
+        "message": "You can import credentials into the extension. The file format is the following:",
+        "description": "Description of the import section"
+    },
+    "import_file": {
+        "message": "Files to import",
+        "description": "Label of the import file selector"
+    },
+    "import_json": {
+        "message": "JSON to import",
+        "description": "Label of the import textarea for JSON"
+    },
+    "import_what": {
+        "message": " What will be imported?",
+        "description": "Dry run of what will be imported from the JSON"
+    },
+    "import_nothing": {
+        "message": "-nothing-",
+        "description": "Indicator that the import preview is empty"
+    },
+    "import_submit": {
+        "message": "Import",
+        "description": "Import button"
+    },
+
+    "export_section": {
+        "message": "Export",
+        "description": "Export section title"
+    },
+    "export_button": {
+        "message": "Download credentials as JSON file.",
+        "description": "Export button"
+    },
+
+    "clear_section": {
+        "message": "Clear all credentials",
+        "description": "Clear credentials section title"
+    },
+    "clear_button": {
+        "message": "Clear all credentials",
+        "description": "Clear credentials button before confirmation"
+    },
+
+    "open_option_page": {
+        "message": "Open the option page.",
+        "description": "Open the option page link"
     }
 }
