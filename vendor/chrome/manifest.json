@@ -28,7 +28,10 @@
         "default_popup": "popin.html"
     },
 
-    "options_page": "options.html",
+    "options_ui": {
+        "page": "options.html",
+        "chrome_style": true
+    },
 
     "background": {
         "scripts": ["js/extension.js"],

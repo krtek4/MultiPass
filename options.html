@@ -7,136 +7,116 @@
     </head>
 
     <body class="chrome-bootstrap">
-        <div class="frame">
-            <nav class="navigation">
-                <h1><a href="#">MultiPass</a></h1>
+        <main class="mainview view">
+            <h2>Credentials</h2>
 
-                <ul class="menu">
-                    <li class="selected">
-                        <a href="#options">Options</a>
-                    </li>
-                </ul>
+            <table class="credential-table">
+                <thead>
+                    <tr>
+                        <th class="url">Url (regexp)</th>
+                        <th class="username">Username</th>
+                        <th class="password">Password</th>
+                        <th class="action">&nbsp;</th>
+                    </tr>
+                </thead>
 
-                <p>&copy; <a href="mailto:krtek4@gmail.com">Gilles Crettenand</a></p>
-                <p>
-                    <a href="http://www.wtfpl.net/">
-                        <img src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png" width="80" height="15" alt="WTFPL"/>
-                    </a>
-                </p>
-            </nav>
+                <tbody class="credentials">
+                </tbody>
 
-            <main class="mainview view">
-                <section id="options" class="selected">
-                    <header>
-                        <h1>Options</h1>
-                    </header>
+                <tfoot>
+                    <form id="credential-form">
+                        <tr>
+                            <td class="url">
+                                <label for="url">Url</label>
+                                <input type="text" name="url" id="url" required="true">
+                            </td>
+                            <td class="username">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" id="username" required="true">
+                            </td>
+                            <td class="password">
+                                <label for="password">Password</label>
+                                <input type="password" name="password" id="password" required="true">
+                            </td>
+                            <td class="action">
+                                <button type="submit" class="credential-form-submit">Add</button>
+                                <button type="reset" class="credential-form-reset">Clear</button>
+                            </td>
+                        </tr>
+                    </form>
+                </tfoot>
+            </table>
 
-                    <main class="content">
-                        <h2>Credentials</h2>
+            <h2>Import</h2>
 
-                        <table class="credential-table">
-                            <thead>
-                                <tr>
-                                    <th class="url">Url (regexp)</th>
-                                    <th class="username">Username</th>
-                                    <th class="password">Password</th>
-                                    <th class="action">&nbsp;</th>
-                                </tr>
-                            </thead>
-
-                            <tbody class="credentials">
-                            </tbody>
-
-                            <tfoot>
-                                <form id="credential-form">
-                                    <tr>
-                                        <td class="url">
-                                            <label for="url">Url</label>
-                                            <input type="text" name="url" id="url" required="true">
-                                        </td>
-                                        <td class="username">
-                                            <label for="username">Username</label>
-                                            <input type="text" name="username" id="username" required="true">
-                                        </td>
-                                        <td class="password">
-                                            <label for="password">Password</label>
-                                            <input type="password" name="password" id="password" required="true">
-                                        </td>
-                                        <td class="action">
-                                            <button type="submit" class="credential-form-submit">Add</button>
-                                            <button type="reset" class="credential-form-reset">Clear</button>
-                                        </td>
-                                    </tr>
-                                </form>
-                            </tfoot>
-                        </table>
-
-                        <h2>Import</h2>
-
-                        <p>You can import credentials into the extension. The file format is the following :</p>
-                        <pre>
+            <p>You can import credentials into the extension. The file format is the following :</p>
+            <pre>
 [
-    {"url":"some.url.com", "username":"admin", "password":"1234"},
-    {"url":"example.com", "username":"john.doe", "password":"password"}
+{"url":"some.url.com", "username":"admin", "password":"1234"},
+{"url":"example.com", "username":"john.doe", "password":"password"}
 ]
-                        </pre>
+            </pre>
 
-                        <form class="import-form">
-                            <table class="form-table">
-                                <tr>
-                                    <td>
-                                        <label for="import-file">Files to import</label>
-                                    </td>
-                                    <td>
-                                        <input type="file" id="import-file" name="import_file[]" multiple/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label for="import-json">JSON to import</label>
-                                    </td>
-                                    <td>
-                                        <textarea id="import-json" name="import_json"></textarea>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        What will be imported ?
-                                    </td>
-                                    <td>
-                                        <output class="import-list" for="import">-nothing-</output>
-                                    </td>
-                                </tr>
-                                <tr class="actions">
-                                    <td colspan="2">
-                                        <button type="submit" class="import-submit">Import</button>
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
+            <form class="import-form">
+                <table class="form-table">
+                    <tr>
+                        <td>
+                            <label for="import-file">Files to import</label>
+                        </td>
+                        <td>
+                            <input type="file" id="import-file" name="import_file[]" multiple/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="import-json">JSON to import</label>
+                        </td>
+                        <td>
+                            <textarea id="import-json" name="import_json"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            What will be imported ?
+                        </td>
+                        <td>
+                            <output class="import-list" for="import">-nothing-</output>
+                        </td>
+                    </tr>
+                    <tr class="actions">
+                        <td colspan="2">
+                            <button type="submit" class="import-submit">Import</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
 
-                        <h2>Export</h2>
+            <h2>Export</h2>
 
-                        <p><a href="#" download="multipass-credentials.json" class="export-credentials">Download credentials as JSON file.</a></p>
+            <p><a href="#" download="multipass-credentials.json" class="export-credentials">Download credentials as JSON file.</a></p>
 
-                        <h2>Clear all credentials</h2>
+            <h2>Clear all credentials</h2>
 
-                        <button class="clear-all">Clear all credentials</button>
-                    </main>
-                </section>
-            </main>
+            <button class="clear-all">Clear all credentials</button>
 
-            <div class="overlay" style="display: none;">
-                <div class="page">
-                    <h1 class="modal-title"></h1>
-                    <div class="close-button"></div>
-                    <div class="content-area modal-content"></div>
-                    <div class="action-area">
-                        <div class="action-area-right">
-                            <div class="button-strip">
-                                <button class="modal-cancel">Cancel</button>
-                                <button class="modal-confirm">Yes</button>
-                            </div>
+            <p>&copy; <a href="mailto:gilles@crettenand.info">Gilles Crettenand</a></p>
+            <p>
+                <a href="http://www.wtfpl.net/">
+                    <img src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png" width="80" height="15" alt="WTFPL"/>
+                </a>
+            </p>
+        </main>
+
+        <div class="overlay" style="display: none;">
+            <div class="page">
+                <h1 class="overlay-title"></h1>
+                <div class="close-button"></div>
+                <div class="content-area overlay-content"></div>
+                <div class="action-area">
+                    <div class="action-area-right">
+                        <div class="button-strip">
+                            <button class="modal-cancel">Cancel</button>
+                            <button class="modal-confirm">Yes</button>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@ var Popin = function() {
 
     function optionLink() {
         Analytics.event('Popin', 'option link');
-        chrome.tabs.create({'url': chrome.extension.getURL('options.html') });
+        chrome.runtime.openOptionsPage();
     }
 
     function highlightUrlForTab(tab) {
