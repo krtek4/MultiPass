@@ -1,12 +1,14 @@
 'use strict';
 
 module.exports = function() {
-    var listener_callbacks = {};
     var storage = chrome.storage;
-    var sync = storage.sync;
+    var storageNamespace = storage.sync ? 'sync' : 'local';
+    var dataStore = storage[storageNamespace];
+
+    var listener_callbacks = {};
 
     function get(key, callback) {
-        sync.get(key, function(result) {
+        dataStore.get(key, function(result) {
             if (result.hasOwnProperty(key)) {
                 if(typeof(listener_callbacks[key]) != 'undefined') {
                     for (var i in listener_callbacks[key]) {
@@ -26,7 +28,7 @@ module.exports = function() {
     function set(key, value) {
         var data = {};
         data[key] = value;
-        sync.set(data);
+        dataStore.set(data);
     }
 
     function register(key, callback) {
@@ -38,7 +40,7 @@ module.exports = function() {
         }
 
         storage.onChanged.addListener(function (changes, namespace) {
-            if (namespace === 'sync' && changes.hasOwnProperty(key)) {
+            if (namespace === storageNamespace && changes.hasOwnProperty(key)) {
                 if(typeof(callback) !== 'undefined') {
                     callback(changes[key].newValue);
                 }
