@@ -3,8 +3,8 @@
 
 var $ = require('jquery');
 
-var Analytics = require('../../js/analytics');
-var Credentials = require('../../js/credentials');
+var Analytics = require('./analytics');
+var Credentials = require('./credentials');
 
 var Popin = function() {
     var only_match = 'only-match';

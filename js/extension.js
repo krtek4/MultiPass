@@ -1,11 +1,11 @@
 /*global chrome:True*/
 'use strict';
 
-var Analytics = require('../../js/analytics');
-var CredentialStorage = require('../../js/credential_storage');
+var Analytics = require('./analytics');
+var CredentialStorage = require('./credential_storage');
 
 // the popin and option pane needs this to save the temporary item
-window.Storage = require('../../js/storage');
+window.Storage = require('./storage');
 
 var Extension = function () {
     var tab_badges = {};
