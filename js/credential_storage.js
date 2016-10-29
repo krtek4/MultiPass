@@ -112,6 +112,10 @@ module.exports = function() {
 
     function register(callback) {
         Storage.register(variable_name, callback);
+
+        if(typeof(callback) !== 'undefined' && typeof(credentials) !== 'undefined') {
+            callback(credentials);
+        }
     }
 
     // retrieve the credentials from storage
