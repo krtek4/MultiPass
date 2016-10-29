@@ -26,7 +26,7 @@ var OptionPanel = function() {
             }, 1000);
         });
 
-        overlay.find('.overlay-confirm').on('click', function() {
+        overlay.find('.modal-confirm').on('click', function() {
             confirmation();
         });
 
