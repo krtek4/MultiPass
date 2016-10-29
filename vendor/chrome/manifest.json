@@ -5,8 +5,8 @@
     "short_name": "MultiPass",
     "description": "__MSG_extDescription__",
     "author": "Gilles Crettenand <gilles@crettenand.info>",
-    "homepage_url": "https://github.com/krtek4/MultiPass",
-    "version": "0.4.3",
+    "homepage_url": "http://gilles.crettenand.info/MultiPass/",
+    "version": "0.5.0",
 
     "default_locale": "en",
 

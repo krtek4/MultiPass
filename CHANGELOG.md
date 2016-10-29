@@ -4,6 +4,8 @@ MultiPass CHANGELOG
 VERSION 0 FIRST BLOOD
 ---------------------
 
+### Version 0.5.0 - 29/10/2016 - Better build system, fully translatable, small fixes
+
 ### Version 0.4.0 - 17/11/2014 - Highlight matching regex in popin, styling
 
     0.4.3	24/09/2015		Fix an issue where credential adding does not work
