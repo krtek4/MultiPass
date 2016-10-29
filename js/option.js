@@ -159,6 +159,8 @@ var OptionPanel = function() {
         $('a.export-credentials').on('click', export_credentials);
 
         $('button.clear-all').on('click', clear_credentials);
+
+        $('.multipass-version').text(chrome.runtime.getManifest()['version']);
     }
 
     return {
