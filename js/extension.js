@@ -56,6 +56,6 @@ var Extension = function () {
     };
 }();
 
-
+Analytics.view('/_generated_background_page.html');
 Analytics.event('BackgroundApp', 'loaded');
 Extension.init();

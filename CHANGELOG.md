@@ -7,6 +7,7 @@ VERSION 0 FIRST BLOOD
 ### Version 0.5.0 - 29/10/2016 - Better build system, fully translatable, small fixes
 
     0.5.1	30/10/2016		Fix an issue where newly added credentials are not available until restart
+    0.5.2	05/11/2016		Restore analytics
 
 ### Version 0.4.0 - 17/11/2014 - Highlight matching regex in popin, styling
 

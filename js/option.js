@@ -169,6 +169,7 @@ var OptionPanel = function() {
 }();
 
 $(function () {
+    Analytics.view('/options.html');
     Analytics.event('OptionPanel', 'opened');
     OptionPanel.init();
     Credentials.init();

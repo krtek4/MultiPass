@@ -53,6 +53,7 @@ var Popin = function() {
 }();
 
 $(function () {
+    Analytics.view('/popin.html');
     Analytics.event('Popin', 'opened');
     Popin.init();
     Credentials.init();

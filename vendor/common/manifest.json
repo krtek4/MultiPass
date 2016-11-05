@@ -5,7 +5,7 @@
     "short_name": "MultiPass",
     "description": "__MSG_extDescription__",
     "homepage_url": "http://gilles.crettenand.info/MultiPass/",
-    "version": "0.5.1",
+    "version": "0.5.2",
 
     "default_locale": "en",
 
@@ -42,5 +42,5 @@
         "http://*/*", "https://*/*"
     ],
 
-    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
+    "content_security_policy": "script-src 'self' https://www.google-analytics.com; object-src 'self'"
 }
