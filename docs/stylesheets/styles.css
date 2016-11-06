@@ -122,13 +122,12 @@ header ul {
 }
 
 header li {
-  width: 80px;
+  width: 134px;
   float:left;
   height:40px;
 }
 
 header li:first-child {
-    width: 188px;
     border-right: 1px solid #d2d2d2;
 }
 

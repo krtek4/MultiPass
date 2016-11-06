@@ -1,7 +1,7 @@
 MultiPass for basic authentication
 ==================================
 
-This Chrome extension allows you to register credential associated to a regular expression.
+This extension allows you to register credential associated to a regular expression.
 
 When you browse a website that requires HTTP basic authentication, if the URL match against
 one of the regular expression, the credentials will be automatically sent.
@@ -12,6 +12,16 @@ Chrome web store
 ----------------
 
 The extension is available on the Chrome web store: [MultiPass for HTTP basic authentication](https://chrome.google.com/webstore/detail/multipass-for-http-basic/enhldmjbphoeibbpdhmjkchohnidgnah).
+
+Firefox Add-ons
+---------------
+
+The extension is available as a Firefox add-on : [MultiPass](https://addons.mozilla.org/en-US/firefox/addon/multipass/).
+
+Opera add-ons
+-------------
+
+Currently awaiting moderation.
 
 Report an issue
 ---------------
