@@ -42,7 +42,7 @@ var Popin = function() {
     function init() {
         $('.option-link').on('click', optionLink);
 
-        chrome.tabs.getSelected(null, highlightUrlForTab);
+        chrome.tabs.query({active: true}, highlightUrlForTab);
         chrome.tabs.onUpdated.addListener(highlightUrlForTabId);
         chrome.tabs.onActivated.addListener(highlightUrlForStatus);
     }
