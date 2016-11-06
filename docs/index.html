@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Multipass - Easy Basic Auth for Google Chrome</title>
@@ -9,78 +9,94 @@
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
-        <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
+</head>
+<body>
+<div class="wrapper">
+    <header>
         <h1>Multipass</h1>
         <p>Do not bother with Basic Authentication ever again !</p>
 
         <ul>
-          <li><a href="https://chrome.google.com/webstore/detail/multipass-for-http-basic/enhldmjbphoeibbpdhmjkchohnidgnah">View On <strong>Chrome web store</strong></a></li>
-          <li><a href="https://github.com/krtek4/MultiPass">View On <strong>GitHub</strong></a></li>
+            <li>
+                <a href="https://chrome.google.com/webstore/detail/multipass-for-http-basic/enhldmjbphoeibbpdhmjkchohnidgnah">
+                    View On <strong>Chrome web store</strong>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/krtek4/MultiPass">
+                    View On <strong>GitHub</strong>
+                2</a>
+            </li>
         </ul>
 
-        <p class="view"><a href="https://github.com/krtek4/MultiPass">View the Project on GitHub <small>krtek4/MultiPass</small></a></p>
         <p class="view"><a href="https://github.com/krtek4/MultiPass/issues">Report an issue</a></p>
+    </header>
 
+    <section>
+        <h1>Easy basic authentication</h1>
 
+        <p>This Chrome extension allows you to register credential associated to a regular expression.</p>
 
-      </header>
-      <section>
-        <h1>
-<a name="multipass-for-basic-authentication" class="anchor" href="#multipass-for-basic-authentication"><span class="octicon octicon-link"></span></a>Easy basic authentication for Google Chrome</h1>
+        <p>When you browse a website that requires HTTP basic authentication, if the URL match against one of
+           the regular expression, the credentials will be automatically sent.</p>
 
-<p>This Chrome extension allows you to register credential associated to a regular expression.</p>
+        <p>No more cumbersome login popin, everything is done in the background.</p>
 
-<p>When you browse a website that requires HTTP basic authentication, if the URL match against one of the regular expression, the credentials will be automatically sent.</p>
+        <h2>Chrome web store</h2>
 
-<p>No more cumbersome login popin, everything is done in the background.</p>
+        <p>The extension is available on the Chrome web store:
+           <a href="https://chrome.google.com/webstore/detail/multipass-for-http-basic/enhldmjbphoeibbpdhmjkchohnidgnah">MultiPass for HTTP basic authentication</a>.</p>
 
-<h2>
-<a name="chrome-web-store" class="anchor" href="#chrome-web-store"><span class="octicon octicon-link"></span></a>Chrome web store</h2>
+        <h2>Report an issue</h2>
 
-<p>The extension is available on the <a href="https://chrome.google.com/webstore/detail/multipass-for-http-basic/enhldmjbphoeibbpdhmjkchohnidgnah">Chrome web store</a>.</p>
+        <p>If you want to report an issue, use the Github issue tracker:
+           <a href="https://github.com/krtek4/MultiPass/issues">Multipass issues</a>.</p>
 
-<h2>
-<a name="report-an-issue" class="anchor" href="#report-an-issue"><span class="octicon octicon-link"></span></a>Report an issue</h2>
+        <p>Please make sure the issue is not already opened.</p>
 
-<p>If you want to report an issue, use the <a href="https://github.com/krtek4/MultiPass/issues">Github issue tracker</a>.</p>
+        <h2>Use the development version</h2>
 
-<p>Please make sure the issue is not already opened.</p>
+        <p>If you want to use the development version, follow those steps :</p>
 
-<h2>
-<a name="use-the-development-version" class="anchor" href="#use-the-development-version"><span class="octicon octicon-link"></span></a>Use the development version</h2>
+        <ol>
+            <li>Clone the github repository : <code>git clone git@github.com:krtek4/MultiPass.git</code>.</li>
+            <li>Enter the directory : <code>cd MultiPass</code>.</li>
+            <li>Install dependencies : <code>npm install</code>.</li>
+            <li>Build the extension : <code>npm run build</code>.</li>
+            <li>Open the Extension panel in Chrome : Tools / Extensions.</li>
+            <li>Make sure the "Developer mode" checkbox is checked.</li>
+            <li>Click on "Load unpacked extension...", first browse to the directory where you cloned the extension and then select the
+                <code>build/chrome</code> folder.
+            </li>
+        </ol>
 
-<p>If you want to use the development version, follow those steps :</p>
+        <h2>Credits</h2>
 
-<ol>
-    <li>Clone the github repository : <code>git clone git@github.com:krtek4/MultiPass.git</code>.</li>
-    <li>Enter the directory : <code>cd MultiPass</code>.</li>
-    <li>Install dependencies : <code>npm install</code>.</li>
-    <li>Build the extension : <code>npm run build</code>.</li>
-    <li>Open the Extension panel in Chrome : Tools / Extensions.</li>
-    <li>Make sure the "Developer mode" checkbox is checked.</li>
-    <li>Click on "Load unpacked extension...", first browse to the directory where you cloned the extension and then select the <code>build/chrome</code> folder.</li>
-</ol>
-      </section>
-      <footer>
+        <ul>
+            <li><a href="http://gilles.crettenand.info">Gilles Crettenand</a>: original idea and development</li>
+            <li><a href="https://github.com/acrobat">Jeroen Thora</a>: Dutch translation</li>
+        </ul>
+    </section>
+
+    <footer>
         <p>This project is maintained by <a href="https://github.com/krtek4">krtek4</a></p>
         <p><small>Hosted on GitHub Pages</small></p>
         <p><small>Based on theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    </footer>
+</div>
 
-        ga('create', 'UA-1168006-9', 'auto');
-        ga('send', 'pageview');
-    </script>
-  </body>
+<script src="javascripts/scale.fix.js"></script>
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1168006-9', 'auto');
+    ga('send', 'pageview', '/githubpages/index.html');
+</script>
+</body>
 </html>
