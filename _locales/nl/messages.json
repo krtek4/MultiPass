@@ -1,0 +1,95 @@
+{
+    "extName": {
+        "message": "MultiPass voor HTTP basic authenticatie",
+    },
+    "extDescription": {
+        "message": "Log automatisch in via Basic Authenticatie doormiddel van een URL reguliere expressie."
+    },
+    "credentials_section": {
+        "message": "Inloggegevens"
+    },
+    "url_regexp": {
+        "message": "Url (regexp)"
+    },
+    "username": {
+        "message": "Gebruikersnaam"
+    },
+    "password": {
+        "message": "Wachtwoord"
+    },
+    "show_hide_password": {
+        "message": "Tonen / Verbergen"
+    },
+    "remove_credential": {
+        "message": "Verwijderen"
+    },
+    "edit_credential": {
+        "message": "Bewerken"
+    },
+    "add_credential": {
+        "message": "Toevoegen"
+    },
+    "clear_credential": {
+        "message": "Wissen"
+    },
+    "clear_credentials_modal_title": {
+        "message": "Wis alle inloggegevens"
+    },
+    "clear_credentials_modal_text": {
+        "message": "Bent u zeker dat u alle inloggegevens wil verwijderen?"
+    },
+    "modal_cancel": {
+        "message": "Annuleren"
+    },
+    "modal_yes": {
+        "message": "Ja"
+    },
+    "test_section": {
+        "message": "Test de reguliere expressie"
+    },
+    "tested_regex_label": {
+        "message": "De reguliere expressie:"
+    },
+    "tested_urls": {
+        "message": "Geteste URLs:"
+    },
+    "import_section": {
+        "message": "Importeren"
+    },
+    "import_description": {
+        "message": "U kan uw inloggegevens importeren in deze extensie. Dit is het bestandsformaat:"
+    },
+    "import_file": {
+        "message": "Te importeren bestanden"
+    },
+    "import_json": {
+        "message": "Te importeren JSON"
+    },
+    "import_what": {
+        "message": "Welke gegevens worden geïmporteerd?"
+    },
+    "import_nothing": {
+        "message": "-niets-",
+    },
+    "import_submit": {
+        "message": "Importeer"
+    },
+    "export_section": {
+        "message": "Exporteer"
+    },
+    "export_button": {
+        "message": "Download alle gegevens in JSON formaat."
+    },
+    "clear_section": {
+        "message": "Wis alle gegevens"
+    },
+    "clear_button": {
+        "message": "Wis alle gegevens"
+    },
+    "open_option_page": {
+        "message": "Open de opties pagina.",
+    },
+    "donate": {
+        "message": "Vind je dit een handige extensie? Doneer dan een klein bedrag:"
+    }
+}
