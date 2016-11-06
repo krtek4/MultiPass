@@ -64,6 +64,19 @@
         "description": "Yes button in the modal"
     },
 
+    "test_section": {
+        "message": "Test your regex",
+        "description": "Test section title"
+    },
+    "tested_regex_label": {
+        "message": "Your regex:",
+        "description": "Label of the test regex input"
+    },
+    "tested_urls": {
+        "message": "URLs under test:",
+        "description": "Title near the list of tested regex."
+    },
+
     "import_section": {
         "message": "Import",
         "description": "Import section title"

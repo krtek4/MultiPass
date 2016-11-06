@@ -47,6 +47,31 @@
                 </tfoot>
             </table>
 
+            <h2 data-i18n="test_section">Test your regex</h2>
+
+            <form class="test-form">
+                <table class="form-table">
+                    <tr>
+                        <td>
+                            <label for="test-regex" data-i18n="tested_regex_label">Your regex: </label>
+                        </td>
+                        <td>
+                            <input type="text" name="test-regex" id="test-regex">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="test-urls" data-i18n="tested_urls">URLs under test:</label>
+                        </td>
+                        <td>
+                            <ul id="test-urls" contenteditable="true">
+                                <li>http://www.example.com</li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
             <h2 data-i18n="import_section">Import</h2>
 
             <p data-i18n="import_description">You can import credentials into the extension. The file format is the following:</p>

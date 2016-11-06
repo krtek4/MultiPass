@@ -118,3 +118,20 @@ table.form-table td output ul {
     margin: 0;
 }
 
+#test-urls {
+    min-height: 4em;
+    border: 1px solid #bfbfbf;
+    border-radius: 2px;
+    box-sizing: border-box;
+    padding: 3px;
+    width: 97%;
+}
+
+#test-urls > div {
+    padding: 2px 0;
+    margin: 1px 0;
+}
+
+#test-urls > .matched {
+    background-color: #C0D860;
+}

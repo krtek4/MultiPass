@@ -132,6 +132,23 @@ var OptionPanel = function() {
         e.preventDefault();
     }
 
+    function restore_test_input() {
+        if($('#test-urls li').length == 0) {
+            $('#test-urls').append($('<li>http://www.example.com</li>'));
+        }
+    }
+
+    function test_regex() {
+        var regex = $('#test-regex').val();
+
+        $('#test-urls li').each(function(index, el) {
+            var re = new RegExp(regex);
+            var url = $(el).text().trim();
+
+            $(el).toggleClass('matched', re.test(url) && url.length > 0);
+        });
+    }
+
     function export_credentials(e) {
         Analytics.event('Exporter', 'exported');
 
@@ -155,6 +172,9 @@ var OptionPanel = function() {
         import_file_field.on('change', import_file);
         import_json_field.on('change', import_json);
         $('button.import-submit').on('click', import_credentials);
+
+        $('#test-urls').on('blur', restore_test_input);
+        $('#test-regex').on('keyup', test_regex);
 
         $('a.export-credentials').on('click', export_credentials);
 
