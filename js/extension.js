@@ -43,9 +43,35 @@ var Extension = function () {
         return CredentialStorage.getCredential(status, createBadge);
     }
 
+    function serveCredentialsAsHeader(status) {
+        for (var header in status.requestHeaders) {
+            if (header.name == 'Authorization') {
+                return {};
+            }
+        }
+
+        var credentials = retrieveCredentials(status);
+
+        if(credentials.authCredentials) {
+            var value = btoa(credentials.authCredentials.username + ':' + credentials.authCredentials.password);
+
+            status.requestHeaders.push({
+                name: 'Authorization',
+                value: 'Basic ' + value
+            });
+        }
+
+        return {requestHeaders: status.requestHeaders};
+    }
+
     function init() {
         CredentialStorage.register();
-        chrome.webRequest.onAuthRequired.addListener(retrieveCredentials, {urls: ['<all_urls>']}, ['blocking']);
+
+        if(chrome.webRequest.onAuthRequired) {
+            chrome.webRequest.onAuthRequired.addListener(retrieveCredentials, {urls: ['<all_urls>']}, ['blocking']);
+        } else {
+            chrome.webRequest.onBeforeSendHeaders.addListener(serveCredentialsAsHeader, {urls: ['<all_urls>']}, ['blocking', 'requestHeaders']);
+        }
 
         chrome.tabs.onUpdated.addListener(showBadgeForTabId);
         chrome.tabs.onActivated.addListener(showBadgeForStatus);
