@@ -8,6 +8,7 @@ VERSION 0 FIRST BLOOD
 
     0.5.1	30/10/2016		Fix an issue where newly added credentials are not available until restart
     0.5.2	05/11/2016		Restore analytics
+    0.5.3	06/11/2016		French translation
 
 ### Version 0.4.0 - 17/11/2014 - Highlight matching regex in popin, styling
 

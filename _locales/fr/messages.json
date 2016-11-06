@@ -6,6 +6,19 @@
         "message": "Connexion automatique à une authentification HTTP basique en utilisant des données basées sur une expression régulière pour l'URL."
     },
 
+    "credentials_section": {
+        "message": "Information de connexion"
+    },
+
+    "url_regexp": {
+        "message": "Url (regexp)"
+    },
+    "username": {
+        "message": "Nom d'utilisateur"
+    },
+    "password": {
+        "message": "Mot de passe"
+    },
     "show_hide_password": {
         "message": "Afficher / Cacher"
     },
@@ -18,8 +31,8 @@
     "add_credential": {
         "message": "Ajouter"
     },
-    "reset_credential": {
-        "message": "Reset"
+    "clear_credential": {
+        "message": "Vider"
     },
 
     "clear_credentials_modal_title": {
@@ -27,5 +40,52 @@
     },
     "clear_credentials_modal_text": {
         "message": "Êtes-vous sur de vouloir supprimer toutes les entrées ?"
+    },
+
+    "modal_cancel": {
+        "message": "Annuler"
+    },
+    "modal_yes": {
+        "message": "Oui"
+    },
+
+    "import_section": {
+        "message": "Importer"
+    },
+    "import_description": {
+        "message": "Vous pouvez importer des données. Le format de fichier est le suivant:"
+    },
+    "import_file": {
+        "message": "Fichiers à importer"
+    },
+    "import_json": {
+        "message": "JSON à importer"
+    },
+    "import_what": {
+        "message": "Que sera-t-il importer ?"
+    },
+    "import_nothing": {
+        "message": "-rien-"
+    },
+    "import_submit": {
+        "message": "Importer"
+    },
+
+    "export_section": {
+        "message": "Exporter"
+    },
+    "export_button": {
+        "message": "Télécharger les données au format JSON."
+    },
+
+    "clear_section": {
+        "message": "Supprimer toutes les entrées"
+    },
+    "clear_button": {
+        "message": "Supprimer toutes les entrées"
+    },
+
+    "open_option_page": {
+        "message": "Ouvrir la page des préférences."
     }
 }

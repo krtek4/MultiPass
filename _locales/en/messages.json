@@ -51,7 +51,7 @@
         "description": "Modal message title when clearing credentials"
     },
     "clear_credentials_modal_text": {
-        "message": "Are you sure you want to remove all credentials ?",
+        "message": "Are you sure you want to remove all credentials?",
         "description": "Modal message text when clearing credentials"
     },
 
@@ -63,7 +63,6 @@
         "message": "Yes",
         "description": "Yes button in the modal"
     },
-
 
     "import_section": {
         "message": "Import",
@@ -82,7 +81,7 @@
         "description": "Label of the import textarea for JSON"
     },
     "import_what": {
-        "message": " What will be imported?",
+        "message": "What will be imported?",
         "description": "Dry run of what will be imported from the JSON"
     },
     "import_nothing": {
