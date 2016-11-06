@@ -127,5 +127,10 @@
     "open_option_page": {
         "message": "Open the option page.",
         "description": "Open the option page link"
+    },
+
+    "donate": {
+        "message": "Like the extension? A small donation would be really nice:",
+        "description": "Text accompanying the donation button"
     }
 }

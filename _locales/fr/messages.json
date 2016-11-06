@@ -87,5 +87,9 @@
 
     "open_option_page": {
         "message": "Ouvrir la page des préférences."
+    },
+
+    "donate": {
+        "message": "Vous aimez cette extension ? Un petit gest est toujours le bienvenu:"
     }
 }
