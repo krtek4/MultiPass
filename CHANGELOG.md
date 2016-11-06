@@ -4,6 +4,8 @@ MultiPass CHANGELOG
 VERSION 0 FIRST BLOOD
 ---------------------
 
+### Version 0.6.0 - 06/11/2016 - Regex tester, Firefox support
+
 ### Version 0.5.0 - 29/10/2016 - Better build system, fully translatable, small fixes
 
     0.5.1	30/10/2016		Fix an issue where newly added credentials are not available until restart
