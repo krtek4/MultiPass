@@ -48,3 +48,4 @@ Credits
 
 * [Gilles Crettenand](http://gilles.crettenand.info): original idea and development
 * [Jeroen Thora](https://github.com/acrobat): Dutch translation
+* [Pascal Thormeier](https://github.com/thormeier): German translation
