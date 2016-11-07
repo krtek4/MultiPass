@@ -1,0 +1,105 @@
+{
+    "extName": {
+        "message": "MultiPass für Authentifizierung mit HTTP Basic"
+    },
+    "extDescription": {
+        "message": "Automatisch bei HTTP Basic mit Daten, basierend auf URL-Regexp, einloggen."
+    },
+
+    "credentials_section": {
+        "message": "Zugangsdaten"
+    },
+
+    "url_regexp": {
+        "message": "Url (regulärer Ausdruck)"
+    },
+    "username": {
+        "message": "Benutzername"
+    },
+    "password": {
+        "message": "Passwort"
+    },
+    "show_hide_password": {
+        "message": "Anzeigen / Verbergen"
+    },
+    "remove_credential": {
+        "message": "Entfernen"
+    },
+    "edit_credential": {
+        "message": "Bearbeiten"
+    },
+    "add_credential": {
+        "message": "Hinzufügen"
+    },
+    "clear_credential": {
+        "message": "Leeren"
+    },
+
+    "clear_credentials_modal_title": {
+        "message": "Alle Zugangsdaten leeren"
+    },
+    "clear_credentials_modal_text": {
+        "message": "Sind Sie sicher, dass Sie alle Zugangsdaten entfernen möchten?"
+    },
+
+    "modal_cancel": {
+        "message": "Abbrechen"
+    },
+    "modal_yes": {
+        "message": "Ja"
+    },
+
+    "test_section": {
+        "message": "Ihren regulären Ausdruck testen"
+    },
+    "tested_regex_label": {
+        "message": "Ihr regulärer Ausdruck:"
+    },
+    "tested_urls": {
+        "message": "URLs, die getestet werden:"
+    },
+
+    "import_section": {
+        "message": "Importieren"
+    },
+    "import_description": {
+        "message": "Sie können Zugangsdaten in die Erweiterung importieren. Das Dateformat ist folgendes:"
+    },
+    "import_file": {
+        "message": "Zu importierende Dateien"
+    },
+    "import_json": {
+        "message": "Zu importierendes JSON"
+    },
+    "import_what": {
+        "message": "Was wird importiert?"
+    },
+    "import_nothing": {
+        "message": "-nichts-"
+    },
+    "import_submit": {
+        "message": "Importieren"
+    },
+
+    "export_section": {
+        "message": "Exportieren"
+    },
+    "export_button": {
+        "message": "Zugangsdaten als JSON-Datei downloaden."
+    },
+
+    "clear_section": {
+        "message": "Alle Zugangsdaten leeren"
+    },
+    "clear_button": {
+        "message": "Alle Zugangsdaten leeren"
+    },
+
+    "open_option_page": {
+        "message": "Optionen öffnen"
+    },
+
+    "donate": {
+        "message": "Mögen Sie diese Erweiterung? Eine kleine Spende wäre wirklich schön:"
+    }
+}
