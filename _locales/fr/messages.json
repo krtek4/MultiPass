@@ -49,6 +49,16 @@
         "message": "Oui"
     },
 
+    "test_section": {
+        "message": "Testez votre expression régulière"
+    },
+    "tested_regex_label": {
+        "message": "Votre expression régulière:"
+    },
+    "tested_urls": {
+        "message": "URLs sur lesquelles tester:"
+    },
+
     "import_section": {
         "message": "Importer"
     },
