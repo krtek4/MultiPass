@@ -136,6 +136,7 @@ var OptionPanel = function() {
         if($('#test-urls li').length == 0) {
             $('#test-urls').append($('<li>http://www.example.com</li>'));
         }
+        test_regex();
     }
 
     function test_regex() {
