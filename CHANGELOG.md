@@ -7,6 +7,7 @@ VERSION 0 FIRST BLOOD
 ### Version 0.6.0 - 06/11/2016 - Regex tester, Firefox support
 
     0.6.1	06/11/2016		Opera support
+    0.6.2	13/11/2016		German and Dutch translation, fix issue with regex highlighting
 
 ### Version 0.5.0 - 29/10/2016 - Better build system, fully translatable, small fixes
 
