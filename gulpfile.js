@@ -12,7 +12,7 @@ function assets(browser) {
         var bootstrap = gulp.src('node_modules/chrome-bootstrap/chrome-bootstrap.css')
             .pipe(gulp.dest('./build/' + browser + '/css'));
 
-        var assets = gulp.src(['*.html', 'images/**/*', 'css/**/*', '_locales/**/*'], {base:"."})
+        var assets = gulp.src(['*.html', 'icons/**/*', 'css/**/*', '_locales/**/*'], {base:"."})
             .pipe(gulp.dest('./build/' + browser));
 
         return merge(assets, bootstrap);
