@@ -1,6 +1,6 @@
 {
     "extName": {
-        "message": "MultiPass voor HTTP basic authenticatie",
+        "message": "MultiPass voor HTTP basic authenticatie"
     },
     "extDescription": {
         "message": "Log automatisch in via Basic Authenticatie doormiddel van een URL reguliere expressie."
@@ -69,7 +69,7 @@
         "message": "Welke gegevens worden geïmporteerd?"
     },
     "import_nothing": {
-        "message": "-niets-",
+        "message": "-niets-"
     },
     "import_submit": {
         "message": "Importeer"
@@ -87,7 +87,7 @@
         "message": "Wis alle gegevens"
     },
     "open_option_page": {
-        "message": "Open de opties pagina.",
+        "message": "Open de opties pagina."
     },
     "donate": {
         "message": "Vind je dit een handige extensie? Doneer dan een klein bedrag:"
