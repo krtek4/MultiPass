@@ -16,6 +16,10 @@ var Popin = function() {
     }
 
     function highlightUrlForTab(tab) {
+        if(Array.isArray(tab)) {
+            tab = tab[0];
+        }
+
         var container = $('.credentials');
         container.find('tr').removeClass(only_match + ' ' + multiple_match);
 
@@ -42,7 +46,7 @@ var Popin = function() {
     function init() {
         $('.option-link').on('click', optionLink);
 
-        chrome.tabs.query({active: true}, highlightUrlForTab);
+        chrome.tabs.query({currentWindow: true, active: true}, highlightUrlForTab);
         chrome.tabs.onUpdated.addListener(highlightUrlForTabId);
         chrome.tabs.onActivated.addListener(highlightUrlForStatus);
     }
