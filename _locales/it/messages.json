@@ -1,0 +1,95 @@
+{
+    "extName": {
+        "message": "MultiPass per l'autenticazione HTTP di base"
+    },
+    "extDescription": {
+        "message": "Connessione automatica ad una autenticazione di base HTTP utilizzando dati basati su URL definite da espressioni regolari"
+    },
+    "credentials_section": {
+        "message": "Credenziali"
+    },
+    "url_regexp": {
+        "message": "Url (espressione regolare)"
+    },
+    "username": {
+        "message": "Username"
+    },
+    "password": {
+        "message": "Password"
+    },
+    "show_hide_password": {
+        "message": "Mostra / Nascondi"
+    },
+    "remove_credential": {
+        "message": "Rimuovi"
+    },
+    "edit_credential": {
+        "message": "Modifica"
+    },
+    "add_credential": {
+        "message": "Aggiungi"
+    },
+    "clear_credential": {
+        "message": "Svuota"
+    },
+    "clear_credentials_modal_title": {
+        "message": "Svuota tutte le credenziali"
+    },
+    "clear_credentials_modal_text": {
+        "message": "Sei sicuro di voler svuotare tutte le credenziali?"
+    },
+    "modal_cancel": {
+        "message": "Cancella"
+    },
+    "modal_yes": {
+        "message": "Sì"
+    },
+    "test_section": {
+        "message": "Prova la tua espressione regolare"
+    },
+    "tested_regex_label": {
+        "message": "La tua espressione regolare:"
+    },
+    "tested_urls": {
+        "message": "URL testate:"
+    },
+    "import_section": {
+        "message": "Importa"
+    },
+    "import_description": {
+        "message": "Puoi importare delle credenziali nell'estensione. Il formato file è il seguente:"
+    },
+    "import_file": {
+        "message": "File da importare"
+    },
+    "import_json": {
+        "message": "JSON da importare"
+    },
+    "import_what": {
+        "message": "che cosa sarà importato?"
+    },
+    "import_nothing": {
+        "message": "-vuoto-"
+    },
+    "import_submit": {
+        "message": "Importa"
+    },
+    "export_section": {
+        "message": "Esporta"
+    },
+    "export_button": {
+        "message": "Scarica le credenziali in formato JSON."
+    },
+    "clear_section": {
+        "message": "Svuota tutte le credenziali"
+    },
+    "clear_button": {
+      "message": "Svuota tutte le credenziali"
+    },
+    "open_option_page": {
+        "message": "Apri la pagina delle opzioni"
+    },
+    "donate": {
+        "message": "Ti piace questa estensione? Una piccola donazione ci farebbe immenso piacere:"
+    }
+}
