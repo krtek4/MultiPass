@@ -32,12 +32,10 @@ module.exports = function() {
     }
 
     function register(key, callback) {
-        if (typeof(callback) !== 'undefined') {
-            if(typeof(listener_callbacks[key]) == 'undefined') {
-                listener_callbacks[key] = [];
-            }
-            listener_callbacks[key].push(callback);
+        if(typeof(listener_callbacks[key]) == 'undefined') {
+            listener_callbacks[key] = [];
         }
+        listener_callbacks[key].push(callback);
 
         storage.onChanged.addListener(function (changes, namespace) {
             if (namespace === storageNamespace && changes.hasOwnProperty(key)) {

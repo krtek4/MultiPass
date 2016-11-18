@@ -60,10 +60,7 @@ module.exports = function() {
 
     function register(callback) {
         Storage.register(variable_name, callback);
-
-        if(typeof(callback) !== 'undefined' && typeof(credentials) !== 'undefined') {
-            callback(credentials);
-        }
+        callback(credentials);
     }
 
     function updateCredentials(result)
