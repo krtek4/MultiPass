@@ -102,6 +102,8 @@ module.exports = function() {
     }
 
     function edit(e) {
+        reset_form();
+
         var url = document.getElementById('url');
         var username = document.getElementById('username');
         var password = document.getElementById('password');
@@ -112,7 +114,7 @@ module.exports = function() {
 
         url.value = tr.getElementsByClassName('url')[0].textContent;
         username.value = tr.getElementsByClassName('username')[0].textContent;
-        password.value = tr.getElementsByClassName('password')[0].textContent;
+        password.value = tr.getElementsByClassName('password-real')[0].textContent;
 
         document.getElementsByClassName('credential-form-submit')[0].textContent = Translator.translate('edit_credential');
     }
@@ -120,6 +122,7 @@ module.exports = function() {
     function reset_form() {
         var el = document.querySelector('tr.editing');
         if(el) el.classList.remove('editing');
+
         document.getElementsByClassName('credential-form-submit')[0].textContent = Translator.translate('add_credential');
     }
 
