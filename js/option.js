@@ -1,7 +1,5 @@
 'use strict';
 
-var $ = require('jquery');
-
 var Analytics = require('./analytics');
 var Credentials = require('./credentials');
 var CredentialStorage = require('./credential_storage');
@@ -16,50 +14,53 @@ var OptionPanel = function() {
     var import_json_field;
 
     function modal(title, content, confirmation) {
-        var overlay = $($('.overlay').clone());
+        var overlay = document.getElementsByClassName('overlay')[0].cloneNode(true);
 
-        overlay.removeAttr('style');
-        overlay.find('button, .close-button').on('click', function() {
-            overlay.addClass('transparent');
-            setTimeout(function () {
-                overlay.remove();
-            }, 1000);
-        });
+        overlay.removeAttribute('style');
 
-        overlay.find('.modal-confirm').on('click', function() {
-            confirmation();
-        });
-
-        overlay.find('.overlay-title').html(title);
-        overlay.find('.overlay-content').html(content);
-
-        overlay.on('click', function () {
-            overlay.find('.page').addClass('pulse');
-            overlay.find('.page').on('webkitAnimationEnd', function() {
-                $(this).removeClass('pulse');
+        var buttons = overlay.querySelectorAll('button, .close-button');
+        [].forEach.call(buttons, function (el) {
+            el.addEventListener('click', function() {
+                overlay.classList.add('transparent');
+                setTimeout(function () {
+                    overlay.parentNode.removeChild(overlay);
+                }, 1000);
             });
         });
 
-        overlay.find('.page').on('click', function(e) {
+        overlay.querySelector('.modal-confirm').addEventListener('click', confirmation);
+
+        overlay.querySelector('.overlay-title').innerHTML = title;
+        overlay.querySelector('.overlay-content').innerHTML = content;
+
+        overlay.addEventListener('click', function () {
+            overlay.querySelector('.page').classList.add('pulse');
+            overlay.querySelector('.page').addEventListener('webkitAnimationEnd', function(e) {
+                e.target.classList.remove('pulse');
+            });
+        });
+
+        overlay.querySelector('.page').addEventListener('click', function(e) {
             e.stopPropagation();
         });
 
-        $('body').append(overlay);
+        document.body.appendChild(overlay);
     }
 
     function update_output_credentials() {
-        var ul = $('<ul>');
-        import_output.empty().append(ul);
+        var ul = document.createElement('ul');
 
         var display_credentials = credentials.concat(file_credentials);
 
         for (var key in display_credentials) {
             if (display_credentials.hasOwnProperty(key)) {
                 var c = display_credentials[key];
-                var li = $('<li>' + c.url + ' : ' + c.username + ' - ' + c.password + '</li>');
-                ul.append(li);
+                ul.innerHTML += '<li>' + c.url + ' : ' + c.username + ' - ' + c.password + '</li>';
             }
         }
+
+        import_output.innerHTML = '';
+        import_output.appendChild(ul);
     }
 
     function parse_json(text) {
@@ -108,7 +109,7 @@ var OptionPanel = function() {
     function import_json() {
         Analytics.event('Importer', 'JSON added');
 
-        credentials = parse_json(import_json_field.val());
+        credentials = parse_json(import_json_field.value);
         update_output_credentials();
     }
 
@@ -125,28 +126,30 @@ var OptionPanel = function() {
 
         credentials = [];
         file_credentials = [];
-        import_output.empty();
-        import_file_field.val('');
-        import_json_field.val('');
+        import_output.innerHTML = '';
+        import_file_field.value = '';
+        import_json_field.value = '';
 
         e.preventDefault();
     }
 
     function restore_test_input() {
-        if($('#test-urls li').length == 0) {
-            $('#test-urls').append($('<li>http://www.example.com</li>'));
+        var lis = document.querySelectorAll('#test-urls li');
+        if(lis.length == 0) {
+            document.getElementById('test-urls').innerHTML = '<li>http://www.example.com</li>';
         }
         test_regex();
     }
 
     function test_regex() {
-        var regex = $('#test-regex').val();
+        var regex = document.getElementById('test-regex').value;
 
-        $('#test-urls li').each(function(index, el) {
+        var lis = document.querySelectorAll('#test-urls li');
+        [].forEach.call(lis, function (el) {
             var re = new RegExp(regex);
-            var url = $(el).text().trim();
+            var url = el.innerText.trim();
 
-            $(el).toggleClass('matched', re.test(url) && url.length > 0);
+            el.classList.toggle('matched', re.test(url) && url.length > 0);
         });
     }
 
@@ -154,7 +157,7 @@ var OptionPanel = function() {
         Analytics.event('Exporter', 'exported');
 
         var data = 'text/json;charset=utf-8,' + encodeURIComponent(CredentialStorage.asJSON());
-        $(e.currentTarget).attr('href', 'data:' + data);
+        e.target.setAttribute('href', 'data:' + data);
     }
 
     function clear_credentials(e) {
@@ -165,23 +168,23 @@ var OptionPanel = function() {
     }
 
     function init() {
-        import_output = $('output.import-list');
-        import_file_field = $('#import-file');
-        import_json_field = $('#import-json');
+        import_output = document.querySelector('output.import-list');
+        import_file_field = document.getElementById('import-file');
+        import_json_field = document.getElementById('import-json');
 
 
-        import_file_field.on('change', import_file);
-        import_json_field.on('change', import_json);
-        $('button.import-submit').on('click', import_credentials);
+        import_file_field.addEventListener('change', import_file);
+        import_json_field.addEventListener('change', import_json);
+        document.querySelector('button.import-submit').addEventListener('click', import_credentials);
 
-        $('#test-urls').on('blur', restore_test_input);
-        $('#test-regex').on('keyup', test_regex);
+        document.getElementById('test-urls').addEventListener('blur', restore_test_input);
+        document.getElementById('test-regex').addEventListener('keyup', test_regex);
 
-        $('a.export-credentials').on('click', export_credentials);
+        document.querySelector('a.export-credentials').addEventListener('click', export_credentials);
 
-        $('button.clear-all').on('click', clear_credentials);
+        document.querySelector('button.clear-all').addEventListener('click', clear_credentials);
 
-        $('.multipass-version').text(chrome.runtime.getManifest()['version']);
+        document.getElementsByClassName('multipass-version')[0].innerText = chrome.runtime.getManifest()['version'];
     }
 
     return {
@@ -189,7 +192,7 @@ var OptionPanel = function() {
     };
 }();
 
-$(function () {
+document.addEventListener('DOMContentLoaded', function () {
     Analytics.view('/options.html');
     Analytics.event('OptionPanel', 'opened');
     OptionPanel.init();
