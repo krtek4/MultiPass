@@ -20,8 +20,5 @@
     "gulp-zip": "*",
     "merge-stream": "*",
     "webpack-stream": "*"
-  },
-  "dependencies": {
-    "jquery": "^3.1.1"
   }
 }
