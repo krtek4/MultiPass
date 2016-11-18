@@ -89,7 +89,7 @@ var Extension = function () {
                 Analytics.event('BackgroundApp', 'no credentials found');
             } else {
                 if (statuses[status.tabId].credentials.length > 1) {
-                    Analytics.event('BackgroundApp', 'multiple credentials');
+                    Analytics.event('BackgroundApp', 'multiple credentials', statuses[status.tabId].credentials.length);
                 }
 
                 if (statuses[status.tabId].count > max_try) {
@@ -119,6 +119,5 @@ var Extension = function () {
     };
 }();
 
-Analytics.view('/_generated_background_page.html');
-Analytics.event('BackgroundApp', 'loaded');
+Analytics.view('Background Page');
 Extension.init();

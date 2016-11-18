@@ -76,8 +76,7 @@ var OptionPanel = function() {
                 }
             }
         } catch (err) {
-            Analytics.event('Importer', 'malformed JSON');
-            console.error('JSON is malformed : ||' + text + '||');
+            Analytics.exception('malformed JSON');
         }
 
         return result;
@@ -88,13 +87,12 @@ var OptionPanel = function() {
             file_credentials = file_credentials.concat(parse_json(event.target.result));
             update_output_credentials();
         } else {
-            console.error('Error reading the file.');
-            Analytics.event('Importer', 'file error');
+            Analytics.exception('File importation error');
         }
     }
 
     function import_file(e) {
-        Analytics.event('Importer', 'file added');
+        Analytics.interaction('Importer', 'file added');
 
         var files = e.target.files;
         var len = files.length;
@@ -107,14 +105,14 @@ var OptionPanel = function() {
     }
 
     function import_json() {
-        Analytics.event('Importer', 'JSON added');
+        Analytics.interaction('Importer', 'JSON added');
 
         credentials = parse_json(import_json_field.value);
         update_output_credentials();
     }
 
     function import_credentials(e) {
-        Analytics.event('Importer', 'imported');
+        Analytics.interaction('Importer', 'imported');
 
         var new_credentials = credentials.concat(file_credentials);
 
@@ -154,14 +152,14 @@ var OptionPanel = function() {
     }
 
     function export_credentials(e) {
-        Analytics.event('Exporter', 'exported');
+        Analytics.interaction('Exporter', 'exported');
 
         var data = 'text/json;charset=utf-8,' + encodeURIComponent(CredentialStorage.asJSON());
         e.target.setAttribute('href', 'data:' + data);
     }
 
     function clear_credentials(e) {
-        Analytics.event('Credentials', 'cleared');
+        Analytics.interaction('Credentials', 'cleared');
 
         modal(Translator.translate('clear_credentials_modal_title'), Translator.translate('clear_credentials_modal_text'), CredentialStorage.clearAll);
         e.preventDefault();
@@ -194,8 +192,7 @@ var OptionPanel = function() {
 }();
 
 document.addEventListener('DOMContentLoaded', function () {
-    Analytics.view('/options.html');
-    Analytics.event('OptionPanel', 'opened');
+    Analytics.view('Option Panel');
     OptionPanel.init();
     Credentials.init();
 });

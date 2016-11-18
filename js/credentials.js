@@ -45,7 +45,7 @@ module.exports = function() {
         star.style.display = password_shown ? 'inline' : 'none';
         real.style.display = password_shown ? 'none' : 'inline';
 
-        Analytics.event('Credentials', 'password visibility toggled');
+        Analytics.interaction('Credentials', 'password visibility toggled', password_shown ? 'hide' : 'show');
     }
 
     function submit(e) {
@@ -67,7 +67,7 @@ module.exports = function() {
                 var v = values[key];
 
                 if(v === '') {
-                    console.error('Error - ' + key + ' : ' + v + ' is empty !');
+                    Analytics.exception('Form error : ' + key + ' is empty.');
                     valid = false;
                 }
             }
@@ -87,10 +87,7 @@ module.exports = function() {
 
             reset_form();
 
-            Analytics.event('Credentials', 'added');
-        } else {
-            Analytics.event('Credentials', 'error in form');
-
+            Analytics.interaction('Credentials', 'added');
         }
     }
 
@@ -98,7 +95,7 @@ module.exports = function() {
         var url = e.target.getAttribute('data-url');
         CredentialStorage.removeCredential(url);
 
-        Analytics.event('Credentials', 'removed');
+        Analytics.interaction('Credentials', 'removed');
     }
 
     function edit(e) {

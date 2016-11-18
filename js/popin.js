@@ -9,7 +9,7 @@ var Popin = function() {
     var multiple_match = 'multiple-match';
 
     function optionLink() {
-        Analytics.event('Popin', 'option link');
+        Analytics.interaction('Popin', 'option link');
         chrome.runtime.openOptionsPage();
     }
 
@@ -62,8 +62,7 @@ var Popin = function() {
 }();
 
 document.addEventListener('DOMContentLoaded', function () {
-    Analytics.view('/popin.html');
-    Analytics.event('Popin', 'opened');
+    Analytics.view('Popin');
     Popin.init();
     Credentials.init();
 });
