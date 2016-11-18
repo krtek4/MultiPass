@@ -9,6 +9,7 @@ VERSION 0 FIRST BLOOD
     0.6.1	06/11/2016		Opera support
     0.6.2	13/11/2016		German and Dutch translation, fix issue with regex highlighting
     0.6.3	18/11/2016		Remove jQuery dependency
+    0.6.4	18/11/2016		Improve tester, fix edition, improve analytics
 
 ### Version 0.5.0 - 29/10/2016 - Better build system, fully translatable, small fixes
 
