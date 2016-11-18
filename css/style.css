@@ -128,9 +128,9 @@ table.form-table td output ul {
     width: 97%;
 }
 
-#test-urls > div {
-    padding: 2px 0;
-    margin: 1px 0;
+#test-urls > li {
+    padding: 2px;
+    margin: 1px;
 }
 
 #test-urls > .matched {

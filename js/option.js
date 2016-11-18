@@ -178,6 +178,7 @@ var OptionPanel = function() {
         document.querySelector('button.import-submit').addEventListener('click', import_credentials);
 
         document.getElementById('test-urls').addEventListener('blur', restore_test_input);
+        document.getElementById('test-urls').addEventListener('keyup', test_regex);
         document.getElementById('test-regex').addEventListener('keyup', test_regex);
 
         document.querySelector('a.export-credentials').addEventListener('click', export_credentials);
