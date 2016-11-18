@@ -1,26 +1,24 @@
 'use strict';
 
-var $ = require('jquery');
-
 var Analytics = require('./analytics');
 var CredentialStorage = require('./credential_storage');
 var Storage = require('./storage');
 var Translator = require('./translator');
 
 module.exports = function() {
-    var container = $('.credentials');
     var password_stars_class = 'password-stars';
     var password_real_class = 'password-real';
 
     var storage_key = 'temporary-credentials';
 
     function display_credentials(credentials) {
-        container.children().remove();
+        var container = document.getElementsByClassName('credentials')[0];
+        container.innerHTML = '';
 
         for (var key in credentials) {
             if (credentials.hasOwnProperty(key)) {
                 var c = credentials[key];
-                var elem = $(
+                container.innerHTML +=
                     '<tr>' +
                         '<td class="url">' + c.url + '</td>' +
                         '<td class="username">' + c.username + '</td>' +
@@ -33,18 +31,19 @@ module.exports = function() {
                             '<button class="remove" data-url="' + c.url + '">' + Translator.translate('remove_credential') + '</button>' + '' +
                             '<button class="edit" data-url="' + c.url + '">' + Translator.translate('edit_credential') + '</button>' + '' +
                         '</td>' +
-                    '</tr>'
-                );
-
-                container.prepend(elem);
+                    '</tr>';
             }
         }
     }
 
     function togglePassword(e) {
-        var password = $(e.currentTarget).parent();
-        password.find('.' + password_stars_class).toggle();
-        password.find('.' + password_real_class).toggle();
+        var password = e.target.parentNode;
+        var star = password.getElementsByClassName(password_stars_class)[0];
+        var real = password.getElementsByClassName(password_real_class)[0];
+
+        var password_shown = star.style.display == 'none';
+        star.style.display = password_shown ? 'inline' : 'none';
+        real.style.display = password_shown ? 'none' : 'inline';
 
         Analytics.event('Credentials', 'password visibility toggled');
     }
@@ -52,14 +51,14 @@ module.exports = function() {
     function submit(e) {
         e.preventDefault();
 
-        var url = $('#url');
-        var username = $('#username');
-        var password = $('#password');
+        var url = document.getElementById('url');
+        var username = document.getElementById('username');
+        var password = document.getElementById('password');
 
         var values = {
-            url: url.val(),
-            username: username.val(),
-            password: password.val()
+            url: url.value,
+            username: username.value,
+            password: password.value
         };
 
         var valid = true;
@@ -75,16 +74,16 @@ module.exports = function() {
         }
 
         if(valid) {
-            var old = $('tr.editing .url');
-            if(old.length > 0 && old.text().length > 0) {
-                CredentialStorage.removeCredential(old.text());
+            var old = document.querySelector('tr.editing .url');
+            if(old && old.innerText.length > 0) {
+                CredentialStorage.removeCredential(old.innerText);
             }
 
             CredentialStorage.addCredential(values);
 
-            url.val('');
-            username.val('');
-            password.val('');
+            url.value = '';
+            username.value = '';
+            password.value = '';
 
             reset_form();
 
@@ -96,54 +95,70 @@ module.exports = function() {
     }
 
     function remove(e) {
-        var url = $(e.currentTarget).data('url');
+        var url = e.target.getAttribute('data-url');
         CredentialStorage.removeCredential(url);
 
         Analytics.event('Credentials', 'removed');
     }
 
     function edit(e) {
-        var url = $('#url');
-        var username = $('#username');
-        var password = $('#password');
+        var url = document.getElementById('url');
+        var username = document.getElementById('username');
+        var password = document.getElementById('password');
 
-        var tr = $(e.currentTarget).parents('tr');
+        var tr = e.target.closest('tr');
 
-        tr.addClass('editing');
+        tr.classList.add('editing');
 
-        url.val(tr.find('.url').text());
-        username.val(tr.find('.username').text());
-        password.val(tr.find('.' + password_real_class).text());
+        url.value = tr.getElementsByClassName('url')[0].textContent;
+        username.value = tr.getElementsByClassName('username')[0].textContent;
+        password.value = tr.getElementsByClassName('password')[0].textContent;
 
-        $('.credential-form-submit').text(Translator.translate('edit_credential'));
+        document.getElementsByClassName('credential-form-submit')[0].textContent = Translator.translate('edit_credential');
     }
 
     function reset_form() {
-        $('tr.editing').removeClass('editing');
-        $('.credential-form-submit').text(Translator.translate('add_credential'));
+        var el = document.querySelector('tr.editing');
+        if(el) el.classList.remove('editing');
+        document.getElementsByClassName('credential-form-submit')[0].textContent = Translator.translate('add_credential');
     }
 
     function init() {
         CredentialStorage.register(display_credentials);
 
-        $(document).on('submit', '#credential-form', submit);
-        $(document).on('click', '.credential-form-reset', reset_form);
-        $(document).on('click', '.remove', remove);
-        $(document).on('click', '.edit', edit);
-        $(document).on('click', '.show-password', togglePassword);
+        document.getElementById('credential-form').addEventListener('submit', submit);
+
+        document.addEventListener('click', function(e) {
+            if(e.target.matches('.credential-form-reset')) {
+                e.stopPropagation();
+                reset_form(e);
+            }
+            if(e.target.matches('.remove')) {
+                e.stopPropagation();
+                remove(e);
+            }
+            if(e.target.matches('.edit')) {
+                e.stopPropagation();
+                edit(e);
+            }
+            if(e.target.matches('.show-password')) {
+                e.stopPropagation();
+                togglePassword(e);
+            }
+        });
 
         Storage.get(storage_key, function(result) {
-            $('#url').val(result.url || '');
-            $('#username').val(result.username || '');
-            $('#password').val(result.password || '');
+            document.getElementById('url').value = result.url || '';
+            document.getElementById('username').value = result.username || '';
+            document.getElementById('password').value = result.password || '';
 
             Storage.set(storage_key, {});
         });
 
         addEventListener('unload', function () {
-            var url = $('#url').val();
-            var username = $('#username').val();
-            var password = $('#password').val();
+            var url = document.getElementById('url').value;
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
 
             var values = {
                 url: url,
