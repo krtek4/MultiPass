@@ -8,15 +8,8 @@ var CredentialStorage = require('./credential_storage');
 window.Storage = require('./storage');
 
 var Extension = function () {
-    var tab_badges = {};
-
-    function createBadge(text, color, credential, tab_id) {
-        tab_badges[tab_id] = {
-            text: text,
-            color: color,
-            regexp: CredentialStorage.getRegexp(credential)
-        };
-    }
+    var statuses = {};
+    var max_try = 5;
 
     function showBadeForTab(tab) {
         showBadge(tab.id, tab.url);
@@ -31,16 +24,42 @@ var Extension = function () {
     }
 
     function showBadge(tab_id, url) {
-        if (tab_badges.hasOwnProperty(tab_id) && tab_badges[tab_id].regexp.test(url)) {
-            chrome.browserAction.setBadgeText({ text: tab_badges[tab_id].text });
-            chrome.browserAction.setBadgeBackgroundColor({ color: tab_badges[tab_id].color });
+        var re = statuses.hasOwnProperty(tab_id) && statuses[tab_id].credentials.length > 0 ?
+            new RegExp(statuses[tab_id].credentials[0].url) : false;
+
+        if (re !== false && re.test(url)) {
+            var color = statuses[tab_id].credentials.length > 1 ? '#FFFF00' : '#00FF00';
+            if(statuses[tab_id].count > max_try) { // fail
+                color = '#FF0000';
+            }
+
+            chrome.browserAction.setBadgeText({ text: ' ' });
+            chrome.browserAction.setBadgeBackgroundColor({ color: color });
         } else {
             chrome.browserAction.setBadgeText({text: ''});
+            delete statuses[tab_id];
         }
     }
 
     function retrieveCredentials(status) {
-        return CredentialStorage.getCredential(status, createBadge);
+        var credentials = CredentialStorage.getCredentials(status);
+
+        if(statuses.hasOwnProperty(status.tabId) && statuses[status.tabId].requestId == status.requestId) {
+            statuses[status.tabId].count += 1;
+        } else {
+            statuses[status.tabId] = {
+                credentials: credentials,
+                count: 0,
+                requestId: status.requestId
+            };
+        }
+
+        return credentials.length == 0 || statuses[status.tabId].count > max_try ? {} : {
+            authCredentials: {
+                username: credentials[0].username,
+                password: credentials[0].password
+            }
+        };
     }
 
     function serveCredentialsAsHeader(status) {
@@ -64,6 +83,24 @@ var Extension = function () {
         return {requestHeaders: status.requestHeaders};
     }
 
+    function suggester(status) {
+        if(statuses.hasOwnProperty(status.tabId)) {
+            if(statuses[status.tabId].credentials.length == 0) {
+                Analytics.event('BackgroundApp', 'no credentials found');
+            } else {
+                if (statuses[status.tabId].credentials.length > 1) {
+                    Analytics.event('BackgroundApp', 'multiple credentials');
+                }
+
+                if (statuses[status.tabId].count > max_try) {
+                    Analytics.event('BackgroundApp', 'failed authentication');
+                } else {
+                    Analytics.event('BackgroundApp', 'authentication sent');
+                }
+            }
+        }
+    }
+
     function init() {
         CredentialStorage.register();
 
@@ -72,6 +109,8 @@ var Extension = function () {
         } else {
             chrome.webRequest.onBeforeSendHeaders.addListener(serveCredentialsAsHeader, {urls: ['<all_urls>']}, ['blocking', 'requestHeaders']);
         }
+
+        chrome.webRequest.onCompleted.addListener(suggester, {urls: ['<all_urls>']});
 
         chrome.tabs.onUpdated.addListener(showBadgeForTabId);
         chrome.tabs.onActivated.addListener(showBadgeForStatus);

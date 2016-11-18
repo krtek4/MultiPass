@@ -1,16 +1,11 @@
 'use strict';
 
-var Analytics = require('./analytics');
 var Storage = require('./storage');
 
 module.exports = function() {
     var credentials = {};
 
     var variable_name = 'credentials';
-
-    var last_request_id = '';
-    var last_tab_id = '';
-    var try_count = 0;
 
     function _key(key) {
         var hash = 0;
@@ -49,65 +44,18 @@ module.exports = function() {
         Storage.set(variable_name, credentials);
     }
 
-    function getRegexp(credential) {
-        return new RegExp(credential.url);
-    }
-
-    function getCredential(status, cb) {
-        var url = status.url;
+    function getCredentials(status) {
         var found = [];
         for (var key in credentials) {
             if (credentials.hasOwnProperty(key)) {
-                var re = getRegexp(credentials[key]);
-                if (re.test(url)) {
+                var re = new RegExp(credentials[key].url);
+                if (re.test(status.url)) {
                     found.push(credentials[key]);
                 }
             }
         }
 
-        var credential = {};
-        var success_color = '#00FF00';
-
-        if(found.length > 0) {
-            credential = found[0];
-        }
-
-        // display a yellow badge if there is multiple match for the url
-        if (found.length > 1) {
-            success_color = '#FFFF00';
-            Analytics.event('BackgroundApp', 'multiple credentials');
-        }
-
-        if (credential.hasOwnProperty('username') && credential.hasOwnProperty('password')) {
-            if (status.requestId == last_request_id && status.tabId == last_tab_id) {
-                ++try_count;
-            } else {
-                try_count = 0;
-            }
-
-            if(try_count === 0) {
-                Analytics.event('BackgroundApp', 'authentication sent');
-            }
-
-            if(try_count < 5) {
-                last_request_id = status.requestId;
-                last_tab_id = status.tabId;
-
-                cb(' ', success_color, credential, status.tabId);
-                return {
-                    authCredentials: {
-                        username: credential.username,
-                        password: credential.password
-                    }
-                };
-            } else {
-                Analytics.event('BackgroundApp', 'failed authentication');
-
-                cb(' ', '#FF0000', credential, status.tabId);
-            }
-        }
-
-        return {};
+        return found;
     }
 
     function register(callback) {
@@ -143,13 +91,11 @@ module.exports = function() {
     return {
         'register': register,
 
-        'getCredential': getCredential,
+        'getCredentials': getCredentials,
 
         'removeCredential': removeCredential,
         'clearAll': clearAll,
         'addCredential': addCredential,
         'asJSON': function() { return JSON.stringify(credentials); },
-
-        'getRegexp': getRegexp
     };
 }();
