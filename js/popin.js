@@ -1,8 +1,6 @@
 /*global chrome:True*/
 'use strict';
 
-var $ = require('jquery');
-
 var Analytics = require('./analytics');
 var Credentials = require('./credentials');
 
@@ -20,19 +18,26 @@ var Popin = function() {
             tab = tab[0];
         }
 
-        var container = $('.credentials');
-        container.find('tr').removeClass(only_match + ' ' + multiple_match);
+        var container = document.getElementsByClassName('credentials')[0];
+        var trs = container.getElementsByTagName('tr');
+        [].forEach.call(trs, function (el) {
+            el.classList.remove(only_match);
+            el.classList.remove(multiple_match);
+        });
 
         var matches = [];
-        container.find('.url').each(function() {
-            var re = new RegExp($(this).text());
+        var urls = container.getElementsByClassName('url');
+        [].forEach.call(urls, function (el) {
+            var re = new RegExp(el.innerText);
             if (re.test(tab.url)) {
-                matches.push($(this).parent());
+                matches.push(el.parentNode);
             }
         });
 
         var clazz = matches.length > 1 ? multiple_match : only_match;
-        matches.map(function(a) { a.addClass(clazz); });
+        [].forEach.call(matches, function (el) {
+            el.classList.add(clazz);
+        });
     }
 
     function highlightUrlForTabId(tab_id) {
@@ -44,7 +49,7 @@ var Popin = function() {
     }
 
     function init() {
-        $('.option-link').on('click', optionLink);
+        document.getElementsByClassName('option-link')[0].addEventListener('click', optionLink);
 
         chrome.tabs.query({currentWindow: true, active: true}, highlightUrlForTab);
         chrome.tabs.onUpdated.addListener(highlightUrlForTabId);
@@ -56,7 +61,7 @@ var Popin = function() {
     };
 }();
 
-$(function () {
+document.addEventListener('DOMContentLoaded', function () {
     Analytics.view('/popin.html');
     Analytics.event('Popin', 'opened');
     Popin.init();
