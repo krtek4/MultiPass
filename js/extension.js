@@ -95,7 +95,8 @@ var Extension = function () {
                 if (statuses[status.tabId].count > max_try) {
                     Analytics.event('BackgroundApp', 'failed authentication');
                 } else {
-                    Analytics.event('BackgroundApp', 'authentication sent');
+                    // This event isn't of much interests and we are currently over the hit limit
+                    // Analytics.event('BackgroundApp', 'authentication sent');
                 }
             }
         }
@@ -119,5 +120,6 @@ var Extension = function () {
     };
 }();
 
-Analytics.view('Background Page');
+// This hit isn't that interesting and we are over the limit
+// Analytics.view('Background Page');
 Extension.init();
