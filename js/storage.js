@@ -7,7 +7,7 @@ module.exports = function() {
 
     var listener_callbacks = {};
 
-    function get(key, callback) {
+    function get(key, callback, default_value) {
         dataStore.get(key, function(result) {
             if (result.hasOwnProperty(key)) {
                 if(typeof(listener_callbacks[key]) != 'undefined') {
@@ -21,6 +21,8 @@ module.exports = function() {
                 if(typeof(callback) !== 'undefined') {
                     callback(result[key]);
                 }
+            } else if(typeof(default_value) !== 'undefined') {
+                callback(default_value);
             }
         });
     }
