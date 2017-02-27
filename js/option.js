@@ -56,7 +56,7 @@ var OptionPanel = function() {
 
         for (var key in display_credentials) {
             if (display_credentials.hasOwnProperty(key)) {
-                var c = display_credentials[key];
+                var c = Credentials.sanitize_credential(display_credentials[key]);
                 ul.innerHTML += '<li>' + c.url + ' : ' + c.username + ' - ' + c.password + '</li>';
             }
         }

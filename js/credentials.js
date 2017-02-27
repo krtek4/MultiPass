@@ -11,7 +11,7 @@ module.exports = function() {
 
     var storage_key = 'temporary-credentials';
 
-    function _sanitize(credential) {
+    function sanitize_credential(credential) {
         var fields = ['url', 'username', 'password'];
         var result = {};
 
@@ -35,7 +35,7 @@ module.exports = function() {
                 // We sanitize upon display only because the username and
                 // password might contain chars that could be transformed
                 // thus making the credential invalid.
-                var c = _sanitize(credentials[key]);
+                var c = sanitize_credential(credentials[key]);
 
                 container.innerHTML +=
                     '<tr>' +
@@ -189,6 +189,7 @@ module.exports = function() {
     }
 
     return {
-        'init': init
+        'init': init,
+        'sanitize_credential': sanitize_credential
     };
 }();
