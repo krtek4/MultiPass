@@ -180,7 +180,7 @@ var OptionPanel = function() {
             setTimeout(function() {
                 // send enabled interaction after enabling
                 Analytics.interaction('Analytics', 'enabled');
-            }, 2000)
+            }, 2000);
         }
 
         e.preventDefault();

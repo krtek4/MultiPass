@@ -35,7 +35,9 @@ module.exports = function() {
         }
 
         send = function(type, a, b, c, d) {
+            /*eslint-disable */
             ga('send', type, a, b, c, d);
+            /*eslint-enable */
         };
 
         for(var i in queue) {
