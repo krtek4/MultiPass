@@ -129,7 +129,7 @@
         "description": "Google Analytics section title"
     },
     "analytics_enabled": {
-        "message": "Enable Google Analytics ?",
+        "message": "Enable Google Analytics?",
         "description": "Label for the Google Analytics checkbox."
     },
 

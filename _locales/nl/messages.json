@@ -86,6 +86,14 @@
     "clear_button": {
         "message": "Wis alle gegevens"
     },
+
+    "analytics_section": {
+        "message": "Google Analytics"
+    },
+    "analytics_enabled": {
+        "message": "Inschakelen van Google Analytics?"
+    },
+
     "open_option_page": {
         "message": "Open de opties pagina."
     },
