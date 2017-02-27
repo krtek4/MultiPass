@@ -13,6 +13,8 @@ var OptionPanel = function() {
     var import_file_field;
     var import_json_field;
 
+    var analytics_field;
+
     function modal(title, content, confirmation) {
         var overlay = document.getElementsByClassName('overlay')[0].cloneNode(true);
 
@@ -165,11 +167,35 @@ var OptionPanel = function() {
         e.preventDefault();
     }
 
+    function update_analytics_status(e) {
+        var new_status = analytics_field.checked;
+
+        if(new_status == false) {
+            // send disabled interaction before disabling
+            Analytics.interaction('Analytics', 'disabled');
+        }
+        Analytics.status(null, new_status);
+
+        if(new_status == true) {
+            setTimeout(function() {
+                // send enabled interaction after enabling
+                Analytics.interaction('Analytics', 'enabled');
+            }, 2000)
+        }
+
+        e.preventDefault();
+    }
+
+    function display_analytics_status(status) {
+        analytics_field.checked = status;
+    }
+
     function init() {
         import_output = document.querySelector('output.import-list');
         import_file_field = document.getElementById('import-file');
         import_json_field = document.getElementById('import-json');
 
+        analytics_field = document.getElementById('analytics-enabled');
 
         import_file_field.addEventListener('change', import_file);
         import_json_field.addEventListener('change', import_json);
@@ -182,6 +208,9 @@ var OptionPanel = function() {
         document.querySelector('a.export-credentials').addEventListener('click', export_credentials);
 
         document.querySelector('button.clear-all').addEventListener('click', clear_credentials);
+
+        analytics_field.addEventListener('change', update_analytics_status);
+        Analytics.status(display_analytics_status);
 
         document.getElementsByClassName('multipass-version')[0].innerText = chrome.runtime.getManifest()['version'];
     }

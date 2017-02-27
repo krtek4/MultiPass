@@ -64,13 +64,25 @@ module.exports = function() {
         send('exception', { 'exDescription': description, 'exFatal': false });
     };
 
-    Storage.register('analytics_enabled', init);
-    Storage.get('analytics_enabled', init, true);
+    var status = function(callback, new_value) {
+        if(typeof(callback) === 'function') {
+            Storage.register('analytics_enabled', callback);
+        }
+
+        if(typeof(new_value) !== 'undefined') {
+            Storage.set('analytics_enabled', new_value);
+        } else if(typeof(callback) === 'function') {
+            Storage.get('analytics_enabled', callback, true);
+        }
+    };
+
+    status(init);
 
     return {
         'view': screen,
         'event': event,
         'interaction': interaction,
-        'exception': exception
+        'exception': exception,
+        'status': status
     };
 }();

@@ -124,6 +124,15 @@
         "description": "Clear credentials button before confirmation"
     },
 
+    "analytics_section": {
+        "message": "Google Analytics",
+        "description": "Google Analytics section title"
+    },
+    "analytics_enabled": {
+        "message": "Enable Google Analytics ?",
+        "description": "Label for the Google Analytics checkbox."
+    },
+
     "open_option_page": {
         "message": "Open the option page.",
         "description": "Open the option page link"
