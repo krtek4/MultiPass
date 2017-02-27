@@ -4,6 +4,8 @@ MultiPass CHANGELOG
 VERSION 0 FIRST BLOOD
 ---------------------
 
+### Version 0.7.0 - 27/02/2017 - XSS prevention, Optional Analytics
+
 ### Version 0.6.0 - 06/11/2016 - Regex tester, Firefox support
 
     0.6.1	06/11/2016		Opera support
