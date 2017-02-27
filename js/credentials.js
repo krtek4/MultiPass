@@ -11,13 +11,32 @@ module.exports = function() {
 
     var storage_key = 'temporary-credentials';
 
+    function _sanitize(credential) {
+        var fields = ['url', 'username', 'password'];
+        var result = {};
+
+        for(var f in fields) {
+            if (fields.hasOwnProperty(f) && credential.hasOwnProperty(fields[f])) {
+                result[fields[f]] = credential[fields[f]].replace(/[\u00A0-\u9999<>\&\'\"]/gim, function (i) {
+                    return '&#' + i.charCodeAt(0) + ';';
+                });
+            }
+        }
+
+        return result;
+    }
+
     function display_credentials(credentials) {
         var container = document.getElementsByClassName('credentials')[0];
         container.innerHTML = '';
 
         for (var key in credentials) {
             if (credentials.hasOwnProperty(key)) {
-                var c = credentials[key];
+                // We sanitize upon display only because the username and
+                // password might contain chars that could be transformed
+                // thus making the credential invalid.
+                var c = _sanitize(credentials[key]);
+
                 container.innerHTML +=
                     '<tr>' +
                         '<td class="url">' + c.url + '</td>' +
