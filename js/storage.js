@@ -1,8 +1,29 @@
 'use strict';
 
 module.exports = function() {
+    function detectStorageNamespace(storage) {
+        var ns = 'local';
+
+        if(storage.sync) {
+            ns = 'sync';
+
+            try {
+                var test = window[ns];
+                var x = '__storage_test__';
+
+                test.setItem(x, x);
+                test.removeItem(x);
+            }
+            catch(e) {
+                ns = 'local';
+            }
+        }
+
+        return ns;
+    }
+
     var storage = chrome.storage;
-    var storageNamespace = storage.sync ? 'sync' : 'local';
+    var storageNamespace = detectStorageNamespace(storage);
     var dataStore = storage[storageNamespace];
 
     var listener_callbacks = {};
