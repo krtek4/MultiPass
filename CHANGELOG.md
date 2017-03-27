@@ -6,6 +6,8 @@ VERSION 0 FIRST BLOOD
 
 ### Version 0.7.0 - 27/02/2017 - XSS prevention, Optional Analytics
 
+    0.7.1	27/03/2017		Better detection of storage namespace
+
 ### Version 0.6.0 - 06/11/2016 - Regex tester, Firefox support
 
     0.6.1	06/11/2016		Opera support
