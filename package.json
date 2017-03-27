@@ -19,6 +19,7 @@
     "gulp-merge-json": "*",
     "gulp-zip": "*",
     "merge-stream": "*",
-    "webpack-stream": "*"
+    "webpack-stream": "*",
+    "web-ext": "^1.8.1"
   }
 }
