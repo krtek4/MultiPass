@@ -5,7 +5,7 @@
     "short_name": "MultiPass",
     "description": "__MSG_extDescription__",
     "homepage_url": "http://gilles.crettenand.info/MultiPass/",
-    "version": "0.7.2",
+    "version": "0.7.3",
 
     "default_locale": "en",
 
