@@ -62,6 +62,12 @@ table.credential-table td.password {
     min-width: 8em;
 }
 
+table.credential-table td {
+    max-width: 350px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
 .password {
     position: relative;
 }
