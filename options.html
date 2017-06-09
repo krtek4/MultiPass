@@ -38,6 +38,10 @@
                                 <label for="password" data-i18n="password">Password</label>
                                 <input type="password" name="password" id="password" required="required">
                             </td>
+                            <td class="priority">
+                                <label for="priority" data-i18n="priority">Priority</label>
+                                <input type="number" value="1" name="priority" id="priority" required="required">
+                            </td>
                             <td class="action">
                                 <button type="submit" class="credential-form-submit" data-i18n="add_credential">Add</button>
                                 <button type="reset" class="credential-form-reset" data-i18n="clear_credential">Clear</button>
@@ -77,8 +81,8 @@
             <p data-i18n="import_description">You can import credentials into the extension. The file format is the following:</p>
             <pre>
 [
-    {"url":"some.url.com", "username":"admin", "password":"1234"},
-    {"url":"example.com", "username":"john.doe", "password":"password"}
+    {"url":"some.url.com", "username":"admin", "password":"1234", "priority":"1"},
+    {"url":"example.com", "username":"john.doe", "password":"password", "priority":"2"}
 ]
             </pre>
 

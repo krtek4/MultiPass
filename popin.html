@@ -13,6 +13,7 @@
                     <th class="url" data-i18n="url_regexp">Url (regexp)</th>
                     <th class="username" data-i18n="username">Username</th>
                     <th class="password" data-i18n="password">Password</th>
+                    <th class="priority" data-i18n="priority">Priority</th>
                     <th class="action">&nbsp;</th>
                 </tr>
             </thead>
@@ -34,6 +35,10 @@
                         <td class="password">
                             <label for="password" data-i18n="password">Password</label>
                             <input type="password" name="password" id="password" required="true">
+                        </td>
+                        <td class="priority">
+                            <label for="priority" data-i18n="priority">Priority</label>
+                            <input type="number" value="1" name="priority" id="priority" required="required">
                         </td>
                         <td class="action">
                             <button type="submit" class="credential-form-submit" data-i18n="add_credential">Add</button>

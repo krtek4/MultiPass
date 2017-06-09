@@ -12,7 +12,7 @@ module.exports = function() {
     var storage_key = 'temporary-credentials';
 
     function sanitize_credential(credential) {
-        var fields = ['url', 'username', 'password'];
+        var fields = ['url', 'username', 'password', 'priority'];
         var result = {};
 
         for(var f in fields) {
@@ -46,6 +46,7 @@ module.exports = function() {
                             '<span class="' + password_real_class + '">' + c.password + '</span>' +
                             '<button class="show-password">' + Translator.translate('show_hide_password') + '</button>' +
                         '</td>' +
+                        '<td class="priority">' + (c.priority || 1) + '</td>' +
                         '<td class="action">' +
                             '<button class="remove" data-url="' + c.url + '">' + Translator.translate('remove_credential') + '</button>' + '' +
                             '<button class="edit" data-url="' + c.url + '">' + Translator.translate('edit_credential') + '</button>' + '' +
@@ -73,11 +74,13 @@ module.exports = function() {
         var url = document.getElementById('url');
         var username = document.getElementById('username');
         var password = document.getElementById('password');
+        var priority = document.getElementById('priority');
 
         var values = {
             url: url.value,
             username: username.value,
-            password: password.value
+            password: password.value,
+            priority: priority.value
         };
 
         var valid = true;
@@ -103,6 +106,7 @@ module.exports = function() {
             url.value = '';
             username.value = '';
             password.value = '';
+            priority.value = 1;
 
             reset_form();
 
@@ -123,6 +127,7 @@ module.exports = function() {
         var url = document.getElementById('url');
         var username = document.getElementById('username');
         var password = document.getElementById('password');
+        var priority = document.getElementById('priority');
 
         var tr = e.target.closest('tr');
 
@@ -131,6 +136,7 @@ module.exports = function() {
         url.value = tr.getElementsByClassName('url')[0].textContent;
         username.value = tr.getElementsByClassName('username')[0].textContent;
         password.value = tr.getElementsByClassName('password-real')[0].textContent;
+        priority.value = tr.getElementsByClassName('priority')[0].textContent;
 
         document.getElementsByClassName('credential-form-submit')[0].textContent = Translator.translate('edit_credential');
     }
@@ -170,6 +176,7 @@ module.exports = function() {
             document.getElementById('url').value = result.url || '';
             document.getElementById('username').value = result.username || '';
             document.getElementById('password').value = result.password || '';
+            document.getElementById('priority').value = result.priority || 1;
 
             Storage.set(storage_key, {});
         });
@@ -178,11 +185,13 @@ module.exports = function() {
             var url = document.getElementById('url').value;
             var username = document.getElementById('username').value;
             var password = document.getElementById('password').value;
+            var priority = document.getElementById('priority').value;
 
             var values = {
                 url: url,
                 username: username,
-                password: password
+                password: password,
+                priority: priority
             };
             chrome.extension.getBackgroundPage().Storage.set.apply(this, [storage_key, values]);
         });
