@@ -39,8 +39,8 @@ module.exports = function() {
 
                 container.innerHTML +=
                     '<tr>' +
-                        '<td class="url">' + c.url + '</td>' +
-                        '<td class="username">' + c.username + '</td>' +
+                        '<td class="url" title="' + c.url + '">' + c.url + '</td>' +
+                        '<td class="username" title="' + c.username + '">' + c.username + '</td>' +
                         '<td class="password">' +
                             '<span class="' + password_stars_class + '">***</span>' +
                             '<span class="' + password_real_class + '">' + c.password + '</span>' +
