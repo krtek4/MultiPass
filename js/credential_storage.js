@@ -55,6 +55,8 @@ module.exports = function() {
             }
         }
 
+        found.sort(sortCredentials);
+
         return found;
     }
 
@@ -81,6 +83,14 @@ module.exports = function() {
         }
     }
 
+    function sortCredentials(a, b)
+    {
+        if(typeof(a.priority) === 'undefined') a.priority = 1;
+        if(typeof(b.priority) === 'undefined') b.priority = 1;
+
+        return a.priority - b.priority;
+    }
+
     // retrieve the credentials from storage
     Storage.get(variable_name, updateCredentials);
     register(updateCredentials);
@@ -89,6 +99,8 @@ module.exports = function() {
         'register': register,
 
         'getCredentials': getCredentials,
+
+        'sortCredentials': sortCredentials,
 
         'removeCredential': removeCredential,
         'clearAll': clearAll,

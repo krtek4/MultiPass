@@ -30,6 +30,11 @@ module.exports = function() {
         var container = document.getElementsByClassName('credentials')[0];
         container.innerHTML = '';
 
+        credentials = Object.keys(credentials).map(function(e) {
+            return credentials[e];
+        });
+        credentials.sort(CredentialStorage.sortCredentials);
+
         for (var key in credentials) {
             if (credentials.hasOwnProperty(key)) {
                 // We sanitize upon display only because the username and
