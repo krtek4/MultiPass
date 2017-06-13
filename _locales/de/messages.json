@@ -19,6 +19,9 @@
     "password": {
         "message": "Passwort"
     },
+    "priority": {
+        "message": "Priorität"
+    },
     "show_hide_password": {
         "message": "Anzeigen / Verbergen"
     },

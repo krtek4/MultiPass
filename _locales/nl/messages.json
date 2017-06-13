@@ -17,6 +17,9 @@
     "password": {
         "message": "Wachtwoord"
     },
+    "priority": {
+        "message": "Prioriteit"
+    },
     "show_hide_password": {
         "message": "Tonen / Verbergen"
     },
