@@ -9,7 +9,7 @@ VERSION 0 FIRST BLOOD
     0.7.1	27/03/2017		Better detection of storage namespace
     0.7.2	09/06/2017		Avoid messing up the layout when regex is too long
     0.7.3	09/06/2017		Add a priority field on rules
-    0.7.3	13/06/2017		Add missing translations
+    0.7.4	13/06/2017		Add missing translations
 
 ### Version 0.6.0 - 06/11/2016 - Regex tester, Firefox support
 
