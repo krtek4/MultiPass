@@ -61,27 +61,6 @@ var Extension = function () {
         };
     }
 
-    function serveCredentialsAsHeader(status) {
-        for (var header in status.requestHeaders) {
-            if (header.name == 'Authorization') {
-                return {};
-            }
-        }
-
-        var credentials = retrieveCredentials(status);
-
-        if(credentials.authCredentials) {
-            var value = btoa(credentials.authCredentials.username + ':' + credentials.authCredentials.password);
-
-            status.requestHeaders.push({
-                name: 'Authorization',
-                value: 'Basic ' + value
-            });
-        }
-
-        return {requestHeaders: status.requestHeaders};
-    }
-
     function suggester(status) {
         if(statuses.hasOwnProperty(status.tabId)) {
             if(statuses[status.tabId].credentials.length == 0) {
@@ -101,11 +80,7 @@ var Extension = function () {
     }
 
     function init() {
-        if(chrome.webRequest.onAuthRequired) {
-            chrome.webRequest.onAuthRequired.addListener(retrieveCredentials, {urls: ['<all_urls>']}, ['blocking']);
-        } else {
-            chrome.webRequest.onBeforeSendHeaders.addListener(serveCredentialsAsHeader, {urls: ['<all_urls>']}, ['blocking', 'requestHeaders']);
-        }
+        chrome.webRequest.onAuthRequired.addListener(retrieveCredentials, {urls: ['<all_urls>']}, ['blocking']);
 
         chrome.webRequest.onCompleted.addListener(suggester, {urls: ['<all_urls>']});
 
