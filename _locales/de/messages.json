@@ -98,13 +98,6 @@
         "message": "Alle Zugangsdaten leeren"
     },
 
-    "analytics_section": {
-        "message": "Google Analytics"
-    },
-    "analytics_enabled": {
-        "message": "Google Analytics aktivieren?"
-    },
-
     "open_option_page": {
         "message": "Optionen öffnen"
     },

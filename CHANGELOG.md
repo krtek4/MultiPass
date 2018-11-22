@@ -4,6 +4,8 @@ MultiPass CHANGELOG
 VERSION 0 FIRST BLOOD
 ---------------------
 
+### Version 0.8.0 - 22/11/2018 - Remove Google Analytics
+
 ### Version 0.7.0 - 27/02/2017 - XSS prevention, Optional Analytics
 
     0.7.1	27/03/2017		Better detection of storage namespace

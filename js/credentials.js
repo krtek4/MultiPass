@@ -1,6 +1,5 @@
 'use strict';
 
-var Analytics = require('./analytics');
 var CredentialStorage = require('./credential_storage');
 var Storage = require('./storage');
 var Translator = require('./translator');
@@ -74,8 +73,6 @@ module.exports = function() {
         var password_shown = star.style.display == 'none';
         star.style.display = password_shown ? 'inline' : 'none';
         real.style.display = password_shown ? 'none' : 'inline';
-
-        Analytics.interaction('Credentials', 'password visibility toggled', password_shown ? 'hide' : 'show');
     }
 
     function submit(e) {
@@ -99,7 +96,6 @@ module.exports = function() {
                 var v = values[key];
 
                 if(v === '') {
-                    Analytics.exception('Form error : ' + key + ' is empty.');
                     valid = false;
                 }
             }
@@ -119,16 +115,12 @@ module.exports = function() {
             priority.value = 1;
 
             reset_form();
-
-            Analytics.interaction('Credentials', 'added');
         }
     }
 
     function remove(e) {
         var url = e.target.getAttribute('data-url');
         CredentialStorage.removeCredential(url);
-
-        Analytics.interaction('Credentials', 'removed');
     }
 
     function edit(e) {

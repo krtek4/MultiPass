@@ -1,7 +1,6 @@
 /*global chrome:True*/
 'use strict';
 
-var Analytics = require('./analytics');
 var CredentialStorage = require('./credential_storage');
 
 // the popin and option pane needs this to save the temporary item
@@ -86,17 +85,16 @@ var Extension = function () {
     function suggester(status) {
         if(statuses.hasOwnProperty(status.tabId)) {
             if(statuses[status.tabId].credentials.length == 0) {
-                Analytics.event('BackgroundApp', 'no credentials found');
+                // no credentials found
             } else {
                 if (statuses[status.tabId].credentials.length > 1) {
-                    Analytics.event('BackgroundApp', 'multiple credentials', statuses[status.tabId].credentials.length);
+                    // multiple credentials
                 }
 
                 if (statuses[status.tabId].count > max_try) {
-                    Analytics.event('BackgroundApp', 'failed authentication');
+                    // failed authentication
                 } else {
-                    // This event isn't of much interests and we are currently over the hit limit
-                    // Analytics.event('BackgroundApp', 'authentication sent');
+                    // authentication sent
                 }
             }
         }
@@ -120,6 +118,4 @@ var Extension = function () {
     };
 }();
 
-// This hit isn't that interesting and we are over the limit
-// Analytics.view('Background Page');
 Extension.init();

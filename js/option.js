@@ -1,6 +1,5 @@
 'use strict';
 
-var Analytics = require('./analytics');
 var Credentials = require('./credentials');
 var CredentialStorage = require('./credential_storage');
 var Translator = require('./translator');
@@ -12,8 +11,6 @@ var OptionPanel = function() {
     var import_output;
     var import_file_field;
     var import_json_field;
-
-    var analytics_field;
 
     function modal(title, content, confirmation) {
         var overlay = document.getElementsByClassName('overlay')[0].cloneNode(true);
@@ -78,7 +75,7 @@ var OptionPanel = function() {
                 }
             }
         } catch (err) {
-            Analytics.exception('malformed JSON');
+            // malformed JSON
         }
 
         return result;
@@ -88,14 +85,10 @@ var OptionPanel = function() {
         if (event.target.readyState == FileReader.DONE) {
             file_credentials = file_credentials.concat(parse_json(event.target.result));
             update_output_credentials();
-        } else {
-            Analytics.exception('File importation error');
         }
     }
 
     function import_file(e) {
-        Analytics.interaction('Importer', 'file added');
-
         var files = e.target.files;
         var len = files.length;
 
@@ -107,15 +100,11 @@ var OptionPanel = function() {
     }
 
     function import_json() {
-        Analytics.interaction('Importer', 'JSON added');
-
         credentials = parse_json(import_json_field.value);
         update_output_credentials();
     }
 
     function import_credentials(e) {
-        Analytics.interaction('Importer', 'imported');
-
         var new_credentials = credentials.concat(file_credentials);
 
         for (var key in new_credentials) {
@@ -154,48 +143,19 @@ var OptionPanel = function() {
     }
 
     function export_credentials(e) {
-        Analytics.interaction('Exporter', 'exported');
-
         var data = 'text/json;charset=utf-8,' + encodeURIComponent(CredentialStorage.asJSON());
         e.target.setAttribute('href', 'data:' + data);
     }
 
     function clear_credentials(e) {
-        Analytics.interaction('Credentials', 'cleared');
-
         modal(Translator.translate('clear_credentials_modal_title'), Translator.translate('clear_credentials_modal_text'), CredentialStorage.clearAll);
         e.preventDefault();
-    }
-
-    function update_analytics_status(e) {
-        var new_status = analytics_field.checked;
-
-        if(new_status == false) {
-            // send disabled interaction before disabling
-            Analytics.interaction('Analytics', 'disabled');
-        }
-        Analytics.status(null, new_status);
-
-        if(new_status == true) {
-            setTimeout(function() {
-                // send enabled interaction after enabling
-                Analytics.interaction('Analytics', 'enabled');
-            }, 2000);
-        }
-
-        e.preventDefault();
-    }
-
-    function display_analytics_status(status) {
-        analytics_field.checked = status;
     }
 
     function init() {
         import_output = document.querySelector('output.import-list');
         import_file_field = document.getElementById('import-file');
         import_json_field = document.getElementById('import-json');
-
-        analytics_field = document.getElementById('analytics-enabled');
 
         import_file_field.addEventListener('change', import_file);
         import_json_field.addEventListener('change', import_json);
@@ -209,9 +169,6 @@ var OptionPanel = function() {
 
         document.querySelector('button.clear-all').addEventListener('click', clear_credentials);
 
-        analytics_field.addEventListener('change', update_analytics_status);
-        Analytics.status(display_analytics_status);
-
         document.getElementsByClassName('multipass-version')[0].innerText = chrome.runtime.getManifest()['version'];
     }
 
@@ -221,7 +178,6 @@ var OptionPanel = function() {
 }();
 
 document.addEventListener('DOMContentLoaded', function () {
-    Analytics.view('Option Panel');
     OptionPanel.init();
     Credentials.init();
 });

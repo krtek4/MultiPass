@@ -90,14 +90,6 @@
       "message": "Svuota tutte le credenziali"
     },
 
-    "analytics_section": {
-        "message": "Google Analytics"
-    },
-    "analytics_enabled": {
-        "message": "Attivazione di Google Analytics ?"
-    },
-
-
     "open_option_page": {
         "message": "Apri la pagina delle opzioni"
     },

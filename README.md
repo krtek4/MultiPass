@@ -24,7 +24,7 @@ Firefox Add-ons
 The extension was refused on the Firefox add-ons website due to infringement of the policy concerning Google Analytics.
 See https://github.com/krtek4/MultiPass/issues/40 for more information.
 
-In the meantime, you can download the latest release install it manually: https://github.com/krtek4/MultiPass/releases/latest.
+In the meantime, you can download the latest release install it manually: https://github.com/krtek4/MultiPass/releases/latest and there is also a fork without Analytics: https://github.com/excitoon/MultiPassDisarmed
 
 Report an issue
 ---------------

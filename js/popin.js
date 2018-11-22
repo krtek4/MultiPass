@@ -1,7 +1,6 @@
 /*global chrome:True*/
 'use strict';
 
-var Analytics = require('./analytics');
 var Credentials = require('./credentials');
 
 var Popin = function() {
@@ -9,7 +8,6 @@ var Popin = function() {
     var multiple_match = 'multiple-match';
 
     function optionLink() {
-        Analytics.interaction('Popin', 'option link');
         chrome.runtime.openOptionsPage();
     }
 
@@ -62,7 +60,6 @@ var Popin = function() {
 }();
 
 document.addEventListener('DOMContentLoaded', function () {
-    Analytics.view('Popin');
     Popin.init();
     Credentials.init();
 });

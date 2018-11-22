@@ -98,13 +98,6 @@
         "message": "Supprimer toutes les entrées"
     },
 
-    "analytics_section": {
-        "message": "Google Analytics"
-    },
-    "analytics_enabled": {
-        "message": "Activer Google Analytics ?"
-    },
-
     "open_option_page": {
         "message": "Ouvrir la page des préférences."
     },
