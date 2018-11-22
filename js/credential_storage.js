@@ -48,9 +48,13 @@ module.exports = function() {
         var found = [];
         for (var key in credentials) {
             if (credentials.hasOwnProperty(key)) {
-                var re = new RegExp(credentials[key].url);
-                if (re.test(status.url)) {
-                    found.push(credentials[key]);
+                try {
+                    var re = new RegExp(credentials[key].url);
+                    if (re.test(status.url)) {
+                        found.push(credentials[key]);
+                    }
+                } catch(e) {
+                    // the regex contained an error
                 }
             }
         }
