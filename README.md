@@ -63,3 +63,4 @@ Credits
 * [Jeroen Thora](https://github.com/acrobat): Dutch translation
 * [Pascal Thormeier](https://github.com/thormeier): German translation
 * [AceGentile](https://github.com/AceGentile): Italian translation
+* [Piotr](https://github.com/xadereq): Polish translation
