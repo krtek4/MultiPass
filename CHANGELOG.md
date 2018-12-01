@@ -7,6 +7,7 @@ VERSION 0 FIRST BLOOD
 ### Version 0.8.0 - 22/11/2018 - Remove Google Analytics
     0.8.1	22/11/2018		Avoid breaking the whole extension on faulty regex
     0.8.2	22/11/2018		Remove onAuthRequired hack since FF supports it for the better part of a year
+    0.8.3	01/12/2018		Polish translation
 
 ### Version 0.7.0 - 27/02/2017 - XSS prevention, Optional Analytics
 
