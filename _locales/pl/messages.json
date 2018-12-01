@@ -1,108 +1,108 @@
 {
     "extName": {
-        "message": "MultiPass dla uwierzytelniania HTTP basic authentication",
+        "message": "MultiPass dla uwierzytelniania HTTP basic authentication"
     },
     "extDescription": {
-        "message": "Automatyczne logowanie z wykorzystaniem Basic Authentication na adresy URL stron podanych w wyrażeniu regularnym.",
+        "message": "Automatyczne logowanie z wykorzystaniem Basic Authentication na adresy URL stron podanych w wyrażeniu regularnym."
     },
 
     "credentials_section": {
-        "message": "Dane logowania",
+        "message": "Dane logowania"
     },
 
     "url_regexp": {
-        "message": "Adres URL (wyrażenie regularne)",
+        "message": "Adres URL (wyrażenie regularne)"
     },
     "username": {
-        "message": "Nazwa użytkownika",
+        "message": "Nazwa użytkownika"
     },
     "password": {
-        "message": "Hasło",
+        "message": "Hasło"
     },
     "priority": {
-        "message": "Priorytet",
+        "message": "Priorytet"
     },
     "show_hide_password": {
-        "message": "Pokaż / Ukryj",
+        "message": "Pokaż / Ukryj"
     },
     "remove_credential": {
-        "message": "Usuń",
+        "message": "Usuń"
     },
     "edit_credential": {
-        "message": "Edytuj",
+        "message": "Edytuj"
     },
     "add_credential": {
-        "message": "Dodaj",
+        "message": "Dodaj"
     },
     "clear_credential": {
-        "message": "Wyczyść",
+        "message": "Wyczyść"
     },
 
     "clear_credentials_modal_title": {
-        "message": "Wyczyść wszystkie dane logowania",
+        "message": "Wyczyść wszystkie dane logowania"
     },
     "clear_credentials_modal_text": {
-        "message": "Czy na pewno chcesz usunąć wszystkie zapisane dane?",
+        "message": "Czy na pewno chcesz usunąć wszystkie zapisane dane?"
     },
 
     "modal_cancel": {
-        "message": "Anuluj",
+        "message": "Anuluj"
     },
     "modal_yes": {
-        "message": "Tak",
+        "message": "Tak"
     },
 
     "test_section": {
-        "message": "Sprawdź poprawność wyrażenia regularnego",
+        "message": "Sprawdź poprawność wyrażenia regularnego"
     },
     "tested_regex_label": {
-        "message": "Twoje wyrażenie regularne:",
+        "message": "Twoje wyrażenie regularne:"
     },
     "tested_urls": {
-        "message": "Adresy URL do sprawdzenia:",
+        "message": "Adresy URL do sprawdzenia:"
     },
 
     "import_section": {
-        "message": "Importuj",
+        "message": "Importuj"
     },
     "import_description": {
-        "message": "Możesz importować dane logowania do tego dodatku. Użyj poniższego formatu pliku:",
+        "message": "Możesz importować dane logowania do tego dodatku. Użyj poniższego formatu pliku:"
     },
     "import_file": {
-        "message": "Pliki do importu",
+        "message": "Pliki do importu"
     },
     "import_json": {
-        "message": "Dane w formacie JSON do importu",
+        "message": "Dane w formacie JSON do importu"
     },
     "import_what": {
-        "message": "Co zostanie zaimportowane?",
+        "message": "Co zostanie zaimportowane?"
     },
     "import_nothing": {
-        "message": "-nic-",
+        "message": "-nic-"
     },
     "import_submit": {
-        "message": "Importuj",
+        "message": "Importuj"
     },
 
     "export_section": {
-        "message": "Eksportuj",
+        "message": "Eksportuj"
     },
     "export_button": {
-        "message": "Pobierz dane logowania w formacie JSON.",
+        "message": "Pobierz dane logowania w formacie JSON."
     },
 
     "clear_section": {
-        "message": "Wyczyść wszystkie dane logowania",
+        "message": "Wyczyść wszystkie dane logowania"
     },
     "clear_button": {
-        "message": "Wyczyść wszystkie dane logowania",
+        "message": "Wyczyść wszystkie dane logowania"
     },
 
     "open_option_page": {
-        "message": "Otwórz stronę z ustawieniami.",
+        "message": "Otwórz stronę z ustawieniami."
     },
 
     "donate": {
-        "message": "Lubisz te rozszerzenie? Byłoby fajnie gdybyś zostawił jakąś małą dotację:",
+        "message": "Lubisz te rozszerzenie? Byłoby fajnie gdybyś zostawił jakąś małą dotację:"
     }
 }
