@@ -16,15 +16,12 @@ The extension is available on the Chrome web store: [MultiPass for HTTP basic au
 Opera add-ons
 -------------
 
-The extension is available as a Firefox add-on : [MultiPass](https://addons.opera.com/en/extensions/details/multipass/).
+The extension is available as an Opera add-on : [MultiPass](https://addons.opera.com/en/extensions/details/multipass/).
 
 Firefox Add-ons
 ---------------
 
-The extension was refused on the Firefox add-ons website due to infringement of the policy concerning Google Analytics.
-See https://github.com/krtek4/MultiPass/issues/40 for more information.
-
-In the meantime, you can download the latest release install it manually: https://github.com/krtek4/MultiPass/releases/latest and there is also a fork without Analytics: https://github.com/excitoon/MultiPassDisarmed
+The extension is available as a Firefox add-on : [MultiPass](https://addons.mozilla.org/en-US/firefox/addon/multipass/).
 
 Report an issue
 ---------------
