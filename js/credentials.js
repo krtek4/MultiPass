@@ -19,7 +19,7 @@ module.exports = function() {
                 var value = credential[fields[f]];
                 if(typeof(value) === 'string') {
                     console.log('plop');
-                    value = value.replace(/[\u00A0-\u9999<>\&\'\"]/gim, function (i) {
+                    value = value.replace(/[\u00A0-\u9999<>&'"]/gim, function (i) {
                         return '&#' + i.charCodeAt(0) + ';';
                     });
                 }
