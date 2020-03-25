@@ -1,0 +1,98 @@
+{
+    "extName": {
+        "message": "MultiPass para autenticação básica HTTP"
+    },
+    "extDescription": {
+        "message": "Faça o login automático de autenticação básica HTTP usando uma expressão regular de URL."
+    },
+    "credentials_section": {
+        "message": "Credenciais"
+    },
+    "url_regexp": {
+        "message": "URL (expressão regular)"
+    },
+    "username": {
+        "message": "Usuário"
+    },
+    "password": {
+        "message": "Senha"
+    },
+    "priority": {
+        "message": "Prioridade"
+    },
+    "show_hide_password": {
+        "message": "Exibir / Ocultar"
+    },
+    "remove_credential": {
+        "message": "Remover"
+    },
+    "edit_credential": {
+        "message": "Modificar"
+    },
+    "add_credential": {
+        "message": "Adicionar"
+    },
+    "clear_credential": {
+        "message": "Limpar"
+    },
+    "clear_credentials_modal_title": {
+        "message": "Limpar todas as credenciais"
+    },
+    "clear_credentials_modal_text": {
+        "message": "Você tem certeza de que quer remover todas as credenciais?"
+    },
+    "modal_cancel": {
+        "message": "Cancelar"
+    },
+    "modal_yes": {
+        "message": "Sim"
+    },
+    "test_section": {
+        "message": "Testar sua expressão regular"
+    },
+    "tested_regex_label": {
+        "message": "Sua expressão regular:"
+    },
+    "tested_urls": {
+        "message": "URLs para testar:"
+    },
+    "import_section": {
+        "message": "Importar"
+    },
+    "import_description": {
+        "message": "Você pode importar credenciais para a extensão. O formato do arquivo é o seguinte:"
+    },
+    "import_file": {
+        "message": "Arquivos a importar"
+    },
+    "import_json": {
+        "message": "JSON a importar"
+    },
+    "import_what": {
+        "message": "O que vai ser importado?"
+    },
+    "import_nothing": {
+        "message": "-nada-"
+    },
+    "import_submit": {
+        "message": "Importar"
+    },
+    "export_section": {
+        "message": "Exportar"
+    },
+    "export_button": {
+        "message": "Baixar credenciais como arquivo JSON."
+    },
+    "clear_section": {
+        "message": "Limpar todas as credenciais"
+    },
+    "clear_button": {
+        "message": "Limpar todas as credenciais"
+    },
+    "open_option_page": {
+        "message": "Abrir a página de opções."
+    },
+    "donate": {
+        "message": "Gostou da extensão? Uma pequena doação seria bem-vinda:"
+    }
+}
