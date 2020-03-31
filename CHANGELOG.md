@@ -4,7 +4,8 @@ MultiPass CHANGELOG
 VERSION 0 FIRST BLOOD
 ---------------------
 
-### Version 0.8.0 - 26/12/2019 - Force resigning of extension for Chrome 
+### Version 0.9.0 - 26/12/2019 - Force resigning of extension for Chrome 
+    0.9.1	31/03/2019		Portuguese translations, thanks to pedrovhb
 
 ### Version 0.8.0 - 22/11/2018 - Remove Google Analytics
     0.8.1	22/11/2018		Avoid breaking the whole extension on faulty regex
