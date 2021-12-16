@@ -11,7 +11,7 @@
     },
 
     "url_regexp": {
-        "message": "Url (regexp)"
+        "message": "URL (regexp)"
     },
     "username": {
         "message": "Nom d'utilisateur"
@@ -42,7 +42,7 @@
         "message": "Supprimer toutes les entrées"
     },
     "clear_credentials_modal_text": {
-        "message": "Êtes-vous sur de vouloir supprimer toutes les entrées ?"
+        "message": "Êtes-vous sûr de vouloir supprimer toutes les entrées ?"
     },
 
     "modal_cancel": {
@@ -75,7 +75,7 @@
         "message": "JSON à importer"
     },
     "import_what": {
-        "message": "Que sera-t-il importer ?"
+        "message": "Qu'est-ce qui sera importé ?"
     },
     "import_nothing": {
         "message": "-rien-"
