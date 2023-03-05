@@ -35,11 +35,32 @@ Build the extension
 
 1. Clone the github repository : `git clone git@github.com:krtek4/MultiPass.git`.
 2. Enter the directory : `cd MultiPass`.
-3. Install dependencies : `npm install`.
+3. Install dependencies : `npm ci`.
 4. Build the extension : `npm run dist`.
 5. The package for all supported browser is now available in the `dist` folder.
 
 The installation process will depend on your browser.
+
+`NOTE` on how to build the extension in `docker`:
+
+1. start docker container:
+
+    ```
+    $ docker run --rm -ti -v "${PWD}:/code" -w /code node:12-alpine sh
+    ```
+
+1. install dependencies and theirs prerequisites:
+
+    ```
+    $ apk add --no-cache make g++ python3
+    $ npm ci
+    ```
+
+3. build the extension:
+
+    ```
+    $ npm run dist
+    ```
 
 Use the development version
 ---------------------------
