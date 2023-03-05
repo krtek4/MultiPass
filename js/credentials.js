@@ -6,7 +6,6 @@ var Translator = require('./translator');
 
 module.exports = function() {
     var password_stars_class = 'password-stars';
-    var password_real_class = 'password-real';
 
     var storage_key = 'temporary-credentials';
 
@@ -52,8 +51,6 @@ module.exports = function() {
                         '<td class="username" title="' + c.username + '">' + c.username + '</td>' +
                         '<td class="password">' +
                             '<span class="' + password_stars_class + '">***</span>' +
-                            '<span class="' + password_real_class + '">' + c.password + '</span>' +
-                            '<button class="show-password">' + Translator.translate('show_hide_password') + '</button>' +
                         '</td>' +
                         '<td class="priority">' + (c.priority || 1) + '</td>' +
                         '<td class="action">' +
@@ -63,16 +60,6 @@ module.exports = function() {
                     '</tr>';
             }
         }
-    }
-
-    function togglePassword(e) {
-        var password = e.target.parentNode;
-        var star = password.getElementsByClassName(password_stars_class)[0];
-        var real = password.getElementsByClassName(password_real_class)[0];
-
-        var password_shown = star.style.display == 'none';
-        star.style.display = password_shown ? 'inline' : 'none';
-        real.style.display = password_shown ? 'none' : 'inline';
     }
 
     function submit(e) {
@@ -137,7 +124,7 @@ module.exports = function() {
 
         url.value = tr.getElementsByClassName('url')[0].textContent;
         username.value = tr.getElementsByClassName('username')[0].textContent;
-        password.value = tr.getElementsByClassName('password-real')[0].textContent;
+        password.value = '';  // use sha hash to check if password was changed
         priority.value = tr.getElementsByClassName('priority')[0].textContent;
 
         document.getElementsByClassName('credential-form-submit')[0].textContent = Translator.translate('edit_credential');
@@ -167,10 +154,6 @@ module.exports = function() {
             if(e.target.matches('.edit')) {
                 e.stopPropagation();
                 edit(e);
-            }
-            if(e.target.matches('.show-password')) {
-                e.stopPropagation();
-                togglePassword(e);
             }
         });
 

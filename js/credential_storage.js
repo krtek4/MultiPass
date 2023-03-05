@@ -109,6 +109,5 @@ module.exports = function() {
         'removeCredential': removeCredential,
         'clearAll': clearAll,
         'addCredential': addCredential,
-        'asJSON': function() { return JSON.stringify(credentials); },
     };
 }();

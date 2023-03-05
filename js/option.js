@@ -142,11 +142,6 @@ var OptionPanel = function() {
         });
     }
 
-    function export_credentials(e) {
-        var data = 'text/json;charset=utf-8,' + encodeURIComponent(CredentialStorage.asJSON());
-        e.target.setAttribute('href', 'data:' + data);
-    }
-
     function clear_credentials(e) {
         modal(Translator.translate('clear_credentials_modal_title'), Translator.translate('clear_credentials_modal_text'), CredentialStorage.clearAll);
         e.preventDefault();
@@ -164,8 +159,6 @@ var OptionPanel = function() {
         document.getElementById('test-urls').addEventListener('blur', restore_test_input);
         document.getElementById('test-urls').addEventListener('keyup', test_regex);
         document.getElementById('test-regex').addEventListener('keyup', test_regex);
-
-        document.querySelector('a.export-credentials').addEventListener('click', export_credentials);
 
         document.querySelector('button.clear-all').addEventListener('click', clear_credentials);
 
