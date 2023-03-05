@@ -49,7 +49,7 @@ function dist(browser) {
     return function() {
         var m = require('./build/' + browser + '/manifest');
         var ext = browser == 'firefox' ? 'xpi' : 'zip';
-        gulp.src('./build/' + browser + '/**/*')
+        return gulp.src('./build/' + browser + '/**/*')
             .pipe(zip(browser + '-multipass-' + m.version + '.' + ext))
             .pipe(gulp.dest('./dist'));
     }
@@ -62,26 +62,25 @@ gulp.task('lint', function() {
         .pipe(lint.failAfterError());
 });
 
-gulp.task('assets', ['assets-firefox', 'assets-chrome', 'assets-opera']);
-gulp.task('assets-firefox', assets('firefox'));
-gulp.task('assets-chrome', assets('chrome'));
-gulp.task('assets-opera', assets('opera'));
+gulp.task('assets-firefox', gulp.series(assets('firefox')));
+gulp.task('assets-chrome', gulp.series(assets('chrome')));
+gulp.task('assets-opera', gulp.series(assets('opera')));
 
-gulp.task('manifest-firefox', manifest('firefox'));
-gulp.task('manifest-chrome', manifest('chrome'));
-gulp.task('manifest-opera', manifest('opera'));
+gulp.task('manifest-firefox', gulp.series(manifest('firefox')));
+gulp.task('manifest-chrome', gulp.series(manifest('chrome')));
+gulp.task('manifest-opera', gulp.series(manifest('opera')));
 
-gulp.task('build', ['build-firefox', 'build-chrome', 'build-opera']);
-gulp.task('build-firefox', ['lint', 'assets-firefox', 'manifest-firefox'], build('firefox', false));
-gulp.task('build-chrome', ['lint', 'assets-chrome', 'manifest-chrome'], build('chrome', false));
-gulp.task('build-opera', ['lint', 'assets-opera', 'manifest-opera'], build('opera', false));
+gulp.task('build-firefox', gulp.series('lint', 'assets-firefox', 'manifest-firefox', build('firefox', false)));
+gulp.task('build-chrome', gulp.series('lint', 'assets-chrome', 'manifest-chrome', build('chrome', false)));
+gulp.task('build-opera', gulp.series('lint', 'assets-opera', 'manifest-opera', build('opera', false)));
+gulp.task('build', gulp.series('build-firefox', 'build-chrome', 'build-opera'));
 
-gulp.task('watch', ['watch-firefox', 'watch-chrome', 'watch-opera']);
-gulp.task('watch-firefox', ['assets-firefox', 'manifest-firefox'], build('firefox', true));
-gulp.task('watch-chrome', ['assets-chrome', 'manifest-chrome'], build('chrome', true));
-gulp.task('watch-opera', ['assets-opera', 'manifest-opera'], build('opera', true));
+gulp.task('watch-firefox', gulp.series('assets-firefox', 'manifest-firefox', build('firefox', true)));
+gulp.task('watch-chrome', gulp.series('assets-chrome', 'manifest-chrome', build('chrome', true)));
+gulp.task('watch-opera', gulp.series('assets-opera', 'manifest-opera', build('opera', true)));
+gulp.task('watch', gulp.series('watch-firefox', 'watch-chrome', 'watch-opera'));
 
-gulp.task('dist', ['dist-firefox', 'dist-chrome', 'dist-opera']);
-gulp.task('dist-firefox', ['build-firefox'], dist('firefox'));
-gulp.task('dist-chrome', ['build-chrome'], dist('chrome'));
-gulp.task('dist-opera', ['build-opera'], dist('opera'));
+gulp.task('dist-firefox', gulp.series('build-firefox', dist('firefox')));
+gulp.task('dist-chrome', gulp.series('build-chrome', dist('chrome')));
+gulp.task('dist-opera', gulp.series('build-opera', dist('opera')));
+gulp.task('dist', gulp.series('dist-firefox', 'dist-chrome', 'dist-opera'));
