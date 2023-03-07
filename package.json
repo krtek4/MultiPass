@@ -16,11 +16,11 @@
     "chrome-bootstrap": "^1.5.0",
     "gulp": "^4.0.2",
     "gulp-eslint": "4.0.2",
-    "gulp-merge-json": "0.6.0",
+    "gulp-merge-json": "2.1.2",
     "gulp-zip": "5.0.0",
     "gulplog": "^2.0.1",
     "merge-stream": "1.0.1",
     "web-ext": "^1.8.1",
-    "webpack-stream": "4.0.3"
+    "webpack-stream": "7.0.0"
   }
 }
