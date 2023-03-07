@@ -20,7 +20,7 @@
     "gulp-zip": "5.0.0",
     "gulplog": "^2.0.1",
     "merge-stream": "1.0.1",
-    "web-ext": "^1.8.1",
-    "webpack-stream": "4.0.3"
+    "web-ext": "^7.5.0",
+    "webpack-stream": "7.0.0"
   }
 }
