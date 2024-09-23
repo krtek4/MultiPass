@@ -4,7 +4,7 @@
 var CredentialStorage = require('./credential_storage');
 
 // the popin and option pane needs this to save the temporary item
-window.Storage = require('./storage');
+// window.Storage = require('./storage');
 
 var Extension = function () {
     var statuses = {};
@@ -32,10 +32,10 @@ var Extension = function () {
                 color = '#FF0000';
             }
 
-            chrome.browserAction.setBadgeText({ text: ' ' });
-            chrome.browserAction.setBadgeBackgroundColor({ color: color });
+            chrome.action.setBadgeText({ text: ' ' });
+            chrome.action.setBadgeBackgroundColor({ color: color });
         } else {
-            chrome.browserAction.setBadgeText({text: ''});
+            chrome.action.setBadgeText({text: ''});
             delete statuses[tab_id];
         }
     }

@@ -1,8 +1,8 @@
 {
-    "applications": {
+    "browser_specific_settings": {
         "gecko": {
             "id": "multipass@gilles.crettenand.info",
-            "strict_min_version": "49.0"
+            "strict_min_version": "109.0"
         }
     }
 }

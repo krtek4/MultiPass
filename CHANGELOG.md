@@ -4,6 +4,9 @@ MultiPass CHANGELOG
 VERSION 0 FIRST BLOOD
 ---------------------
 
+### Version 1.0.0 - 26/12/2023 - Update to Manifest v3 
+    1.0.0	26/12/2023		Update to Manifest v3
+
 ### Version 0.9.0 - 26/12/2019 - Force resigning of extension for Chrome 
     0.9.1	31/03/2019		Portuguese translations, thanks to pedrovhb
 

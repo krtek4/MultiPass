@@ -1,11 +1,11 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
 
     "name": "__MSG_extName__",
     "short_name": "MultiPass",
     "description": "__MSG_extDescription__",
     "homepage_url": "http://gilles.crettenand.info/MultiPass/",
-    "version": "0.9.1",
+    "version": "1.0.0",
 
     "default_locale": "en",
 
@@ -17,7 +17,7 @@
         "128": "icons/icon-128.png"
     },
 
-    "browser_action": {
+    "action": {
         "default_icon": {
             "19": "icons/icon-19.png",
             "38": "icons/icon-38.png"
@@ -26,21 +26,24 @@
     },
 
     "options_ui": {
-        "page": "options.html",
-        "chrome_style": true
+        "page": "options.html"
     },
 
     "background": {
-        "scripts": ["js/extension.js"],
-        "persistent": true
+        "service_worker": "js/extension.js"
     },
 
     "permissions": [
-        "webRequest", "webRequestBlocking",
+        "webRequest", "webRequestAuthProvider",
         "storage",
-        "tabs",
-        "http://*/*", "https://*/*"
+        "tabs"
+    ],
+    "host_permissions": [
+        "<all_urls>"
     ],
 
-    "content_security_policy": "script-src 'self'; object-src 'self'"
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self';",
+        "sandbox": "sandbox allow-scripts allow-forms allow-popups allow-modals; script-src 'self' 'unsafe-inline' 'unsafe-eval'; child-src 'self';"
+    }
 }
